@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+
+    <title>SBI</title>
+  </head>
+  <body>
+    
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 100%; min-height: 100vh;">
+    	<div class="container">
+    	
+    		<form id="formLogin" th:action="@{/segValidaSesionP}" method="POST" >				
+				<div id="usuario" class="form-group row align-items-center">
+					<label for="usuario"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Usuario:</h5>
+					</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="usuario" name="usuario" placeholder="Usuario" />
+						<div id="errorU" class="form-control-feedback"></div>	
+					</div>
+				</div>
+
+				<div id="password" class="form-group row align-items-center">
+					<label for="password"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Contraseña:</h5></label>
+					<div class="col-md-6">
+						<input type="password" class="form-control form-control-lg"
+							id="password" name="password" placeholder="Contraseña" onkeypress="return validarUsuario(event)" />
+						<div id="errorP" class="form-control-feedback"></div>	
+					</div>
+				</div>
+
+				<div>
+					<button type="button" class="btn btn-primary btn-lg btn-block" onclick="segValidaForm();">Ingresar</button>
+				</div>
+			</form>
+			
+    	</div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="/js/lib/popper.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
