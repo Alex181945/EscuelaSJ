@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"/>
+<title>ESJ</title>
+</head>
+<body>
+<center><h1 class="display-4">CONTROL DEL DOCENTE </h1></center>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100%; min-height: 100vh;">
+    	<div class="container">
+    	
+    		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >				
+				<div id="Nombre(s)" class="form-group row align-items-center">
+					<label for="Nombre(s)"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5>
+					</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" />
+						<div id="errorN" class="form-control-feedback"></div>	
+					</div>
+				</div>
+
+				<div id="Apepaterno" class="form-group row align-items-center">
+					<label for="Apellido Paterno"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
+					<div class="col-md-6">
+						<input type="Apellido Paterno" class="form-control form-control-lg"
+							id="Apellido Paterno" name="Apellido Paterno" placeholder="Apellido Paterno" onkeypress="return validarUsuario(event)" />
+						<div id="errorP" class="form-control-feedback"></div>	
+					</div>
+				</div>
+				
+				<div id="ApeMaterno" class="form-group row align-items-center">
+					<label for="Apellido Materno"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
+					<div class="col-md-6">
+						<input type="Apellido Materno" class="form-control form-control-lg"
+							id="Apellido Paterno" name="Apellido Materno" placeholder="Apellido Materno" onkeypress="return validarUsuario(event)" />
+						<div id="errorM" class="form-control-feedback"></div>	
+					</div>
+				</div>
+				
+				<div id="Cedula" class="form-group row align-items-center">
+					<label for="Cedula Profesional"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Cedula Profesional:</h5></label>
+					<div class="col-md-6">
+						<input type="Cedula Profesional" class="form-control form-control-lg"
+							id="Cedula Profesional" name="Apellido Materno" placeholder="Cedula Profesional" onkeypress="return validarUsuario(event)" />
+						<div id="errorC" class="form-control-feedback"></div>	
+					</div>
+				</div>
+				
+				<div id="Genero" class="form-group row align-items-center">
+					<label for="Genero"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Genero:</h5></label>
+					<div class="col-md-6">
+
+					<h5 class="lead" ><select name="Genero"> <option>Hombre</option> <option>Mujer</option></select></h5> 
+						<div id="errorG" class="form-control-feedback"></div>	
+					</div>
+				</div>
+				
+				<div id="FechaIngreso" class="form-group row align-items-center">
+					<label for="Fecha de Ingreso"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Fecha de Ingreso:</h5></label>
+					<div class="col-md-6">
+						<input type="Fecha de Ingreso" class="form-control form-control-lg"
+							id="Fecha de Ingreso" name="Fecha de Ingreso" placeholder="Fecha de Ingreso" onkeypress="return validarUsuario(event)" />
+						<div id="errorF" class="form-control-feedback"></div>	
+					</div>
+				</div>
+				
+				<div>
+					<center><button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
+								
+					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
+				
+					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Modificar</button>
+
+					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Eliminar</button>				
+
+					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
+
+					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Salir</button>	</center>			
+				</div>
+				
+			</form>
+			
+    	</div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="/js/lib/jquery-3.3.1.min.js"></script>
+    <script src="/js/lib/popper.min.js"></script>
+    <script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

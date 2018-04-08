@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Miguel
+ * @author Alberto
  *
  */
 package com.sorjuana.escuela.controlador.menu;
