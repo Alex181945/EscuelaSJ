@@ -10,6 +10,14 @@
 <title>ESJ</title>
 </head>
 <body>
+<ul class="nav nav-tabs">
+  <li class="CONTROLDOCENTE">
+    <a class="nav-link active" href="#">CONTROL DOCENTE</a>
+  </li>
+  <li class="controlAlumno">
+    <a class="nav-link" href="#">CONTROL ALUMNO</a>
+  </li>
+</ul>
 <center><h1 class="display-4">CONTROL DEL ALUMNO </h1></center>
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100%; min-height: 100vh;">
     	<div class="container">
@@ -147,7 +155,17 @@
 							id="Nombre del Tutor" name="Nombre del Tutor" placeholder="Nombre del Tutor" onkeypress="return validarUsuario(event)" />
 						<div id="errorNT" class="form-control-feedback"></div>	
 					</div>
-				</div>					
+				</div>		
+				
+				<div id="PareTut" class="form-group row align-items-center">
+					<label for="Parentesco del Tutor"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Parentesco del Tutor:</h5></label>
+					<div class="col-md-6">
+						<input type="Parentesco del Tutor" class="form-control form-control-lg"
+							id="Parentesco del Tutor" name="Parentesco del Tutor" placeholder="Parentesco del Tutor" onkeypress="return validarUsuario(event)" />
+						<div id="errorPT" class="form-control-feedback"></div>	
+					</div>
+				</div>							
 			
 				
 				<div>
