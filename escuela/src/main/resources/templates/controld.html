@@ -107,6 +107,16 @@
 					</div>
 				</div>
 				
+				<div id="NivelEducativo" class="form-group row align-items-center">
+					<label for="Nivel Educativo"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nivel Educativo:</h5></label>
+					<div class="col-md-6">
+
+					<h5 class="lead" ><select name="Nivel Educativo"> <option>Maternal</option> <option>Kinder</option> <option>Primaria</option><option>Secundaria</option>  </select></h5> 
+						<div id="errorNE" class="form-control-feedback"></div>	
+					</div>
+				</div>				
+				
 				<div id="Grado" class="form-group row align-items-center">
 					<label for="Genero"
 						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Grado:</h5></label>
@@ -117,14 +127,30 @@
 					</div>
 				</div>
 				
+				<div id="Tel" class="form-group row align-items-center">
+					<label for="Telefono"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Telefono:</h5></label>
+					<div class="col-md-6">
+						<input type="Telefono" class="form-control form-control-lg"
+							id="Telefono" name="Telefono" placeholder="Telefono" onkeypress="return validarUsuario(event)" />
+						<div id="errorTE" class="form-control-feedback"></div>	
+					</div>
+				</div>
+				
+				<div id="Email" class="form-group row align-items-center">
+					<label for="Email"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Email:</h5></label>
+					<div class="col-md-6">
+						<input type="Email" class="form-control form-control-lg"
+							id="Email" name="Email" placeholder="Email" onkeypress="return validarUsuario(event)" />
+						<div id="errorEM" class="form-control-feedback"></div>	
+					</div>
+				</div>	
+				
 				
 				<div>
 					<center>	
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
-				
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Modificar</button>
-
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Eliminar</button>				
 
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
 

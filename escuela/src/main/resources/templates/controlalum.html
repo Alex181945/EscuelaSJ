@@ -29,6 +29,16 @@
 <center><h1 class="display-4">CONTROL DEL ALUMNO </h1></center>
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100%; min-height: 100vh;">
     	<div class="container">
+ 
+ 				<div id="Matricula" class="form-group row align-items-center">   	
+					<label for="Matricula"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Matricula:</h5></label>
+					<div class="col-md-6">
+						<input type="Matricula" class="form-control form-control-lg"
+							id="Matricula" name="Matricula" placeholder="Matricula" onkeypress="return validarUsuario(event)" />
+						<div id="errorM" class="form-control-feedback"></div>	
+					</div>
+				</div>    	
     	
     		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >				
 				<div id="Nombre(s)" class="form-group row align-items-center">
@@ -41,8 +51,6 @@
 						<div id="errorN" class="form-control-feedback"></div>	
 					</div>
 				</div>
-				
-				
 
 				<div id="Apepaterno" class="form-group row align-items-center">
 					<label for="Apellido Paterno"
@@ -64,6 +72,7 @@
 					</div>
 				</div>
 				
+
 				<div id="FechaNacimiento" class="form-group row align-items-center">
 					<label for="Fecha de Nacimiento"
 						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Fecha de Nacimiento:</h5></label>
@@ -83,8 +92,16 @@
 						<div id="errorG" class="form-control-feedback"></div>	
 					</div>
 				</div>
-				
-				
+
+				<div id="CURP" class="form-group row align-items-center">
+					<label for="CURP"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">CURP:</h5></label>
+					<div class="col-md-6">
+						<input type="CURP" class="form-control form-control-lg"
+							id="CURP" name="CURP" placeholder="CURP" onkeypress="return validarUsuario(event)" />
+						<div id="errorCU" class="form-control-feedback"></div>	
+					</div>
+				</div>					
 				<div id="Direccion" class="form-group row align-items-center">
 					<label for="Direccion"
 						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Direccion:</h5></label>
@@ -153,7 +170,37 @@
 							id="Telefono" name="Telefono" placeholder="Telefono" onkeypress="return validarUsuario(event)" />
 						<div id="errorTE" class="form-control-feedback"></div>	
 					</div>
-				</div>
+				</div>	
+
+				<div id="NivelEdu" class="form-group row align-items-center">
+					<label for="Nivel Educativo"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nivel Educativo:</h5></label>
+					<div class="col-md-6">
+
+					<h5 class="lead" ><select name="Genero"> <option>Maternal</option> <option>Kinder</option> <option>Primaria</option> <option>Secundaria</option></select></h5> 
+						<div id="errorG" class="form-control-feedback"></div>	
+					</div>
+				</div>	
+
+				<div id="Grado" class="form-group row align-items-center">
+					<label for="Grado"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Grado:</h5></label>
+					<div class="col-md-6">
+
+					<h5 class="lead" ><select name="Genero"> <option>1ro</option> <option>2do</option> <option>3ro</option></select></h5> 
+						<div id="errorG" class="form-control-feedback"></div>	
+					</div>
+				</div>								
+
+				<div id="Periodo" class="form-group row align-items-center">
+					<label for="Periodo"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Periodo:</h5></label>
+					<div class="col-md-6">
+						<input type="Periodo" class="form-control form-control-lg"
+							id="Periodo" name="Periodo" placeholder="Periodo" onkeypress="return validarUsuario(event)" />
+						<div id="errorPe" class="form-control-feedback"></div>	
+					</div>
+				</div>				
 				
 				<div id="NomTUT" class="form-group row align-items-center">
 					<label for="Nombre del Tutor"
@@ -173,7 +220,27 @@
 							id="Parentesco del Tutor" name="Parentesco del Tutor" placeholder="Parentesco del Tutor" onkeypress="return validarUsuario(event)" />
 						<div id="errorPT" class="form-control-feedback"></div>	
 					</div>
-				</div>							
+				</div>	
+
+				<div id="TelTu" class="form-group row align-items-center">
+					<label for="Telefono del Tutor"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Telefono del Tutor:</h5></label>
+					<div class="col-md-6">
+						<input type="Telefono del Tutor" class="form-control form-control-lg"
+							id="Telefono" name="Telefono del Tutor" placeholder="Telefono del Tutor" onkeypress="return validarUsuario(event)" />
+						<div id="errorTT" class="form-control-feedback"></div>	
+					</div>
+				</div>	
+				
+				<div id="ColeMen" class="form-group row align-items-center">
+					<label for="Colegiatura Mensual"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Colegiatura Mensual:</h5></label>
+					<div class="col-md-6">
+						<input type="Colegiatura Mensual" class="form-control form-control-lg"
+							id="Colegiatura Mensual" name="Colegiatura Mensual" placeholder="Colegiatura Mensual" onkeypress="return validarUsuario(event)" />
+						<div id="errorCM" class="form-control-feedback"></div>	
+					</div>
+				</div>									
 			
 				
 				<div>

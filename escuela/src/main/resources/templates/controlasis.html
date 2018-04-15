@@ -26,7 +26,7 @@
     <a class="nav-link" href="#">CONTROL ASISTENCIA</a>
   </li>
 </ul>
-<center><h1 class="display-4">CONTROL DE ASISTENCIA </h1></center>
+<center><h1 class="display-4">REPORTE </h1></center>
 <div class="d-flex justify-content-center align-items-center" style="min-height: 100%; min-height: 100vh;">
     	<div class="container">
     	
@@ -85,47 +85,25 @@
 					</div>
 				</div>
 				
-				<div id="HoraEntrada" class="form-group row align-items-center">
-					<label for="Hora de Entrada"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Hora de Entrada:</h5></label>
+				<div id="HorasCubiertas" class="form-group row align-items-center">
+					<label for="Hora a Cubrir"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Hora a Cubrir:</h5></label>
 					<div class="col-md-6">
-						<input type="Hora de Entrada" class="form-control form-control-lg"
-							id="Hora de Entrada" name="Hora de Entrada" placeholder="Hora de Entrada" onkeypress="return validarUsuario(event)" />
-						<div id="errorHE" class="form-control-feedback"></div>	
+						<input type="Hora a Cubrir" class="form-control form-control-lg"
+							id="Hora a Cubrir" name="Hora a Cubrir" placeholder="Hora a Cubrir" onkeypress="return validarUsuario(event)" />
+						<div id="errorHC" class="form-control-feedback"></div>	
 					</div>
 				</div>
 				
-				<div id="HoraSalida" class="form-group row align-items-center">
-					<label for="Hora de Salida"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Hora de Salida:</h5></label>
+				<div id="Retardos" class="form-group row align-items-center">
+					<label for="Retardos"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Retardos:</h5></label>
 					<div class="col-md-6">
-						<input type="Hora de Salida" class="form-control form-control-lg"
-							id="Hora de Salida" name="Hora de Salida" placeholder="Hora de Salida" onkeypress="return validarUsuario(event)" />
-						<div id="errorHS" class="form-control-feedback"></div>	
-					</div>
-				</div>
-				
-				<div id="Retardo" class="form-group row align-items-center">
-					<label for="Retardo"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Retardo:</h5></label>
-					<div class="col-md-6">
-
-					<h5 class="lead" ><select name="Retardo"> <option>1</option> <option>2</option> <option>mas de 3</option> </select></h5> 
+						<input type="Retardos" class="form-control form-control-lg"
+							id="Retardos" name="Retardos" placeholder="Retardos" onkeypress="return validarUsuario(event)" />
 						<div id="errorR" class="form-control-feedback"></div>	
 					</div>
 				</div>
-				
-				<div id="HorasCubrir" class="form-group row align-items-center">
-					<label for="HorasCubrir"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Horas a Cubrir:</h5></label>
-					<div class="col-md-6">
-
-					<h5 class="lead" ><select name="HorasCubrir"> <option>1 hora </option> <option>2 horas</option> <option>3 horas</option>
-					                                        <option>4 horas</option>  <option>5 horas</option> <option>6 horas</option></select></h5> 
-						<div id="errorHC" class="form-control-feedback"></div>	
-					</div>
-				</div>				
-						
 
 				<div class="form-group row align-items-center">
 				  <div class="col-md-3 offset-md-3 text-center col-form-label">
@@ -138,10 +116,6 @@
 				<div>
 					<center>	
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
-				
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Modificar</button>
-
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Eliminar</button>				
 
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
 
