@@ -15,6 +15,7 @@ public class Vistas {
 	private static final String LOGIN = "index";
 	private static final String TICKET = "ticket/incidencia";
 	private static final String MENU = "menu/menu";
+	private static final String CONTROLALUMNO = "controlalum";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -52,6 +53,9 @@ public class Vistas {
 	}
 	public static String getMenu() {
 		return MENU;
+	}
+	public static String getControlalumno() {
+		return CONTROLALUMNO;
 	}
 	
 }
