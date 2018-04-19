@@ -11,10 +11,11 @@
     <link rel="stylesheet" href="#" th:href="@{/assets/css/tema.css}"/>
 
     <title th:if="${titulo != null}" th:text="${titulo}"></title>
-   
+   <div clase="banner"></div>
+
   </head>
   <body>
-  
+	
   	<div th:replace="plantilla/fragments/encabezado :: encabezado"></div>
 	
 	<div th:replace="${view} :: content"></div>
@@ -37,6 +38,8 @@
     <script src="#" th:src="@{/assets/js/login/login.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/texto.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/visuales.js}"></script>
-    <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>
+    <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>      
   </body>
+  <div id="footer"></div>
+
 </html>

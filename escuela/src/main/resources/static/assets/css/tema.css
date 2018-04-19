@@ -1,3 +1,22 @@
+
+.banner{
+	
+	font-size: 32px; 
+	font-family: "Times New Roman",Georgia,Serif; 
+	border-style: 4px dotted #452c2e;
+	padding: 15px;
+	background-color: #8C796B;
+}
+
 body{
-	background-color: red;
+	background: #ffffff;
+}
+#footer{
+
+	height: 80px;
+	background-color: #8C796B;
+}
+
+.bg-light {
+    background-color: #8C796B!important;
 }

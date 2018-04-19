@@ -16,6 +16,9 @@ public class Vistas {
 	private static final String TICKET = "ticket/incidencia";
 	private static final String MENU = "menu/menu";
 	private static final String CONTROLALUMNO = "controlalum";
+	private static final String CONTROLASISTENCIA = "controlasis";
+	private static final String CONTROLADMIN = "controladmin";
+	private static final String CONTROLDOCENTE = "controld";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -56,6 +59,15 @@ public class Vistas {
 	}
 	public static String getControlalumno() {
 		return CONTROLALUMNO;
+	}
+	public static String getControlasistencia() {
+		return CONTROLASISTENCIA;
+	}
+	public static String getControladmin() {
+		return CONTROLADMIN;
+	}
+	public static String getControldocente() {
+		return CONTROLDOCENTE;
 	}
 	
 }
