@@ -1,0 +1,93 @@
+.banner{
+	
+	font-size: 90px; 
+	font-family: "Times New Roman",Georgia,Serif; 
+	border-style: 4px dotted #c0c0c0;
+	padding: 30px;
+	background-color: #74868b;
+}
+
+
+body{
+ background-color: #f7f4d5;
+}
+
+
+
+div { color: rgb(90, 150, 176); }
+
+#footer{
+
+	height: 80px;
+	background-color: #74868b;
+}
+.bg-light {
+	
+    background-color: #c0c0c0!important;
+}
+
+
+input[type=text] {
+	width: 300px;
+	background-color: #f9fcff;
+	border:none;
+}
+
+input[type=password] {
+	width: 300px;
+	background-color: #f9fcff;
+	border:none;
+}
+
+ .button_personalizado{
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #1883ba;
+    border-radius: 6px;
+    border: 2px solid #0016b0;
+  }
+  .button_personalizado:hover{
+    color: #1883ba;
+    background-color: #ffffff;
+  }
+
+img.pequeña{
+  width: 150px; height: 150px;
+}
+
+H2.center{
+  text-align: center;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: .5rem 10rem;
+    font-size: 1.15rem;
+    line-height: 1.25;
+    border-radius: .3rem;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #0000ff;
+    border-color: #80ffff;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    border: 1px solid transparent;
+    padding: .50rem .10rem;
+    font-size: 1.35rem;
+    line-height: 1.25;
+    border-radius: .3rem;
+    transition: color .30s ease-in-out,background-color .30s ease-in-out,border-color .30s ease-in-out,box-shadow .30s ease-in-out;
+}   
+    
+    

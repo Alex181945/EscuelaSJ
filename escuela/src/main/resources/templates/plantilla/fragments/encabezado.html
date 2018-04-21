@@ -1,9 +1,7 @@
 
 <div class="banner" th:fragment="encabezado">
 	<nav class="navbar navbar-expand-xl navbar-light bg-light">
-		<a class="navbar-brand" href="#"> <img class="img-fluid"
-			alt="Senado de la Republica" src="#"
-			th:src="@{/assets/img/propias/image1.jpg}" />
+		<a class="navbar-brand" href="#"> 
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarSupportedContent"
@@ -12,11 +10,13 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div th:if="${menu != null}" class="collapse navbar-collapse" id="navbarSupportedContent">
+		<!-- <div th:if="${menu != null}" class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul th:each="opcion : ${menu}" class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="#"
 					th:href="${opcion.cRuta}" th:text="${opcion.cPrograma}"></a></li>
 			</ul>
-		</div>
+		</div> -->
+		
+		
 	</nav>
 </div>

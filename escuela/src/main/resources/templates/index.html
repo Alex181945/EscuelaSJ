@@ -1,7 +1,11 @@
 
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	<div class="container">
+	<center><img th:src="@{/assets/img/sjn.jpg}" class = "pequeña "/> </center>
+	<br>
 
+	<h2 >INSTITUCION EDUCATIVA Y CULTURAL SOR JUANA INES DE LA CRUZ A.C</h2></br> 
+		
 		<form id="formLogin" th:action="@{/validausuario}" method="POST">
 			<div id="usuarioD" class="form-group row align-items-center">
 				<label for="usuario"
@@ -12,6 +16,7 @@
 						id="usuario" name="usuario"
 						placeholder="Usuario" />
 					<div id="errorU" class=""></div>
+
 				</div>
 			</div>
 
