@@ -3,10 +3,13 @@ package com.sorjuana.escuela.repositorio.seg.imp;
 import java.sql.*;
 import java.util.logging.Logger;
 
+import org.springframework.stereotype.Component;
+
 import com.sorjuana.escuela.configuracion.ConexionBD;
 import com.sorjuana.escuela.modelo.Persona;
 import com.sorjuana.escuela.repositorio.seg.LoginRep;
 
+@Component
 public class ImpLoginRep implements LoginRep {
 	
 	private final static Logger LOGGER = Logger.getLogger(ImpLoginRep.class.getName());
@@ -17,6 +20,9 @@ public class ImpLoginRep implements LoginRep {
 	@Override
 	public void validaUsuario(String usuario, String contrasena) {
 		
+		System.out.println(usuario);
+		System.out.println(contrasena);
+		
 		ConexionBD conexion = new ConexionBD();
 		Connection inicio = conexion.GetConnection();
 		
@@ -24,8 +30,13 @@ public class ImpLoginRep implements LoginRep {
 			
 			Statement consulta = inicio.createStatement();
 			
-			ResultSet res = consulta.executeQuery("SELECT * FROM cliente WHERE cUsuario = '" + usuario
-					+ "' AND cPassword = '" + contrasena + "'");
+			String sql = "SET @p0 = '"+ usuario +"'; SET @p1 = '"+ contrasena +"';";
+		    sql += "CALL validaUsuario(@p0, @p1, @p2, @p3, @p4);";
+		    sql += "SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;";
+			
+			ResultSet res = consulta.executeQuery(sql);
+			
+			System.out.println(res.toString());
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
