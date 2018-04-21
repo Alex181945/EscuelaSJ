@@ -13,9 +13,10 @@
     <title th:if="${titulo != null}" th:text="${titulo}"></title>
    <div clase="banner"></div>
 
+
   </head>
   <body>
-	
+	 
   	<div th:replace="plantilla/fragments/encabezado :: encabezado"></div>
 	
 	<div th:replace="${view} :: content"></div>

@@ -1,12 +1,11 @@
 
-
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	<div class="container">
-	
-	<img class="img-fluid"
-			alt="INSTITUCIÓN EDUCATIVA Y CULTURAL SOR JUANA INÉS DE LA CRUZ A.C." src="#"
-			th:src="@{/assets/img/sjn.jpg}"  />
+	<center><img th:src="@{/assets/img/sjn.jpg}" class = "pequeña "/> </center>
+	<br>
 
+	<h2 >INSTITUCION EDUCATIVA Y CULTURAL SOR JUANA INES DE LA CRUZ A.C</h2></br> 
+		
 		<form id="formLogin" th:action="@{/validausuario}" method="POST">
 			<div id="usuarioD" class="form-group row align-items-center">
 				<label for="usuario"
