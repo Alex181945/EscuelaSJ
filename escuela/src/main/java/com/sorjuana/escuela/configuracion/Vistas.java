@@ -25,7 +25,7 @@ public class Vistas {
 	/***                         Redireccionamientos                       ***/
 	/*************************************************************************/
 	private static final String REDIRECT_LOGIN = "redirect:/login";
-	private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu/inicio";
+	private static final String REDIRECT_MENUPRINCIPAL = "redirect:/menu";
 	private static final String REDIRECT_MODULO = "redirect:/carga/modulo";
 	private static final String REDIRECT_TICKET = "redirect:/ticket";
 	/********************************* Fin ***********************************/
