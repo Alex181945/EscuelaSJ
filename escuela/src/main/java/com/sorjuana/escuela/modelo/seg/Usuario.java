@@ -1,8 +1,9 @@
-package com.sorjuana.escuela.modelo;
+package com.sorjuana.escuela.modelo.seg;
 
 public class Usuario {
 	
 	private Integer iPersona;
+	private String  cToken;
 	private String  cEmail;
 	private String  cContrasena;
 	private Integer lActivo;
@@ -44,5 +45,11 @@ public class Usuario {
 	}
 	public void setDtModificado(String dtModificado) {
 		this.dtModificado = dtModificado;
+	}
+	public String getcToken() {
+		return cToken;
+	}
+	public void setcToken(String cToken) {
+		this.cToken = cToken;
 	}
 }
