@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConexionBD {
 
-	private static final String cURLDevelop = "jdbc:mysql://localhost:3306/escuelast";
+	private static final String cURLDevelop = "jdbc:mysql://localhost:3306/escuelajuana";
 	//private static final String cURLProduction = "jdbc:mysql://localhost:3306/escuela";
 	
 	public static Connection GetConnection(){

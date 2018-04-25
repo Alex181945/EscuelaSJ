@@ -1,93 +1,73 @@
 .banner{
 	
-	font-size: 90px; 
+	font-size: 70px; 
 	font-family: "Times New Roman",Georgia,Serif; 
-	border-style: 4px dotted #c0c0c0;
+	border-style: 158px dotted #ffffff;
 	padding: 30px;
-	background-color: #74868b;
+	background-color: #317f43;
 }
 
 
 body{
- background-color: #f7f4d5;
+	
+	font-weight:: bold;
+ background-color: #ffffff;
+ 
+   padding: 3px 10px;
+  border: PowderBlue 5px dashed;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+ 
 }
 
-
-
-div { color: rgb(90, 150, 176); }
+div { 
+	color: rgb(23, 87, 207); 
+	}
 
 #footer{
 
-	height: 80px;
-	background-color: #74868b;
+	height: 70px;
+	background-color: #317f43;
+	
 }
 .bg-light {
 	
-    background-color: #c0c0c0!important;
+    background-color: #1757CF!important;
 }
 
-
-input[type=text] {
-	width: 300px;
-	background-color: #f9fcff;
-	border:none;
-}
-
-input[type=password] {
-	width: 300px;
-	background-color: #f9fcff;
-	border:none;
-}
-
- .button_personalizado{
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #1883ba;
-    border-radius: 6px;
-    border: 2px solid #0016b0;
-  }
-  .button_personalizado:hover{
-    color: #1883ba;
-    background-color: #ffffff;
-  }
 
 img.pequeña{
   width: 150px; height: 150px;
 }
 
+
 H2.center{
   text-align: center;
 }
+form {
+	width: 750px;
+  	margin: 10px auto;
+  	padding: 10px;
+  	border: 7px solid $green-border;
+  	border-radius: 15px;
+  	font-family: ""Times New Roman",Georgia,Serif;
+	  color: #1757CF;
+  	background-color: $back-color;
+  	
+  	box-shadow: 0 0 20px 0 #000000;
+    display: grid;
+    padding: 1em;
+    background: #ffffff;
+    border: 1px solid #c1c1c1;
+    margin: 1rem auto 1rem auto;
+    max-width: 1000px;
+    padding: 2em;
+}
 
-.btn-block {
-    display: block;
-    width: 100%;
-}
-.btn-group-lg>.btn, .btn-lg {
-    padding: .5rem 10rem;
-    font-size: 1.15rem;
-    line-height: 1.25;
-    border-radius: .3rem;
-}
-.btn-primary {
-    color: #fff;
-    background-color: #0000ff;
-    border-color: #80ffff;
+.d-flex{
+	 padding: 3px 10px;
+	  border: PowderBlue 5px double;
+	  border-top-left-radius: 20px;
+	  border-bottom-right-radius: 20px;
 }
 
-.btn {
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    border: 1px solid transparent;
-    padding: .50rem .10rem;
-    font-size: 1.35rem;
-    line-height: 1.25;
-    border-radius: .3rem;
-    transition: color .30s ease-in-out,background-color .30s ease-in-out,border-color .30s ease-in-out,box-shadow .30s ease-in-out;
-}   
-    
-    

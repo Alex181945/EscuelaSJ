@@ -11,14 +11,15 @@
     <link rel="stylesheet" href="#" th:href="@{/assets/css/tema.css}"/>
 
     <title th:if="${titulo != null}" th:text="${titulo}"></title>
-   <div clase="banner"></div>
+   
 
 
   </head>
   <body>
-	 
+    <div clase="banner"></div>
+		
   	<div th:replace="plantilla/fragments/encabezado :: encabezado"></div>
-	
+	<br/>
 	<div th:replace="${view} :: content"></div>
 	
 	<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
@@ -41,6 +42,8 @@
     <script src="#" th:src="@{/assets/js/funciones/visuales.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>      
   </body>
+
   <div id="footer"></div>
+ 
 
 </html>

@@ -23,17 +23,18 @@ public class ImpLoginRep implements LoginRep {
 		System.out.println(usuario);
 		System.out.println(contrasena);
 		
-		ConexionBD conexion = new ConexionBD();
-		Connection inicio = conexion.GetConnection();
+		Connection inicio = ConexionBD.GetConnection();
 		
 		try {
 			
 			Statement consulta = inicio.createStatement();
 			
-			String sql = "SET @p0 = '"+ usuario +"'; SET @p1 = '"+ contrasena +"';";
+			String sql = "SET @p0 = "+ usuario +"; SET @p1 = "+ contrasena +";";
 		    sql += "CALL validaUsuario(@p0, @p1, @p2, @p3, @p4);";
 		    sql += "SELECT @p2 AS `lError`, @p3 AS `cSqlState`, @p4 AS `cError`;";
 			
+		    System.out.println(sql);
+		    
 			ResultSet res = consulta.executeQuery(sql);
 			
 			System.out.println(res.toString());

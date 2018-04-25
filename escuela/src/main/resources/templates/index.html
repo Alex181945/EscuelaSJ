@@ -1,10 +1,13 @@
 
+
+
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
 	<div class="container">
-	<center><img th:src="@{/assets/img/sjn.jpg}" class = "pequeña "/> </center>
-	<br>
 
-	<h2 >INSTITUCION EDUCATIVA Y CULTURAL SOR JUANA INES DE LA CRUZ A.C</h2></br> 
+
+
+	<center><img th:src="@{/assets/img/logo.jpg}" class = "pequeña "/></center>
+	<h2 ><center>INSTITUCION EDUCATIVA Y CULTURAL SOR JUANA INES DE LA CRUZ A.C</center></h2>
 		
 		<form id="formLogin" th:action="@{/validausuario}" method="POST">
 			<div id="usuarioD" class="form-group row align-items-center">
@@ -13,7 +16,7 @@
 					<h5 class="lead">Usuario:</h5></label>
 				<div class="col-md-6">
 					<input type="text" class="form-control form-control-lg"
-						id="usuario" name="usuario"
+						id="username" name="username"
 						placeholder="Usuario" />
 					<div id="errorU" class=""></div>
 
@@ -38,7 +41,19 @@
 			</div>
 		</form>
 		
-		<div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
+		
+		<br/>
 
+		
+		<div class="col-12" style="display:none;"><span id="message" th:text="${error}"></span></div>
+		
+		<div class="d-flex">
+  <div class="p-2">Nuestra Misión es: Garantizar que los alumnos de la “Institución Educativa y Cultural Sor Juana Inés de la Cruz”, tengan una educación integral basada en los pilares de la educación, fomentando el respeto y el cuidado del medio ambiente, para que actúen en beneficio de la sociedad y el entorno.</div>
+  <div class="p-2">Nuestra Visión es: El Instituto Educativo y Cultural Sor Juana Inés de la Cruz tiene como objetivo formar niños utilizando un sistema educativo tradicional personalizado, mediante el cual los niños aprenden, se divierten y desarrollan sus habilidades motoras, de pensamiento y desarrollo social</div>
+  		</div>
+	<h6><center>RIO DE LOS REMEDIOS NO. 81 COL. SAN JUAN IXHUATEPEC, TLALNEPANTLA EDO. DE MEX., C.P. 54180 INCORPORADA A LA SEP.</center></h6>
+	 <h6><center>C.C.T. 15PJN023E1E, &nbsp;&nbsp;C.C.T. 15PST0600J,&nbsp;&nbsp; C.C.T. 15PPR0024N</center></h6>
+
+	
 	</div>
-</div>
+		</div>
