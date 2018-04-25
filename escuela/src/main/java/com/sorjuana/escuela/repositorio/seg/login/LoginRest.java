@@ -1,5 +1,6 @@
 package com.sorjuana.escuela.repositorio.seg.login;
 
+import com.sorjuana.escuela.modelo.seg.Usuario;
 import com.sorjuana.escuela.modelo.seg.UsuarioTemp;
 
 /**
@@ -21,5 +22,6 @@ public interface LoginRest {
 	public void validaUsuario(UsuarioTemp objUsuario);
 	public boolean islResultado();
 	public String getMensaje();
+	public Usuario getPersona();
 
 }

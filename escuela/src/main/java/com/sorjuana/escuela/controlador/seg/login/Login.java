@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.seg.UsuarioTemp;
-import com.sorjuana.escuela.repositorio.seg.LoginRep;
 import com.sorjuana.escuela.repositorio.seg.login.LoginRest;
 
 /*

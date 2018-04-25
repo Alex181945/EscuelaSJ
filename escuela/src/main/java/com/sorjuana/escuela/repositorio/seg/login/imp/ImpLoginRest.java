@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorjuana.escuela.configuracion.VariablesEntorno;
 import com.sorjuana.escuela.modelo.datos.Validacion;
+import com.sorjuana.escuela.modelo.seg.Usuario;
 import com.sorjuana.escuela.modelo.seg.UsuarioTemp;
 import com.sorjuana.escuela.repositorio.seg.login.LoginRest;
 
@@ -33,6 +34,7 @@ public class ImpLoginRest implements LoginRest {
 	
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
+	private Usuario usuario;
 
 	@Override
 	public void validaUsuario(UsuarioTemp objUsuario) {
@@ -40,6 +42,7 @@ public class ImpLoginRest implements LoginRest {
 		RestTemplate restTemplate = new RestTemplate();		
 		
 		Validacion[] validacion = null;
+		Usuario[] usuario = null;
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode root = null;
 		JsonNode validacionJs = null;
@@ -63,10 +66,10 @@ public class ImpLoginRest implements LoginRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				//uLogin = mapper.convertValue(datos, ULogin[].class);
+				usuario = mapper.convertValue(datos, Usuario[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
-				//this.setuLogin(uLogin, token.asText());
+				this.setUsuario(usuario, token.asText());
 			}
 			
 		} catch (JsonProcessingException e) {
@@ -89,6 +92,12 @@ public class ImpLoginRest implements LoginRest {
 			return;
 		}		
 		
+	}
+	
+	@Override
+	public Usuario getPersona() {
+		// TODO Auto-generated method stub
+		return this.getPersona();
 	}
 	
 	@Override
@@ -117,6 +126,24 @@ public class ImpLoginRest implements LoginRest {
 	
 	public void setMensajeLocal(String mensaje) {
 		mensajeLocal = mensaje;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario[] usuario, String cToken) {
+		
+		Usuario usuarioLocal = new Usuario();
+		usuarioLocal.setiPersona(usuario[0].getiPersona());
+		usuarioLocal.setcToken(cToken);
+		usuarioLocal.setcEmail(usuario[0].getcEmail());
+		usuarioLocal.setcContrasena(usuario[0].getcContrasena());
+		usuarioLocal.setlActivo(usuario[0].getlActivo());
+		usuarioLocal.setDtCreado(usuario[0].getDtCreado());
+		usuarioLocal.setDtModificado(usuario[0].getDtModificado());
+		
+		this.usuario = usuarioLocal;
 	}
 	
 }
