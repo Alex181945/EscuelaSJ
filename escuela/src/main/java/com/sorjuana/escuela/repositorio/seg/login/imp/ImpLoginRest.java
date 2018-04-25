@@ -97,7 +97,7 @@ public class ImpLoginRest implements LoginRest {
 	@Override
 	public Usuario getPersona() {
 		// TODO Auto-generated method stub
-		return this.getPersona();
+		return this.getUsuario();
 	}
 	
 	@Override

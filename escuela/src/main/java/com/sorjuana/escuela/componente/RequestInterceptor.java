@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.sorjuana.escuela.configuracion.Vistas;
+import com.sorjuana.escuela.modelo.seg.Usuario;
 
 public class RequestInterceptor extends HandlerInterceptorAdapter {
 
@@ -27,8 +28,7 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 
 		if (!cURL.equals("/") && !cURL.equals("/login") && !cURL.equals("/validausuario")) {
 			
-			//ULogin user = (ULogin) request.getSession().getAttribute("Usuario");
-			String user = null;
+			Usuario user = (Usuario) request.getSession().getAttribute("Persona");
 			
 			if(user == null) {
 				response.sendRedirect("/"); 
