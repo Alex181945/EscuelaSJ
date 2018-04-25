@@ -57,5 +57,12 @@ public class Login {
 		
 		return Vistas.getRedirectMenuprincipal();
 	}
+	
+	@GetMapping("/cierrasesion")
+	public String cerrarSesion(HttpServletRequest request) {
+		//status.setComplete();
+		request.getSession().invalidate();
+		return Vistas.getLogin();
+	}
 
 }
