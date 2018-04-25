@@ -52,7 +52,7 @@ public class ImpLoginRest implements LoginRest {
 		try {
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getUrlwsp() + "validausuario",
+			ResponseEntity<String> response = restTemplate.postForEntity(VariablesEntorno.getUrlwsd() + "validausuario",
 					objUsuario, String.class);
 			
 			root = mapper.readTree(response.getBody());
