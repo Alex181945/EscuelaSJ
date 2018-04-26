@@ -1,6 +1,8 @@
 
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
     	<div class="container">
+
+		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >    	
     	
     		 <div id="NumeroEmpleado" class="form-group row align-items-center">
 					<label for="Numero de Empleado"
@@ -21,9 +23,7 @@
 						<div id="errorA" class="form-control-feedback"></div>	
 					</div>
 				</div>
-				
-				    	
-    		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >				
+							
 				<div id="Nombre(s)" class="form-group row align-items-center">
 					<label for="Nombre(s)"
 						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5>
