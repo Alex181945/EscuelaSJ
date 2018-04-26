@@ -1,6 +1,19 @@
 
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
     	<div class="container">
+    	
+	          <form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >	
+	          			
+				<div id="Nombre(s)" class="form-group row align-items-center">
+					<label for="Nombre(s)"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5>
+					</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control form-control-lg"
+							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" />
+						<div id="errorN" class="form-control-feedback"></div>	
+					</div>
+				</div>    	
  
  				<div id="Matricula" class="form-group row align-items-center">   	
 					<label for="Matricula"
@@ -11,18 +24,6 @@
 						<div id="errorM" class="form-control-feedback"></div>	
 					</div>
 				</div>    	
-    	
-    		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >				
-				<div id="Nombre(s)" class="form-group row align-items-center">
-					<label for="Nombre(s)"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5>
-					</label>
-					<div class="col-md-6">
-						<input type="text" class="form-control form-control-lg"
-							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" />
-						<div id="errorN" class="form-control-feedback"></div>	
-					</div>
-				</div>
 
 				<div id="Apepaterno" class="form-group row align-items-center">
 					<label for="Apellido Paterno"
@@ -219,10 +220,6 @@
 					<center>	
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
 				
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Modificar</button>
-
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Eliminar</button>				
-
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
 
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Salir</button>	</center>			
