@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="#" th:href="@{/assets/css/tema.css}"/>
 
     <title th:if="${titulo != null}" th:text="${titulo}"></title>
-   
+   	<title th:unless="${titulo != null}" th:text="SJIC"></title>
 
 
   </head>
@@ -29,6 +29,8 @@
 	        </div>
 	    </div>
 	</div>
+	
+	<div id="footer"></div>
 
     <!-- Librerias -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -42,8 +44,5 @@
     <script src="#" th:src="@{/assets/js/funciones/visuales.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>      
   </body>
-
-  <div id="footer"></div>
- 
 
 </html>

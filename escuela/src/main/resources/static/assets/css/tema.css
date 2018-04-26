@@ -1,73 +1,64 @@
-.banner{
-	
-	font-size: 70px; 
-	font-family: "Times New Roman",Georgia,Serif; 
+.banner {
+	font-size: 70px;
+	font-family: "Times New Roman", Georgia, Serif;
 	border-style: 158px dotted #ffffff;
 	padding: 30px;
 	background-color: #317f43;
 }
 
-
-body{
-	
-	font-weight:: bold;
- background-color: #ffffff;
- 
-   padding: 3px 10px;
-  border: PowderBlue 5px dashed;
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
- 
+body {
+	font-weight: : bold;
+	background-color: #ffffff;
+	padding: 3px 10px;
+	border: PowderBlue 5px dashed;
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
 
-div { 
-	color: rgb(23, 87, 207); 
-	}
+div {
+	color: rgb(23, 87, 207);
+}
 
-#footer{
-
+#footer {
 	height: 70px;
 	background-color: #317f43;
-	
 }
+
 .bg-light {
-	
-    background-color: #1757CF!important;
+	background-color: #1757CF !important;
 }
 
-
-img.pequeña{
-  width: 150px; height: 150px;
+img.pequeña {
+	width: 150px;
+	height: 150px;
 }
 
-
-H2.center{
-  text-align: center;
+H2.center {
+	text-align: center;
 }
+
 form {
 	width: 750px;
-  	margin: 10px auto;
-  	padding: 10px;
-  	border: 7px solid $green-border;
-  	border-radius: 15px;
-  	font-family: ""Times New Roman",Georgia,Serif;
-	  color: #1757CF;
-  	background-color: $back-color;
-  	
-  	box-shadow: 0 0 20px 0 #000000;
-    display: grid;
-    padding: 1em;
-    background: #ffffff;
-    border: 1px solid #c1c1c1;
-    margin: 1rem auto 1rem auto;
-    max-width: 1000px;
-    padding: 2em;
+	margin: 10px auto;
+	padding: 10px;
+	border: 7px solid$green-border;
+	border-radius: 15px;
+	font-family: "" Times New Roman ", Georgia, Serif;
+	color: #1757CF;
+	background-color: $back-color;
+	box-shadow: 0 0 20px 0 #000000;
+	display: grid;
+	padding: 1em;
+	background: #ffffff;
+	border: 1px solid #c1c1c1;
+	margin: 1rem auto 1rem auto;
+	max-width: 1000px;
+	padding: 2em;
 }
 
-.d-flex{
-	 padding: 3px 10px;
-	  border: PowderBlue 5px double;
-	  border-top-left-radius: 20px;
-	  border-bottom-right-radius: 20px;
+.d-flex {
+	padding: 3px 10px;
+	border: PowderBlue 5px double;
+	border-top-left-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
-
