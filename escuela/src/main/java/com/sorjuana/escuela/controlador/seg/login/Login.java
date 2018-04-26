@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.sorjuana.escuela.configuracion.Vistas;
-import com.sorjuana.escuela.repositorio.seg.LoginRep;
+import com.sorjuana.escuela.modelo.seg.UsuarioTemp;
+import com.sorjuana.escuela.repositorio.seg.login.LoginRest;
 
 /*
  * Autor: SISAEM
@@ -25,7 +26,7 @@ import com.sorjuana.escuela.repositorio.seg.LoginRep;
 public class Login {
 	
 	@Autowired
-	private LoginRep loginRep;
+	private LoginRest loginRest;
 	
 	@GetMapping("/")
 	public String redirectLogin() {
@@ -41,16 +42,27 @@ public class Login {
 	public String validaUsuario(@ModelAttribute("username") String cUsuario,
 			@ModelAttribute("password") String cPassword, Model model, HttpServletRequest request) {
 		
-		loginRep.validaUsuario(cUsuario, cPassword);
+		UsuarioTemp objUsuTemp = new UsuarioTemp();
+		objUsuTemp.setcUsuario(cUsuario);
+		objUsuTemp.setcContrasena(cPassword);
 		
-		if(loginRep.islResultado()) {
-			model.addAttribute("error", loginRep.getMensaje());
+		loginRest.validaUsuario(objUsuTemp);
+		
+		if(loginRest.islResultado()) {
+			model.addAttribute("error", loginRest.getMensaje());
 			return Vistas.getLogin();
 		}else {
-			request.getSession().setAttribute("Persona", loginRep.getPersona());
+			request.getSession().setAttribute("Persona", loginRest.getPersona());
 		}
 		
 		return Vistas.getRedirectMenuprincipal();
+	}
+	
+	@GetMapping("/cierrasesion")
+	public String cerrarSesion(HttpServletRequest request) {
+		//status.setComplete();
+		request.getSession().invalidate();
+		return Vistas.getLogin();
 	}
 
 }

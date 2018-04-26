@@ -1,5 +1,5 @@
 
-<div class="banner" th:fragment="encabezado">
+<div th:fragment="encabezado">
 	<nav class="navbar navbar-expand-xl navbar-light bg-light">
 		<a class="navbar-brand" href="#"> 
 		</a>
@@ -16,6 +16,21 @@
 					th:href="${opcion.cRuta}" th:text="${opcion.cPrograma}"></a></li>
 			</ul>
 		</div> -->
+		
+		<ul class="nav nav-tabs" th:if="${menu != null}">
+			<li class="inicio"><a class="nav-link active" href="/menu">Inicio</a></li>
+			<li class="CONTROLDOCENTE"><a class="nav-link active" href="/controldocente">Control
+					Docente</a></li>
+			<li class="controlAlumno"><a class="nav-link" href="/controlalumno">Control
+					Alumno</a></li>
+		
+			<li class="controlAdministrativo"><a class="nav-link" href="/controladmin">Control
+					Administrativo</a></li>
+		
+			<li class="controlAsistencia"><a class="nav-link" href="/controlasistencia">Control
+					Asistencia</a></li>
+			<li class="inicio"><a class="nav-link active" href="/cierrasesion">Cerrar Sesi&oacute;n</a></li>
+		</ul>
 		
 		
 	</nav>
