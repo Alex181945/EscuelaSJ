@@ -1,63 +1,95 @@
-
-
 body{
-	
 
- 
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-size: cover;
+    min-height: 100%; 
+    min-height: 100vh;
+
+
 }
 
-div { 
-	color: rgb(23, 87, 207); 
-	}
+/*Menu*/
+.bg-light{
+	width: auto;
+  	margin:  auto;
+  	padding: 30px;
+	background-color: #041356 !important;
+}
+
+a.nav-link{
+	color: #0080ff!important;
+}
+/*Fin Menu*/
+
+/*Inicio de Sesion*/
+h5.lead{
+	color: #0080ff !important;
+}
+
+form {
+	max-width: 100%;
+	margin: 5px auto;
+	padding: 10px 20px;
+    border-style: solid;
+    border-color: #041356;
+	border-radius: 8px;
+	
+  }
+
+  h3 {
+	margin: 0 0 30px 0;
+	text-align: left;
+	
+  }
+  
+   fieldset 
+	{
+		border: 1px solid rgb(255, 255, 255) !important;
+		margin: 0;
+		xmin-width: 0;
+		padding: 10px;       
+		position: relative;
+		border-radius:4px;
+		background-color:#00000000;
+		padding-left:10px!important;
+	}	
+	
+		legend
+		{
+			font-size:14px;
+			font-weight:bold;
+			margin-bottom: 0px; 
+			width: 35%; 
+			border: 1px solid #ddd;
+			border-radius: 4px; 
+			padding: 5px 5px 5px 10px; 
+			background-color: #ffffff;
+		}
+	
+
+/*Fin Inicio de Sesion*/
+
+/*Modal del spinner de carga*/
+.bd-example-modal-lg .modal-dialog {
+	display: table;
+	position: relative;
+	margin: 0 auto;
+	top: calc(50% - 24px);
+}
+
+.bd-example-modal-lg .modal-dialog .modal-content {
+	background-color: transparent;
+	border: none;
+	color: #ffffff;
+}
 
 #footer{
 
 	height: 70px;
-	background-color: #317f43;
+	background-color: #145a32;
 	
 }
-.bg-light {
-	
-	width: auto;
-  	margin:  auto;
-  	padding: 30px;
-	
-    background-color: #1757CF!important;
-}
-
-
-img.pequeña{
-  width: 150px; height: 150px;
-}
-
-
-H2.center{
-  text-align: center;
-}
-form {
-	width: 750px;
-  	margin: 10px auto;
-  	padding: 10px;
-  	border: 7px solid $green-border;
-  	border-radius: 15px;
-  	font-family: ""Times New Roman",Georgia,Serif;
-	  color: #1757CF;
-  	background-color: $back-color;
-  	
-  	box-shadow: 0 0 20px 0 #000000;
-    display: grid;
-    padding: 1em;
-    background: #ffffff;
-    border: 1px solid #c1c1c1;
-    margin: 1rem auto 1rem auto;
-    max-width: 1000px;
-    padding: 2em;
-}
-
-.d-flex{
-	 padding: 3px 10px;
-	  border: PowderBlue 5px double;
-	  border-top-left-radius: 20px;
-	  border-bottom-right-radius: 20px;
-}
+/*Fin Spinner*/
 

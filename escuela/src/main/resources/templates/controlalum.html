@@ -3,6 +3,16 @@
     	<div class="container">
     	
 	          <form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >	
+	          
+ 				<div id="Matricula" class="form-group row align-items-center">   	
+					<label for="Matricula"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Matricula:</h5></label>
+					<div class="col-md-6">
+						<input type="Matricula" class="form-control form-control-lg"
+							id="Matricula" name="Matricula" placeholder="Matricula" onkeypress="return validarUsuario(event)" />
+						<div id="errorM" class="form-control-feedback"></div>	
+					</div>
+				</div>	          
 	          			
 				<div id="Nombre(s)" class="form-group row align-items-center">
 					<label for="Nombre(s)"
@@ -13,17 +23,7 @@
 							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" />
 						<div id="errorN" class="form-control-feedback"></div>	
 					</div>
-				</div>    	
- 
- 				<div id="Matricula" class="form-group row align-items-center">   	
-					<label for="Matricula"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Matricula:</h5></label>
-					<div class="col-md-6">
-						<input type="Matricula" class="form-control form-control-lg"
-							id="Matricula" name="Matricula" placeholder="Matricula" onkeypress="return validarUsuario(event)" />
-						<div id="errorM" class="form-control-feedback"></div>	
-					</div>
-				</div>    	
+				</div>    	 	
 
 				<div id="Apepaterno" class="form-group row align-items-center">
 					<label for="Apellido Paterno"
@@ -86,11 +86,11 @@
 				</div>
 				
 				<div id="NumeroInt" class="form-group row align-items-center">
-					<label for="Numero Interio"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Numero Interio:</h5></label>
+					<label for="Numero Interior"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Numero Interior:</h5></label>
 					<div class="col-md-6">
-						<input type="Numero Interio" class="form-control form-control-lg"
-							id="Numero Interio" name="Numero Interio" placeholder="Numero Interio" onkeypress="return validarUsuario(event)" />
+						<input type="Numero Interior" class="form-control form-control-lg"
+							id="Numero Interior" name="Numero Interior" placeholder="Numero Interior" onkeypress="return validarUsuario(event)" />
 						<div id="errorNI" class="form-control-feedback"></div>	
 					</div>
 				</div>
@@ -144,6 +144,16 @@
 						<div id="errorTE" class="form-control-feedback"></div>	
 					</div>
 				</div>	
+				
+				<div id="TelC" class="form-group row align-items-center">
+					<label for="Telefono Celular"
+						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Telefono Celular:</h5></label>
+					<div class="col-md-6">
+						<input type="Telefono Celular" class="form-control form-control-lg"
+							id="Telefono Celular" name="Telefono Celular" placeholder="Telefono Celular" onkeypress="return validarUsuario(event)" />
+						<div id="errorTEC" class="form-control-feedback"></div>	
+					</div>
+				</div>				
 
 				<div id="NivelEdu" class="form-group row align-items-center">
 					<label for="Nivel Educativo"
@@ -204,17 +214,7 @@
 						<div id="errorTT" class="form-control-feedback"></div>	
 					</div>
 				</div>	
-				
-				<div id="ColeMen" class="form-group row align-items-center">
-					<label for="Colegiatura Mensual"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Colegiatura Mensual:</h5></label>
-					<div class="col-md-6">
-						<input type="Colegiatura Mensual" class="form-control form-control-lg"
-							id="Colegiatura Mensual" name="Colegiatura Mensual" placeholder="Colegiatura Mensual" onkeypress="return validarUsuario(event)" />
-						<div id="errorCM" class="form-control-feedback"></div>	
-					</div>
-				</div>									
-			
+
 				
 				<div>
 					<center>	
