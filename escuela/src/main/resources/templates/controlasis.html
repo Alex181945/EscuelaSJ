@@ -2,79 +2,77 @@
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
     	<div class="container">
 
-		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >    	
-    	
-    		 <div id="NumeroEmpleado" class="form-group row align-items-center">
+
+		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >   
+		
+		<div class="row" > 	    	
+    		 <div id="NumeroEmpleado" class="col-md-6 row">
 					<label for="Numero de Empleado"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
+						class="col-md-3 text-center col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
 					<div class="col-md-6">
-						<input type="Numero de Empleado" class="form-control form-control-lg"
+						<input type="text" class="form-control form-control-lg"
 							id="Numero de Empleado" name="Numero de Empleado" placeholder="Numero de Empleado" onkeypress="return validarUsuario(event)" />
-						<div id="errorNE" class="form-control-feedback"></div>	
+
 					</div>
 				</div>	
 
-				<div id="Personal" class="form-group row align-items-center">
+				<div id="Personal" class="col-md-6 row">
 					<label for="Personal"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Personal:</h5></label>
+						class="col-md-3 text-center col-form-label"><h5 class="lead">Personal:</h5></label>
 					<div class="col-md-6">
-
-					<h5 class="lead" ><select name="Genero"> <option>Administrativo</option> <option>Docente</option></select></h5> 
-						<div id="errorA" class="form-control-feedback"></div>	
+					<select name="Genero" class="form-control form-control-lg"><option>Administrativo</option> <option>Docente</option></select>
 					</div>
+				</div>	
 				</div>
-							
-				<div id="Nombre(s)" class="form-group row align-items-center">
+				
+				<div class="row"> 								
+				<div id="Nombre(s)" class="col-md-6 row">
 					<label for="Nombre(s)"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5>
-					</label>
+						class="col-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5></label>
 					<div class="col-md-6">
 						<input type="text" class="form-control form-control-lg"
-							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" />
-						<div id="errorN" class="form-control-feedback"></div>	
+							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" onkeypress="return validarUsuario(event)" />
 					</div>
-				</div>
+				</div>		
 				
-				
-
-				<div id="Apepaterno" class="form-group row align-items-center">
+				<div id="Apepaterno" class="col-md-6 row">
 					<label for="Apellido Paterno"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
+						class="col-md-3 text-center col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
 					<div class="col-md-6">
-						<input type="Apellido Paterno" class="form-control form-control-lg"
+						<input type="text" class="form-control form-control-lg"
 							id="Apellido Paterno" name="Apellido Paterno" placeholder="Apellido Paterno" onkeypress="return validarUsuario(event)" />
-						<div id="errorP" class="form-control-feedback"></div>	
-					</div>
 				</div>
-				
-				<div id="ApeMaterno" class="form-group row align-items-center">
+				</div>
+			</div>
+					
+				<div class="row">					
+				<div id="ApeMaterno" class="col-md-6 row">
 					<label for="Apellido Materno"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
+						class="col-md-3 text-center col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
 					<div class="col-md-6">
-						<input type="Apellido Materno" class="form-control form-control-lg"
+						<input type="text" class="form-control form-control-lg"
 							id="Apellido Paterno" name="Apellido Materno" placeholder="Apellido Materno" onkeypress="return validarUsuario(event)" />
-						<div id="errorM" class="form-control-feedback"></div>	
 					</div>
 				</div>
 				
-				<div id="HorasCubiertas" class="form-group row align-items-center">
+				<div id="HorasCubiertas" class="col-md-6 row">
 					<label for="Hora a Cubrir"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Hora a Cubrir (Por Quincena):</h5></label>
+						class="col-md-3 text-center col-form-label"><h5 class="lead">Hora a Cubrir (Por Quincena):</h5></label>
 					<div class="col-md-6">
-						<input type="Hora a Cubrir" class="form-control form-control-lg"
+						<input type="text" class="form-control form-control-lg"
 							id="Hora a Cubrir" name="Hora a Cubrir" placeholder="Hora a Cubrir" onkeypress="return validarUsuario(event)" />
-						<div id="errorHC" class="form-control-feedback"></div>	
 					</div>
+				</div>				
 				</div>
 				
-				<div class="form-group row align-items-center">
-				  <div class="col-md-3 offset-md-3 text-center col-form-label">
-				    <span class="lead">Observaciones</span>
-				  </div>
-				  <textarea class="lead" aria-label="Observaciones"></textarea>
+				<div clas="row">
+			     <div id="Observaciones" class="col-md-5 row">
+					<label for="Hora a Cubrir"
+				  class="col-md-5 text-center col-form-label"><h5 class="lead">Observaciones</h5></label>
+				  <textarea class="col-md-6" aria-label="Observaciones"></textarea>
 				</div>
-
-			
+				</div>
+				<br/>				
 				<div>
 					<center>	
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>

@@ -1,108 +1,104 @@
 
 <div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" th:fragment="content">
     	<div class="container">
-    	
+
     	
      		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >	
-     		   	
-				<div id="NumeroEmpleado" class="form-group row align-items-center">
+     		
+     		   	<div class="row" >
+				<div id="NumeroEmpleado" class="col-md-6 row">
 					<label for="Numero de Empleado"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
-					<div class="col-md-6">
-						<input type="Numero de Empleado" class="form-control form-control-lg"
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
 							id="Numero de Empleado" name="Numero de Empleado" placeholder="Numero de Empleado" onkeypress="return validarUsuario(event)" />
-						<div id="errorNE" class="form-control-feedback"></div>	
 					</div>
 				</div>
 							
-				<div id="Nombre(s)" class="form-group row align-items-center">
+				<div id="Nombre(s)" class="col-md-6 row">
 					<label for="Nombre(s)"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5>
-					</label>
-					<div class="col-md-6">
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Nombre(s):</h5></label>
+						 <div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" />
-						<div id="errorN" class="form-control-feedback"></div>	
 					</div>
+				</div>
 				</div>
 				
 				
-
-				<div id="Apepaterno" class="form-group row align-items-center">
+				<div class="row" >
+				<div id="Apepaterno" class="col-md-6 row">
 					<label for="Apellido Paterno"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
-					<div class="col-md-6">
-						<input type="Apellido Paterno" class="form-control form-control-lg"
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
 							id="Apellido Paterno" name="Apellido Paterno" placeholder="Apellido Paterno" onkeypress="return validarUsuario(event)" />
-						<div id="errorP" class="form-control-feedback"></div>	
 					</div>
 				</div>
 				
-				<div id="ApeMaterno" class="form-group row align-items-center">
+				<div id="ApeMaterno" class="col-md-6 row">
 					<label for="Apellido Materno"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
-					<div class="col-md-6">
-						<input type="Apellido Materno" class="form-control form-control-lg"
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
 							id="Apellido Paterno" name="Apellido Materno" placeholder="Apellido Materno" onkeypress="return validarUsuario(event)" />
-						<div id="errorM" class="form-control-feedback"></div>	
 					</div>
 				</div>
+				</div>
 				
-				<div id="FechaNacimiento" class="form-group row align-items-center">
+				
+				<div class="row" >
+				<div id="FechaNacimiento" class="col-md-6 row">
 					<label for="Fecha de Nacimiento"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Fecha de Nacimiento:</h5></label>
-					<div class="col-md-6">
-						<input type="Fecha de Nacimiento" class="form-control form-control-lg"
-							id="Fecha de Nacimiento" name="Fecha de Ingreso" placeholder="Fecha de Nacimiento" onkeypress="return validarUsuario(event)" />
-						<div id="errorF" class="form-control-feedback"></div>	
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Fecha de Nacimiento:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
+							id="Fecha de Nacimiento" name="Fecha de Ingreso" placeholder="Fecha de Nacimiento" onkeypress="return validarUsuario(event)" />	
 					</div>
 				</div>
 				
-				<div id="Area" class="form-group row align-items-center">
+				<div id="Area" class="col-md-6 row">
 					<label for="Area"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Area:</h5></label>
-					<div class="col-md-6">
-
-					<h5 class="lead" ><select name="Genero"> <option>Administrativo</option> <option>Docente</option> </select></h5> 
-						<div id="errorA" class="form-control-feedback"></div>	
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Area:</h5></label>
+					<div class="col-md-8">
+					<select name="Grado" class="form-control form-control-lg"> <option>Administrativo</option> <option>Docente</option> </select> 	
 					</div>
 				</div>
-						
-				<div id="Tel" class="form-group row align-items-center">
+				</div>
+				
+				<div class="row" >		
+				<div id="Tel" class="col-md-4 row">
 					<label for="Telefono"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Telefono:</h5></label>
-					<div class="col-md-6">
-						<input type="Telefono" class="form-control form-control-lg"
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Telefono:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
 							id="Telefono" name="Telefono" placeholder="Telefono" onkeypress="return validarUsuario(event)" />
-						<div id="errorTE" class="form-control-feedback"></div>	
 					</div>
 				</div>
 				
-				<div id="TelC" class="form-group row align-items-center">
+				<div id="TelC" class="col-md-4 row">
 					<label for="Telefono Celular"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Telefono Celular:</h5></label>
-					<div class="col-md-6">
-						<input type="Telefono Celular" class="form-control form-control-lg"
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Telefono Celular:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
 							id="Telefono Celular" name="Telefono Celular" placeholder="Telefono Celular" onkeypress="return validarUsuario(event)" />
-						<div id="errorTEC" class="form-control-feedback"></div>	
 					</div>
 				</div>					
 				
-				<div id="Email" class="form-group row align-items-center">
+				<div id="Email" class="col-md-4 row">
 					<label for="Email"
-						class="col-md-3 offset-md-3 text-center col-form-label"><h5 class="lead">Email:</h5></label>
-					<div class="col-md-6">
-						<input type="Email" class="form-control form-control-lg"
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Email:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
 							id="Email" name="Email" placeholder="Email" onkeypress="return validarUsuario(event)" />
-						<div id="errorEM" class="form-control-feedback"></div>	
 					</div>
+				</div>	
 				</div>				
-				
-	
-			
+				 <br/>			
 				<div>
+				
 					<center>	
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>				
+					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
 
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
 
