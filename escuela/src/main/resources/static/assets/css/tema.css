@@ -1,18 +1,15 @@
-body{
 
-	background-position: center center;
-	background-repeat: no-repeat;
+body{
+	background: url(/assets/img/logo.jpg) center center cover no-repeat fixed;
+	border-radius: 50%;
+
 	background-attachment: fixed;
     background-size: cover;
     min-height: 100%; 
     min-height: 100vh;
-    
 
 }
 
-.img-circle {
-    border-radius: 50%;
-}
 
 /*Menu*/
 .bg-light{
@@ -28,16 +25,28 @@ a.nav-link{
 /*Fin Menu*/
 
 /*Inicio de Sesion*/
+
 h5.lead{
+	color: #0080ff !important;
+}
+h2.text{
+	color: #0080ff !important;
+}
+
+h6.text{
+	color: #0080ff !important;
+}
+
+div.p-2{
 	color: #0080ff !important;
 }
 
 form {
 	max-width: 100%;
-	margin: 5px auto;
-	padding: 10px 20px;
+	margin: 3px auto;
+	padding: 15px 30px;
     border-style: solid;
-    border-color: #041356;
+    border-color: #007bff;
 	border-radius: 8px;
 	
   }
@@ -47,7 +56,13 @@ form {
 	text-align: left;
 	
   }
-  
+
+img.pequeña{
+  width: 200px; height: 200px;
+   border-radius: 50%;
+}
+
+
    fieldset 
 	{
 		border: 1px solid rgb(255, 255, 255) !important;

@@ -4,8 +4,7 @@
 
 	          <form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >	
 	          
-    		<div class="row" >
-    		
+    		<div class="row" >    		
 				<div id="Matricula" class="col-md-6 row">
 					<label for="Matricula"
 						class="col-md-4  text-center col-form-label"><h5 class="lead">Matricula:</h5></label>
@@ -26,7 +25,8 @@
 				</div>
 				</div>
 				
-				<div class="row" >	
+				<br/>
+				<div class="row">	
 					
 				<div id="Apepaterno" class="col-md-6 row">
 					<label for="Apellido Paterno"
@@ -76,7 +76,7 @@
 							id="CURP" name="CURP" placeholder="CURP" onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>	
-								
+							<br/>	
 				<div id="Direccion" class="col-md-6 row">
 					<label for="Direccion"
 						class="col-md-4  text-center col-form-label"><h5 class="lead">Direccion:</h5></label>
@@ -86,7 +86,7 @@
 					</div>
 				</div>
 					</div>
-				
+				<br/>
 				<div class="row" >	
 				<div id="NumeroInt" class="col-md-6 row">
 					<label for="Numero Interior"
@@ -116,7 +116,7 @@
 							id="Colonia" name="Colonia" placeholder="Colonia" onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>
-				
+				<br/>
 				<div id="CP" class="col-md-6 row">
 					<label for="CP"
 						class="col-md-4 text-center col-form-label"><h5 class="lead">CP:</h5></label>
@@ -126,7 +126,7 @@
 					</div>
 				</div>
 				</div>
-				
+				<br/>
 				<div class="row" >	
 				<div id="DelMuni" class="col-md-6 row">
 					<label for="Delegacion o Municipio"
@@ -165,7 +165,7 @@
 					</div>
 				</div>	
 				</div>
-
+				<br/>
 				<div class="row" >
 				<div id="Grado" class="col-md-6 row">
 					<label for="Grado"
@@ -185,7 +185,7 @@
 					</div>
 				</div>	
 				</div>				
-				
+				<br/>
 				<div class="row" >
 				<div id="NomTUT" class="col-md-4 row">
 					<label for="Nombre del Tutor"
@@ -215,7 +215,7 @@
 				</div>
 				</div>	
 
-				
+				<br/>
 				<div>
 					<center>	
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
