@@ -1,9 +1,6 @@
 
 body{
-
-
-    background-image: url("/assets/img/1.jpg");
-    border-radius: 50%;
+    background-image: url("/assets/img/1.jpg"); 
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -23,7 +20,7 @@ body{
 }
 
 a.nav-link{
-	color: #041356!important;
+	color: #0080ff!important;
 }
 /*Fin Menu*/
 
@@ -48,15 +45,16 @@ form {
 	max-width: 100%;
 	margin: 3px auto;
 	padding: 15px 30px;
-    border-style: solid;
+
 	border-radius: 8px;
 	background: #13131373;
-;
+
   }
 
   h3 {
 	margin: 0 0 30px 0;
 	text-align: left;
+
 	
   }
 
@@ -76,8 +74,7 @@ img.pequeña{
 		border-radius:4px;
 		background-color:#00000000;
 		padding-left:10px!important;
-			background-image: url(/assets/img/13.jpg);
-	border-radius: 50%
+
 	}	
 	
 		legend
