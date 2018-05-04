@@ -3,15 +3,15 @@
     	<div class="container">
 
 
-
-
-		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >   
+		<h1 class="display-6"  style="color: #0080ff;" >Control de Asistencia</h1>
+		<br/>
+		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" >  
 		
 		<div class="row" > 	    	
     		 <div id="NumeroEmpleado" class="col-md-6 row">
 					<label for="Numero de Empleado"
-						class="col-md-3 text-center col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
-					<div class="col-md-6">
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="Numero de Empleado" name="Numero de Empleado" placeholder="Numero de Empleado" onkeypress="return validarUsuario(event)" />
 
@@ -20,8 +20,8 @@
 
 				<div id="Personal" class="col-md-6 row">
 					<label for="Personal"
-						class="col-md-3 text-center col-form-label"><h5 class="lead">Personal:</h5></label>
-					<div class="col-md-6">
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Personal:</h5></label>
+					<div class="col-md-8">
 					<select name="Genero" class="form-control form-control-lg"><option>Administrativo</option> <option>Docente</option></select>
 					</div>
 				</div>	
@@ -30,8 +30,8 @@
 				<div class="row"> 								
 				<div id="Nombre(s)" class="col-md-6 row">
 					<label for="Nombre(s)"
-						class="col-md-3 text-center col-form-label"><h5 class="lead">Nombre(s):</h5></label>
-					<div class="col-md-6">
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Nombre(s):</h5></label>
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="Nombre(s)" name="Nombre(s)" placeholder="Nombre(s)" onkeypress="return validarUsuario(event)" />
 					</div>
@@ -39,8 +39,8 @@
 				
 				<div id="Apepaterno" class="col-md-6 row">
 					<label for="Apellido Paterno"
-						class="col-md-3 text-center col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
-					<div class="col-md-6">
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="Apellido Paterno" name="Apellido Paterno" placeholder="Apellido Paterno" onkeypress="return validarUsuario(event)" />
 				</div>
@@ -50,8 +50,8 @@
 				<div class="row">					
 				<div id="ApeMaterno" class="col-md-6 row">
 					<label for="Apellido Materno"
-						class="col-md-3 text-center col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
-					<div class="col-md-6">
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="Apellido Paterno" name="Apellido Materno" placeholder="Apellido Materno" onkeypress="return validarUsuario(event)" />
 					</div>
@@ -59,8 +59,8 @@
 				
 				<div id="HorasCubiertas" class="col-md-6 row">
 					<label for="Hora a Cubrir"
-						class="col-md-3 text-center col-form-label"><h5 class="lead">Hora a Cubrir (Por Quincena):</h5></label>
-					<div class="col-md-6">
+						class="col-md-4 text-center col-form-label"><h5 class="lead">Hora a Cubrir (Por Quincena):</h5></label>
+					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="Hora a Cubrir" name="Hora a Cubrir" placeholder="Hora a Cubrir" onkeypress="return validarUsuario(event)" />
 					</div>
@@ -68,13 +68,16 @@
 				</div>
 				
 				<div clas="row">
-			     <div id="Observaciones" class="col-md-5 row">
-					<label for="Hora a Cubrir"
-				  class="col-md-5 text-center col-form-label"><h5 class="lead">Observaciones</h5></label>
-				  <textarea class="col-md-6" aria-label="Observaciones"></textarea>
+			     <div id="Observaciones" class="col-md-6 row">
+					<label for="Observaciones"
+				  class="col-md-4 text-center col-form-label"><h5 class="lead">Observaciones</h5></label>
+				  <div class="col-md-6" >
+				  <input type="text" class="form-control form-control-lg"
+							id="" name=""  />
 				</div>
 				</div>
-				<br/>				
+				</div>
+				<br/>							
 				<div>
 					<center>	
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
@@ -83,7 +86,8 @@
 
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Salir</button>	</center>			
 				</div>
-				
+						
+	
 			</form>
 			
     	</div>
