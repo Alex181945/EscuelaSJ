@@ -31,7 +31,7 @@
 	</div>
 	
 	<div id="footer"></div>
-
+	
     <!-- Librerias -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="#" th:src="@{/assets/js/lib/jquery-3.3.1.min.js}"></script>
@@ -42,7 +42,19 @@
     <script src="#" th:src="@{/assets/js/login/login.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/texto.js}"></script>
     <script src="#" th:src="@{/assets/js/funciones/visuales.js}"></script>
-    <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>      
+    <script src="#" th:src="@{/assets/js/funciones/almacenamiento.js}"></script>
+    
+    <script type="text/javascript">
+	$(document).ready(function () {
+	    var links = $('.navbar ul li a');
+	    $.each(links, function (key, va) {
+	        if (va.href == document.URL) {
+	            $(this).addClass('active');
+	        }
+	    });
+	});
+	</script>
+          
   </body>
 
 </html>
