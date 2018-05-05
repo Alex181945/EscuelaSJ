@@ -1,14 +1,15 @@
 
 body{
-    background-image: url("/assets/img/13.jpg"); 
+    background-image: url("/assets/img/14.jpg"); 
 
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: cover;
+    
+    background-size: 20% 50%;
     min-height: 100%;
     min-height: 100vhh;
-
     background-position: 50% 25%;
+
 }
 
 
