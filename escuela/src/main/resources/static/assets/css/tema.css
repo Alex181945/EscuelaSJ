@@ -1,11 +1,11 @@
 
 body{
-    background-image: url("/assets/img/14.jpg"); 
+    background-image: url("/assets/img/15.png"); 
 
     background-repeat: no-repeat;
     background-attachment: fixed;
     
-    background-size: 20% 50%;
+    /*background-size: 20% 50%;*/
     min-height: 100%;
     min-height: 100vhh;
     background-position: 50% 25%;
@@ -60,10 +60,6 @@ form {
 	
   }
 
-img.pequeña{
-  width: 200px; height: 200px;
-   border-radius: 50%;
-}
 
 
    fieldset 
