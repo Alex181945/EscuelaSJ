@@ -1,16 +1,16 @@
 
-body{
+/*body{
     background-image: url("/assets/img/15.png"); 
 
     background-repeat: no-repeat;
     background-attachment: fixed;
     
-    /*background-size: 20% 50%;*/
+    background-size: 20% 50%;
     min-height: 100%;
     min-height: 100vhh;
     background-position: 50% 25%;
 
-}
+}*/
 
 .text-white-small{
 	color: #fff;
@@ -75,7 +75,11 @@ html
 body
 { font: normal .80em 'trebuchet ms', arial, sans-serif;
   background: #F0EFE2;
-  color: #777;}
+  color: #777;
+  min-height: 100%;
+  min-height: 100vhh;
+  background-position: 50% 25%;
+}
 
 p
 { padding: 0 0 20px 0;
@@ -163,7 +167,7 @@ ol li
 { width: 825px;
   position: relative;
   height: 168px;
-  background: #667F03 url(../img/logo.png) no-repeat;}
+  background: #667F03 url(../img/Verde.jpeg) no-repeat;}
 
 #logo #logo_text 
 { position: absolute; 
