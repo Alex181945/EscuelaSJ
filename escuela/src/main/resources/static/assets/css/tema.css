@@ -48,52 +48,7 @@ div.p-2{
 	color: #0080ff !important;
 }
 
-form {
-	max-width: 100%;
-	margin: 3px auto;
-	padding: 15px 30px;
 
-	border-radius: 8px;
-	background: #13131373;
-
-  }
-
-  h3 {
-	margin: 0 0 30px 0;
-	text-align: left;
-
-	
-  }
-
-
-
-   fieldset 
-	{
-		border: 1px solid rgb(255, 255, 255) !important;
-		margin: 0;
-		xmin-width: 0;
-		padding: 10px;       
-		position: relative;
-		border-radius:4px;
-		background-color:#00000000;
-		padding-left:10px!important;
-
-	}	
-	
-		legend
-		{
-			font-size:14px;
-			font-weight:bold;
-			margin-bottom: 0px; 
-			width: 35%; 
-			border: 1px solid #ddd;
-			border-radius: 4px; 
-			padding: 5px 5px 5px 10px; 
-			background-color: #ffffff;
-		}
-	
-
-/*Fin Inicio de Sesion*/
 
 /*Modal del spinner de carga*/
 .bd-example-modal-lg .modal-dialog {
