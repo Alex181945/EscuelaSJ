@@ -20,10 +20,11 @@
 
 /*Menu*/
 .bg-light{
+
 	width: auto;
   	margin:  auto;
   	padding: 30px;
-	background-color: transparent !important;
+	background-color: #145b33 !important;
 }
 
 a.nav-link{
@@ -115,7 +116,7 @@ h6
 a, a:hover
 { outline: none;
   text-decoration: underline;
-  color: #A4AA04;}
+  color: #145b33;}
 
 a:hover
 { text-decoration: none;}
@@ -138,7 +139,7 @@ a:hover
 blockquote
 { margin: 20px 0; 
   padding: 10px 20px 0 20px;
-  border: 1px solid #E5E5DB;
+  border: 1px solid #FFF;
   background: #FFF;}
 
 ul
@@ -160,14 +161,14 @@ ol li
   margin-right: auto;}
 
 #header
-{ background: #667F03;
+{ background: #145b33;
   height: 240px;}
 
 #logo
 { width: 825px;
   position: relative;
   height: 168px;
-  background: #667F03 url(../img/Verde.jpeg) no-repeat;}
+  background: #145b33 url(../img/Verde.jpeg) no-repeat;}
 
 #logo #logo_text 
 { position: absolute; 
@@ -198,7 +199,7 @@ ol li
 { width: 877px;
   height: 72px;
   padding: 0;
-  background: #515D25 url(../img/menu.png) repeat-x;} 
+  background: #145b33 url(../img/menu.png) repeat-x;} 
 
 ul#menu, ul#menu li
 { float: left;
@@ -223,7 +224,7 @@ ul#menu li a
 
 ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 { color: #FFF;
-  background: #373F1D url(../img/menu_select.png) repeat-x;}
+  background: #145b33 url(../img/menu_select.png)_repeat-x;}
 
 #site_content
 { width: 837px;
@@ -328,7 +329,7 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
-  background: #5B7102; 
+  background: #145b33; 
   color: #FFF;}
 
 .form_settings textarea, .form_settings select
