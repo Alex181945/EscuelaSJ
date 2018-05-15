@@ -37,6 +37,7 @@ public class administrativo {
 				ad.setcTel("57-98-51-23");
 				ad.setcTelCel("55-89-69-74-21");
 				ad.setcEmail("cdvcv@gmail.com");
+				ad.setlActivo(1);
 				Admin[] adm = {ad};
 				
 				mav.addObject("controladmin", adm);

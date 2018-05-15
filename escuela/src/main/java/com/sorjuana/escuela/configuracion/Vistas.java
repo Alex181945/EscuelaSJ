@@ -17,7 +17,8 @@ public class Vistas {
 	private static final String MENU = "menu/menu";
 	private static final String CONTROLALUMNO = "consultaalumno";
 	private static final String FORMULARIOALUMNO = "controlalum";
-	private static final String CONTROLASISTENCIA = "controlasis";
+	private static final String CONTROLASISTENCIA = "consultaasis";
+	private static final String FORMULARIOASISTENCIA = "controlasis";
 	private static final String FORMULARIOADMIN = "controladmin";
 	private static final String CONTROLADMIN = "consultadmin";
 	private static final String CONTROLDOCENTE = "consultadoc";
@@ -80,6 +81,9 @@ public class Vistas {
 	}
 	public static String getFormularioadmin() {
 		return FORMULARIOADMIN;
+	}
+	public static String getFormularioasistencia() {
+		return FORMULARIOASISTENCIA;
 	}
 	
 }
