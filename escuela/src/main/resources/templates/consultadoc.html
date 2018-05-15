@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" id="site_content" th:fragment="content">
+	
+	<div class="container">
+		
+		<h1 class="display-6 text-color-white">Consulta Docente</h1>
+
+		<a href="#" th:href="@{/config/catalogos/controld/form}" >
+			<button type="button" class="btn btn-secondary btn-lg btn-block">
+				<i class="fas fa-plus-circle"></i>Nuevo
+			</button>
+		</a>
+		
+		<br/>
+		
+		<table class="table table-striped table-hover dataTable no-footer table-custom"  id="Listas">
+			<thead >
+				<tr>
+					<th>ID</th>
+					<th>Numero de Empleado</th>
+					<th>Nombre del Docente</th>
+					<th>C&eacute;dula Profesional</th>
+					<th>Fecha de Ingresos</th>
+					<th>Tel&eacute;fono</th>
+					<th>Email</th>
+					<th>Activo</th>
+					<th>Editar</th>
+					<th>Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lista : ${controld}">
+					<td><span th:text="${lista.iPersona}">ID</span></td>
+					<td><span th:text="${lista.iNumEmp}">Numero de Empleado</span></td>
+					<td><span th:text="${lista.cNomDoc}">Nombre del Docente</span></td>
+					<td><span th:text="${lista.cCedPro}">Cedula Profesional</span></td>
+					<td><span th:text="${lista.cFecIng}">Fecha de Ingresos</span></td>
+					<td><span th:text="${lista.cTel}">Telefono</span></td>
+					<td><span th:text="${lista.cEmail}">Email</span></td>
+					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
+					<td>
+						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iPersona=__${lista.iPersona}__}">
+							<button type="button" class="btn btn-info">
+								<span class="fas fa-edit" aria-hidden="true"></span>
+							</button>
+						</a>					
+					</td>
+					<td>
+						<button type="button" id="btnEliminar" class="btn btn-danger"
+						th:onclick=  "'eliminar(1 , \''+ ${lista.iPersona} + '\' );'">						
+							<span class="fas fa-trash"  aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+</div>

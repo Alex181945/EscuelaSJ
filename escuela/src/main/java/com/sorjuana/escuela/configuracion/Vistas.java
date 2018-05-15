@@ -18,7 +18,8 @@ public class Vistas {
 	private static final String CONTROLALUMNO = "controlalum";
 	private static final String CONTROLASISTENCIA = "controlasis";
 	private static final String CONTROLADMIN = "controladmin";
-	private static final String CONTROLDOCENTE = "controld";
+	private static final String CONTROLDOCENTE = "consultadoc";
+	private static final String FORMULARIODOCENTE = "controld";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -68,6 +69,9 @@ public class Vistas {
 	}
 	public static String getControldocente() {
 		return CONTROLDOCENTE;
+	}
+	public static String getFormulariodocente() {
+		return FORMULARIODOCENTE;
 	}
 	
 }
