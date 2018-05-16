@@ -12,13 +12,13 @@ import com.sorjuana.escuela.modelo.ct.Alumno;
 public class alumno {
 
 		
-		/*	@GetMapping("/controlalumno")
-			public ModelAndView menu() {
+		@GetMapping("/catalogo/alumno/inserta")
+			public ModelAndView inserta() {
 				ModelAndView mav = new ModelAndView();
-				mav.setViewName(Vistas.getControlalumno());
+				mav.setViewName(Vistas.getFormularioalumno());
 				mav.addObject("menu", true);
 				return mav;
-			}*/
+			}
 			
 			@GetMapping("/controlalumno")
 			public ModelAndView menu() {
