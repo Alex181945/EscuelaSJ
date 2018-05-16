@@ -14,13 +14,13 @@ import com.sorjuana.escuela.modelo.ct.Admin;
 @SessionAttributes("Persona")
 public class administrativo {
 		
-			/*@GetMapping("/controladmin")
-			public ModelAndView menu() {
+			@GetMapping("/catalogo/admin/inserta")
+			public ModelAndView inserta() {
 				ModelAndView mav = new ModelAndView();
-				mav.setViewName(Vistas.getControladmin());
+				mav.setViewName(Vistas.getFormularioadmin());
 				mav.addObject("menu", true);
 				return mav;
-			}*/
+			}
 			
 			@GetMapping("/controladmin")
 			public ModelAndView menu() {
