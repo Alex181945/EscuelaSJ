@@ -20,28 +20,12 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<!-- <div th:if="${menu != null}" class="collapse navbar-collapse" id="navbarSupportedContent">
+				<div th:if="${menu != null}" class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul th:each="opcion : ${menu}" class="navbar-nav mr-auto">
 						<li class="nav-item"><a class="nav-link" href="#"
 							th:href="${opcion.cRuta}" th:text="${opcion.cPrograma}"></a></li>
 					</ul>
-				</div> -->
-
-				<ul class="nav nav-tabs" th:if="${menu != null}">
-					<li class="inicio"><a class="nav-link" href="/menu">Inicio</a></li>
-					<li class="CONTROLDOCENTE"><a class="nav-link"
-						href="/controldocente">Control Docente</a></li>
-					<li class="controlAlumno"><a class="nav-link"
-						href="/controlalumno">Control Alumno</a></li>
-
-					<li class="controlAdministrativo"><a class="nav-link"
-						href="/controladmin">Control Administrativo</a></li>
-
-					<li class="controlAsistencia"><a class="nav-link"
-						href="/controlasistencia">Control Asistencia</a></li>
-					<li class="inicio"><a class="nav-link" href="/cierrasesion">Cerrar
-							Sesi&oacute;n</a></li>
-				</ul>
+				</div>
 
 			</nav>
 
