@@ -13,13 +13,13 @@ import com.sorjuana.escuela.modelo.ct.Asistencia;
 @SessionAttributes("Persona")
 public class controlasistencia {
 	
-	/*@GetMapping("/controlasistencia")
-	public ModelAndView menu() {
+	@GetMapping("/catalogo/asistencia/inserta")
+	public ModelAndView inserta() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getControlasistencia());
+		mav.setViewName(Vistas.getFormularioasistencia());
 		mav.addObject("menu", true);
 		return mav;
-	}*/
+	}
 	
 	@GetMapping("/controlasistencia")
 	public ModelAndView menu() {

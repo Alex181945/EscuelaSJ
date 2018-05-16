@@ -12,14 +12,14 @@ import com.sorjuana.escuela.modelo.ct.Docente;
 @SessionAttributes("Persona")
 public class ControlDocente {
 	
-		/*@GetMapping("/controldocente")
-		public ModelAndView menu() {
+		@GetMapping("/catalogo/docente/inserta")
+		public ModelAndView inserta() {
 			ModelAndView mav = new ModelAndView();
-			mav.setViewName(Vistas.getControldocente());
+			mav.setViewName(Vistas.getFormulariodocente());
 			mav.addObject("menu", true);
 			return mav;
 		}
-		*/
+		
 		@GetMapping("/controldocente")
 		public ModelAndView menu() {
 			ModelAndView mav = new ModelAndView();
