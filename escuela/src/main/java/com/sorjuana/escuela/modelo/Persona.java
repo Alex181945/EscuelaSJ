@@ -4,6 +4,7 @@ public class Persona {
 
 	private Integer iPersona;
 	private Integer iIDPersona;
+	private String  cToken;
 	private String  cNombre;
 	private String  cAPaterno;
 	private String  cAMaterno;
@@ -72,6 +73,12 @@ public class Persona {
 	}
 	public void setDtModificado(String dtModificado) {
 		this.dtModificado = dtModificado;
+	}
+	public String getcToken() {
+		return cToken;
+	}
+	public void setcToken(String cToken) {
+		this.cToken = cToken;
 	}
 
 }

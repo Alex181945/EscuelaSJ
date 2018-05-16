@@ -136,9 +136,15 @@ public class ImpLoginRest implements LoginRest {
 		
 		Usuario usuarioLocal = new Usuario();
 		usuarioLocal.setiPersona(usuario[0].getiPersona());
+		usuarioLocal.setiIDTipoPersona(usuario[0].getiIDTipoPersona());
 		usuarioLocal.setcToken(cToken);
 		usuarioLocal.setcEmail(usuario[0].getcEmail());
 		usuarioLocal.setcContrasena(usuario[0].getcContrasena());
+		usuarioLocal.setcNombre(usuario[0].getcNombre());
+		usuarioLocal.setcAPaterno(usuario[0].getcAPaterno());
+		usuarioLocal.setcAMaterno(usuario[0].getcAMaterno());
+		usuarioLocal.setlGenero(usuario[0].getlGenero());
+		usuarioLocal.setDtFechaNac(usuario[0].getDtFechaNac());
 		usuarioLocal.setlActivo(usuario[0].getlActivo());
 		usuarioLocal.setDtCreado(usuario[0].getDtCreado());
 		usuarioLocal.setDtModificado(usuario[0].getDtModificado());
