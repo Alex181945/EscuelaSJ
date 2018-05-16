@@ -26,6 +26,14 @@ public class alumno {
 	 * mav.addObject("menu", true); return mav; }
 	 */
 
+	@GetMapping("/catalogo/alumno/inserta")
+	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getFormularioalumno());
+		mav.addObject("menu", true);
+		return mav;
+	}
+
 	@GetMapping("/controlalumno")
 	public ModelAndView menu(@ModelAttribute("Persona") Usuario sesionPersona) {
 
@@ -64,5 +72,6 @@ public class alumno {
 		mav.addObject("controlalum", al);
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;
+
 	}
 }

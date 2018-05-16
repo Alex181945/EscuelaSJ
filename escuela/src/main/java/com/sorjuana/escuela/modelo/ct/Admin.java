@@ -87,7 +87,7 @@ public class Admin {
 		this.cNumEm = i;
 	}
 	public String getcNomAdm() {
-		cNomAdm = cNomAdm + " " + cAPaterno + " " + cAMaterno;
+		cNomAdm = cNombre + " " + cAPaterno + " " + cAMaterno;
 		return cNomAdm;
 	}
 	public void setcNomAdm(String cNomAdm) {

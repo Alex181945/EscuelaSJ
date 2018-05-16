@@ -85,7 +85,7 @@ public class Asistencia {
 		this.iNumEmp = iNumEmp;
 	}
 	public String getcNomTra() {
-		cNomTra = cNomTra + " " + cAPaterno + " " + cAMaterno;
+		cNomTra = cNombre + " " + cAPaterno + " " + cAMaterno;
 		return cNomTra;
 	}
 	public void setcNomTra(String cNomTra) {
