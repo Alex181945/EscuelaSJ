@@ -8,15 +8,7 @@ body{
     min-height: 100vhh;
 }
 
-.encabezado{
-	background-color: rgba(0, 12, 26, 0.4);
-}
-
-.textos-index{
-	background-color: rgba(0, 12, 26, 0.4);
-}
-
-.footer{
+.encabezado, .container, .footer, .textos-index{
 	background-color: rgba(0, 12, 26, 0.4);
 }
 
