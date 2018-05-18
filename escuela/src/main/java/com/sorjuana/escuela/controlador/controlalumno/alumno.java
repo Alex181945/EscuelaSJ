@@ -28,9 +28,13 @@ public class alumno {
 
 	@GetMapping("/catalogo/alumno/inserta")
 	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getFormularioalumno());
-		mav.addObject("menu", true);
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;
 	}
 
