@@ -38,7 +38,7 @@ public class alumno {
 		return mav;
 	}
 
-	@GetMapping("/controlalumno")
+	@GetMapping("/catalogo/alumno")
 	public ModelAndView menu(@ModelAttribute("Persona") Usuario sesionPersona) {
 
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
