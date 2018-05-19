@@ -3,15 +3,17 @@
 
 	<div id="header">
 
-		<div id="logo">
+		<div id="logo" style="text-align:center;">
 			<div  id="logo_text">
 				<!-- class="logo_colour", allows you to change the colour of the text -->
 				<img alt="Sor Juana Ines de la Cruz" class="img-responsive center-block" src="#" height="160px"
 					th:src="@{/assets/img/log.png}" />
 			</div>
+
 		</div>
 
-		<div id="menubar">
+
+		<div class="menubar">
 			<nav class="navbar navbar-expand-xl navbar-light bg-light">
 				<a class="navbar-brand" href="#"> </a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -21,7 +23,7 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-				<div th:if="${menu != null}" class="collapse navbar-collapse"
+				<div th:if="${menu != null}" class="collapse navbar-collapse align-items-center text-center nav-menu"
 					id="navbarSupportedContent">
 					<ul th:each="opcion : ${menu}" class="navbar-nav">
 						<!-- mr-auto -->
