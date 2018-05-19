@@ -35,7 +35,7 @@ public class administrativo {
 				return mav;
 			}
 			
-			@GetMapping("/controladmin")
+			@GetMapping("/catalogo/administrativo")
 			public ModelAndView menu(@ModelAttribute("Persona") Usuario sesionPersona) {
 				DosParametrosEnteros consulta = new DosParametrosEnteros();
 				consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos

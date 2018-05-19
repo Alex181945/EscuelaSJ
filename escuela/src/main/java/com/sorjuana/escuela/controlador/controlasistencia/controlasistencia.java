@@ -33,7 +33,7 @@ public class controlasistencia {
 		return mav;
 	}
 	
-	@GetMapping("/controlasistencia")
+	@GetMapping("/catalogo/asistencia")
 	public ModelAndView menu(@ModelAttribute("Persona") Usuario sesionPersona) {
 		
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
