@@ -23,6 +23,7 @@ public class Vistas {
 	private static final String CONTROLADMIN = "consultadmin";
 	private static final String CONTROLDOCENTE = "consultadoc";
 	private static final String FORMULARIODOCENTE = "controld";
+	private static final String FORMULARIOKARDEX = "Kardex/kardex";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -84,6 +85,9 @@ public class Vistas {
 	}
 	public static String getFormularioasistencia() {
 		return FORMULARIOASISTENCIA;
+	}
+	public static String getFormulariokardex() {
+		return FORMULARIOKARDEX;
 	}
 	
 }
