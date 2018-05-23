@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.sorjuana.escuela.configuracion.Vistas;
+import com.sorjuana.escuela.modelo.ct.Alumno;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
+import com.sorjuana.escuela.repositorio.busqueda.BusquedaRest;
 import com.sorjuana.escuela.repositorio.modulo.MenuRest;
 
 
@@ -21,6 +24,9 @@ public class Kardex {
 
 	@Autowired
 	private MenuRest menuRest;
+	
+	@Autowired
+	private BusquedaRest busquedaRest;
 
 	@GetMapping("/historial/alumno/calificaciones")
 	public ModelAndView consulta(@ModelAttribute("Persona") Usuario sesionPersona) {
@@ -37,7 +43,13 @@ public class Kardex {
 	@PostMapping("/historial/alumno/busqueda")
 	public @ResponseBody String busqueda(@ModelAttribute("Persona") Usuario sesionPersona, 
 			@ModelAttribute("elementoBusqueda") String elementoBusqueda) {
-		System.out.print(elementoBusqueda);
+			
+		Alumno[] alumno =  busquedaRest.busquedaAlumno(elementoBusqueda, sesionPersona.getcToken());  
+		
+		if(alumno != null) {
+			return new Gson().toJson(alumno);
+		}
+		
 		return "";
 	}
 
