@@ -28,16 +28,7 @@ function busquedaAlumnoKardex(){
 		 			
 		 			var dataMod = [];
 		 			var control;
-		 			
-		 			for ( var usuario in data) {
-						console.log(usuario);
-						control = usuario.iPersona;
-						if(usuario.iPersona != usuario.iPersona){
-							dataMod.push(usuario);
-						}
-					}
-		 			
-		 			listaAlumno(dataMod);
+		 			listaAlumno(data);
 		 			
 		 		}
 		 		
@@ -59,8 +50,8 @@ function listaAlumno(dataSet){
 	$('#Listas').DataTable( {
         data: dataSet,
         "columns" : [
-        	{ "data" : "iPersona" },
-            { "data" : "cNombre" + "cAPaterno" + "cAMaterno" },
+        	{ title : "iPersona" },
+            { title : "cNombre" },
             {   "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {                                  	
                 	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-danger' >" + "<span class='fa fa-trash'  aria-hidden='true'></span> </button>");
