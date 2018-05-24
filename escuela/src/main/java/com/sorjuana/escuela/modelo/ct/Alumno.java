@@ -12,6 +12,9 @@ public class Alumno {
 	private String dtCreado;
 	private String dtModificado;
 	
+	private Integer iAtributo;
+	private String cValor;
+	private String cObs;
 	private Integer iMatricula;
 	private String cNomAlum;
 	private String cCURP;
@@ -194,6 +197,24 @@ public class Alumno {
 	}
 	public void setcTelCel(String cTelCel) {
 		this.cTelCel = cTelCel;
+	}
+	public Integer getiAtributo() {
+		return iAtributo;
+	}
+	public void setiAtributo(Integer iAtributo) {
+		this.iAtributo = iAtributo;
+	}
+	public String getcValor() {
+		return cValor;
+	}
+	public void setcValor(String cValor) {
+		this.cValor = cValor;
+	}
+	public String getcObs() {
+		return cObs;
+	}
+	public void setcObs(String cObs) {
+		this.cObs = cObs;
 	}
 	
 	

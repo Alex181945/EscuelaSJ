@@ -47,7 +47,7 @@ public class ImpBusquedaRest implements BusquedaRest {
 			
 			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>(); 
 			body.add("tipoBusqueda", tipoBusqueda);
-			body.add("elemenBusqueda", elementoBusqueda);
+			body.add("elementoBusqueda", elementoBusqueda);
 
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
