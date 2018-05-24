@@ -24,7 +24,7 @@ function busquedaAlumnoKardex(){
 		 	type : 'POST',
 		 	success : function(data) {	 		 		 		 		
 		 	/*	ListVehiculos(data);	 */		 		
-		 		if(data == ""){
+		 		if(data != ""){
 		 			
 		 			var dataMod = [];
 		 			var control;
