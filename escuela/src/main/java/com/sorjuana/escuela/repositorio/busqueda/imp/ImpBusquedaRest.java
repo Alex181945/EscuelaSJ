@@ -27,7 +27,7 @@ public class ImpBusquedaRest implements BusquedaRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public Alumno[] busquedaAlumno(String elementoBusqueda, String cToken) {
+	public Alumno[] busquedaAlumno(String tipoBusqueda, String elementoBusqueda, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
@@ -43,8 +43,9 @@ public class ImpBusquedaRest implements BusquedaRest {
 			HttpHeaders headers = new HttpHeaders();
 			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
 			
-			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
-			body.add("elemenBusquedaAlumno", elementoBusqueda);
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>(); 
+			body.add("tipoBusqueda", tipoBusqueda);
+			body.add("elemenBusqueda", elementoBusqueda);
 
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			

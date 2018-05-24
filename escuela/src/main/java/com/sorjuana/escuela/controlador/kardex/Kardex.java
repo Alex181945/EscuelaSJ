@@ -41,10 +41,11 @@ public class Kardex {
 	}
 
 	@PostMapping("/historial/alumno/busqueda")
-	public @ResponseBody String busqueda(@ModelAttribute("Persona") Usuario sesionPersona, 
+	public @ResponseBody String busqueda(@ModelAttribute("Persona") Usuario sesionPersona,
+			@ModelAttribute("tipoBusqueda") String tipoBusqueda,
 			@ModelAttribute("elementoBusqueda") String elementoBusqueda) {
 			
-		Alumno[] alumno =  busquedaRest.busquedaAlumno(elementoBusqueda, sesionPersona.getcToken());  
+		Alumno[] alumno =  busquedaRest.busquedaAlumno(tipoBusqueda, elementoBusqueda, sesionPersona.getcToken());  
 		
 		if(alumno != null) {
 			return new Gson().toJson(alumno);
