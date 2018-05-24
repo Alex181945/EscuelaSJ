@@ -54,8 +54,9 @@ function busquedaAlumnoKardex(){
 
 function listaAlumno(dataSet){
 	
+	console.log(dataSet);
 	
-	$('#Lista').DataTable( {
+	$('#Listas').DataTable( {
         data: dataSet,
         "columns" : [
         	{ "data" : "iPersona" },
