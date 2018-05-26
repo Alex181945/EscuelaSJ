@@ -3,10 +3,19 @@
  */
 
 
-function buscaEnter(e){
-	if (e.keyCode == 13) {
-		busquedaAlumnoKardex();
-    }
+function buscaEnter(e, formType){
+
+	//FormType 1 solo numeros 2 solo letras
+	if(formType === 1){
+		soloNumeros(e);
+	}
+	
+	if(formType === 2){
+		soloLetras(e)
+	}
+	
+	busquedaAlumnoKardex();
+	
 }
 
 
