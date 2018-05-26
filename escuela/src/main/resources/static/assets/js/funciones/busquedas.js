@@ -45,9 +45,7 @@ function busquedaAlumnoKardex(){
 
 function listaAlumno(dataSet){
 	
-//	console.log(dataSet);
 	var myObject = JSON.parse(dataSet);
-	console.log(myObject)
 	
 	var uniqueNames = [];
 	var iPersonaTemp = 0;
@@ -57,8 +55,6 @@ function listaAlumno(dataSet){
 		}
 		iPersonaTemp = myObject[i].iPersona;
 	}
-	
-	console.log(uniqueNames);
 	
 	$('#Listas').DataTable( {
         data: uniqueNames,
