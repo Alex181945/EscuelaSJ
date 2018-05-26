@@ -1,11 +1,16 @@
 /**
  * 
  */
-function busquedaAlumnoKardex(e){
-	
-	if (e.keyCode != 13) {
-		return;
+
+
+function buscaEnter(e){
+	if (e.keyCode == 13) {
+		busquedaAlumnoKardex();
     }
+}
+
+
+function busquedaAlumnoKardex(){
 	
 	var elementoBusqueda;
 	var tipoBusqueda;
