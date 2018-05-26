@@ -45,13 +45,26 @@ function busquedaAlumnoKardex(){
 
 function listaAlumno(dataSet){
 	
-	console.log(dataSet);
+//	console.log(dataSet);
+	var myObject = JSON.parse(dataSet);
+	console.log(myObject)
+	
+	var uniqueNames = [];
+	var iPersonaTemp = 0;
+	for (var i = 0; i < myObject.length; i++) {
+		if(iPersonaTemp != myObject[i].iPersona){
+			uniqueNames.push(myObject[i])
+		}
+		iPersonaTemp = myObject[i].iPersona;
+	}
+	
+	console.log(uniqueNames);
 	
 	$('#Listas').DataTable( {
-        data: dataSet,
+        data: uniqueNames,
         "columns" : [
-        	{ title : "iPersona" },
-            { title : "cNombre" },
+        	{ "data" : "iPersona" },
+            { "data" : "cNombre" },
             {   "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {                                  	
                 	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-danger' >" + "<span class='fa fa-trash'  aria-hidden='true'></span> </button>");
