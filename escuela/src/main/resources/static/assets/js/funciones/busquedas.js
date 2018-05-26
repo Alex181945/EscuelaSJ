@@ -1,16 +1,37 @@
 /**
  * 
  */
+
+
+function buscaEnter(e, formType){
+
+	//FormType 1 solo numeros 2 solo letras
+	if(formType === 1){
+		soloNumeros(e);
+	}
+	
+	if(formType === 2){
+		soloLetras(e)
+	}
+	
+	busquedaAlumnoKardex();
+	
+}
+
+
 function busquedaAlumnoKardex(){
+	
 	var elementoBusqueda;
 	var tipoBusqueda;
 	var numeroAlumno = $('#numAlum').val();
 	var nombreAlumno = $('#nombreAlum').val();
 
 	if(numeroAlumno != "" && numeroAlumno != null ){
+		$('#nombreAlum').val('');
 		tipoBusqueda = "numero";
 		elementoBusqueda = numeroAlumno;
 	}else if( nombreAlumno != "" &&  nombreAlumno != null ){
+		$('#numAlum').val('');
 		tipoBusqueda = "caracter";
 		elementoBusqueda =  nombreAlumno;
 	}
@@ -45,16 +66,36 @@ function busquedaAlumnoKardex(){
 
 function listaAlumno(dataSet){
 	
-	console.log(dataSet);
+	//Reinicializa la tabla
+	var tVehiculos = $('#Listas').DataTable( {
+		 retrieve: true,
+		 paging: false
+	 } );
+	 
+	 tVehiculos.destroy();
+	
+	var myObject = JSON.parse(dataSet);
+	
+	var uniqueNames = [];
+	var iPersonaTemp = 0;
+	for (var i = 0; i < myObject.length; i++) {
+		if(iPersonaTemp != myObject[i].iPersona){
+			uniqueNames.push(myObject[i])
+		}
+		iPersonaTemp = myObject[i].iPersona;
+	}
+	
+	//uniqueNames = JSON.stringify(uniqueNames);
+	console.log(uniqueNames);
 	
 	$('#Listas').DataTable( {
-        data: dataSet,
+        data: uniqueNames,
         "columns" : [
-        	{ title : "iPersona" },
-            { title : "cNombre" },
-            {   "data": null,
+        	{ "data" : "iPersona" },
+            { "data" : "cNombre" },
+            { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {                                  	
-                	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-danger' >" + "<span class='fa fa-trash'  aria-hidden='true'></span> </button>");
+                	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-info' onclick='consultaHistorial(" + oData.iPersona +  ")' >" + "<span class='fas fa-search'  aria-hidden='true'></span> </button>");
                 }
             },
 			

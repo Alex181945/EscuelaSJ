@@ -11,7 +11,7 @@
 							class="lead">Matricula:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="numAlum" placeholder="Matricula del Alumno"/>
+							id="numAlum" placeholder="Matricula del Alumno" onkeypress="return buscaEnter(event, 1)"/>
 
 					</div>
 				</div>
@@ -23,7 +23,7 @@
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="nombreAlum"
-							placeholder="Nombre del Alumno" />
+							placeholder="Nombre del Alumno" onkeypress="return buscaEnter(event, 2)" />
 					</div>
 				</div>
 			</div>		

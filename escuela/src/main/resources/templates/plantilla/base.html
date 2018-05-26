@@ -35,6 +35,9 @@
 	
 	<div th:replace="plantilla/fragments/pie :: footer"></div>
 	
+	<div class="col-12" style="display:none;"><span id="messageError" th:text="${error}"></span></div>
+	<div class="col-12" style="display:none;"><span id="messageExito" th:text="${exito}"></span></div>
+	
     <!-- Librerias -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="#" th:src="@{/assets/js/lib/jquery-3.3.1.min.js}"></script>
