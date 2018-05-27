@@ -18,7 +18,6 @@ function buscaEnter(e, formType){
 	
 }
 
-
 function busquedaAlumnoKardex(){
 	
 	var elementoBusqueda;
@@ -86,7 +85,7 @@ function listaAlumno(dataSet){
 	}
 	
 	//uniqueNames = JSON.stringify(uniqueNames);
-	console.log(uniqueNames);
+	//console.log(uniqueNames);
 	
 	$('#Listas').DataTable( {
         data: uniqueNames,
@@ -95,7 +94,7 @@ function listaAlumno(dataSet){
             { "data" : "cNombre" },
             { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {                                  	
-                	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-info' onclick='consultaHistorial(" + oData.iPersona +  ")' >" + "<span class='fas fa-search'  aria-hidden='true'></span> </button>");
+                	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-info' onclick='invocaKardex(" + oData.iPersona +  ")' >" + "<span class='fas fa-search'  aria-hidden='true'></span> </button>");
                 }
             },
 			
@@ -129,4 +128,10 @@ function listaAlumno(dataSet){
 				}
 		 }
     } );	
+}
+
+function invocaKardex(iPersona){
+	
+	window.open("/", "_blank");
+	
 }

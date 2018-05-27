@@ -54,4 +54,13 @@ public class Kardex {
 		return "";
 	}
 
+	public ModelAndView muestraKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
+			@ModelAttribute("iPersona") Integer iPersona) {
+		
+		busquedaRest.generaKardex(iPersona, sesionPersona.getcToken());
+		
+		ModelAndView mav = new ModelAndView();		
+		
+		return mav;
+	}
 }
