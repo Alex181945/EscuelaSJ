@@ -54,6 +54,7 @@ public class Kardex {
 		return "";
 	}
 
+	@GetMapping("/historial/alumno/genera")
 	public ModelAndView muestraKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
 			@ModelAttribute("iPersona") Integer iPersona) {
 		

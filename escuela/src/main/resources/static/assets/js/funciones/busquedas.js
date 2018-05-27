@@ -132,6 +132,6 @@ function listaAlumno(dataSet){
 
 function invocaKardex(iPersona){
 	
-	window.open("/", "_blank");
+	window.open("/historial/alumno/genera?iPersona=" + iPersona, "_blank");
 	
 }
