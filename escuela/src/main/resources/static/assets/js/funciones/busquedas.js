@@ -94,7 +94,7 @@ function listaAlumno(dataSet){
             { "data" : "cNombre" },
             { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {                                  	
-                	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-info' onclick='invocaKardex(" + oData.iPersona +  ")' >" + "<span class='fas fa-search'  aria-hidden='true'></span> </button>");
+                	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-info' onclick='invocaKardex(" + oData.iPersona +  ", \"" + oData.cNombre + " " + oData.cAPaterno + " " + oData.cAMaterno +"\")' >" + "<span class='fas fa-search'  aria-hidden='true'></span> </button>");
                 }
             },
 			
@@ -130,8 +130,8 @@ function listaAlumno(dataSet){
     } );	
 }
 
-function invocaKardex(iPersona){
+function invocaKardex(iPersona, cNombre){
 	
-	window.open("/historial/alumno/genera?iPersona=" + iPersona, "_blank");
+	window.open("/historial/alumno/genera?iPersona=" + iPersona + "&cNombre=" + cNombre, "_blank");
 	
 }
