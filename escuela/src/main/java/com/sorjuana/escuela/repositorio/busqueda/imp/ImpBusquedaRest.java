@@ -19,6 +19,7 @@ import com.sorjuana.escuela.configuracion.VariablesEntorno;
 import com.sorjuana.escuela.modelo.ct.Alumno;
 import com.sorjuana.escuela.modelo.datos.Validacion;
 import com.sorjuana.escuela.repositorio.busqueda.BusquedaRest;
+import com.sorjuana.escuela.modelo.datos.kardex.Kardex;
 
 @Component
 public class ImpBusquedaRest implements BusquedaRest {
@@ -89,15 +90,16 @@ public class ImpBusquedaRest implements BusquedaRest {
 	}
 
 	@SuppressWarnings("static-access")
-	public void generaKardex(Integer iPersona, String cToken) {
+	public Kardex[] generaKardex(Integer iPersona, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
-		Validacion[] validacion   = null;
-		ObjectMapper mapper       = new ObjectMapper();
-		JsonNode     root         = null;
-		JsonNode     validacionJs = null;
-		JsonNode     datos        = null;
+		Validacion[] validacion     = null;
+		Kardex[]     calificaciones = null;
+		ObjectMapper mapper         = new ObjectMapper();
+		JsonNode     root           = null;
+		JsonNode     validacionJs   = null;
+		JsonNode     datos          = null;
 		
 		try {
 			
@@ -119,7 +121,7 @@ public class ImpBusquedaRest implements BusquedaRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				//return alumno;
+				return calificaciones;
 			}
 			
 			validacionJs = root.path("validacion");
@@ -131,7 +133,7 @@ public class ImpBusquedaRest implements BusquedaRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				//alumno = mapper.convertValue(datos, Alumno[].class);
+				calificaciones = mapper.convertValue(datos, Kardex[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
@@ -142,6 +144,8 @@ public class ImpBusquedaRest implements BusquedaRest {
 			this.setMensajeLocal("Error: Exception en " + new Object() {
 			}.getClass().getEnclosingMethod().getName());
 		}
+		
+		return calificaciones;
 		
 	}
 	

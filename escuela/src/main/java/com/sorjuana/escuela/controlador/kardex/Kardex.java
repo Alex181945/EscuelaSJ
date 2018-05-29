@@ -58,9 +58,14 @@ public class Kardex {
 	public ModelAndView muestraKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
 			@ModelAttribute("iPersona") Integer iPersona) {
 		
-		busquedaRest.generaKardex(iPersona, sesionPersona.getcToken());
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
 		
-		ModelAndView mav = new ModelAndView();		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getHistorialkardex());
+		mav.addObject("kardex", busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		
 		return mav;
 	}

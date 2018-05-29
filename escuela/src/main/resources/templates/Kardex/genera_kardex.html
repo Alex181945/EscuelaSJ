@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" id="site_content"
+	th:fragment="content">
+	
+	<div class="container">
+		<h1 class="display-6"  style="color: #ffffff;" >Historial Academico</h1>
+		
+		<form>			
+			<span>
+				Historial Academico del alumno:<input type="text" id="nomAlumno" readonly="true" />
+			</span>			
+		</form>
+		
+		<br>
+		
+		<button type="button" id="generaPDF" class="btn btn-danger">Genera Reporte PDF</button>
+		
+		<br>
+		
+		<table class="table table-striped table-bordered dt-responsive nowrap"
+			style="width: 100%" id="Listas">
+
+			<thead>
+				<tr>
+					<th>Materia</th>
+					<th>Calificaci&oacute;n</th>
+					<th>Observaciones</th>
+				</tr>
+			</thead>
+		</table>
+		
+		
+	</div>
+	
+</div>
