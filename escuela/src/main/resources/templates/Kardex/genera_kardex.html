@@ -7,15 +7,15 @@
 		
 		<form>			
 			<span>
-				Historial Academico del alumno:<input type="text" id="nomAlumno" readonly="true" />
+				Historial Academico del alumno:<input type="text" id="nomAlumno" th:value="${nombre}" readonly="true" />
 			</span>			
 		</form>
 		
-		<br>
+		<br/>
 		
 		<button type="button" id="generaPDF" class="btn btn-danger">Genera Reporte PDF</button>
 		
-		<br>
+		<br/>
 		
 		<table class="table table-striped table-bordered dt-responsive nowrap"
 			style="width: 100%" id="Listas">
@@ -27,6 +27,13 @@
 					<th>Observaciones</th>
 				</tr>
 			</thead>
+			<tbody>
+				<tr th:each="lista : ${kardex}">
+					<td><span th:text="${lista.iMateria}">ID</span></td>
+					<td><span th:text="${lista.cMateria}">Matricula</span></td>
+					<td><span th:text="${lista.cObs}">Nombre del Alumno</span></td>
+				</tr>
+			</tbody>
 		</table>
 		
 		

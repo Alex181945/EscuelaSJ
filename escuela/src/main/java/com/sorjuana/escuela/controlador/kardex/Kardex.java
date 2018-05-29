@@ -56,7 +56,7 @@ public class Kardex {
 
 	@GetMapping("/historial/alumno/genera")
 	public ModelAndView muestraKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
-			@ModelAttribute("iPersona") Integer iPersona) {
+			@ModelAttribute("iPersona") Integer iPersona, @ModelAttribute("cNombre") String cNombre) {
 		
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
@@ -66,6 +66,7 @@ public class Kardex {
 		mav.setViewName(Vistas.getHistorialkardex());
 		mav.addObject("kardex", busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("nombre", cNombre);
 		
 		return mav;
 	}
