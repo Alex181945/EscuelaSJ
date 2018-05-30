@@ -28,7 +28,7 @@ public class GeneraKardexPDF {
         try {
         	
         	Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
-        	Font smallFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 6.7f);
+        	Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 5.0f);
         	
         	Paragraph escuela = new Paragraph();
         	escuela.setAlignment(Element.ALIGN_CENTER);
@@ -41,7 +41,7 @@ public class GeneraKardexPDF {
         	
         	Paragraph niveles = new Paragraph();
         	niveles.setAlignment(Element.ALIGN_CENTER);
-        	niveles.add("JARDIN DE NIÑOS, PRIMARIA Y SECUNDARIA");
+        	niveles.add("SECUNDARIA");
         	niveles.setFont(smallFont);
         	
         	Paragraph permisos = new Paragraph();
