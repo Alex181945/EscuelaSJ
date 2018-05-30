@@ -1,6 +1,12 @@
 package com.sorjuana.escuela.controlador.kardex;
 
+import java.io.ByteArrayInputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,6 +45,22 @@ public class Kardex {
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;
 	}
+	
+	@GetMapping("/historial/alumno")
+	public ModelAndView consultaAlumno(@ModelAttribute("Persona") Usuario sesionPersona) {
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getHistorialkardex());
+		mav.addObject("kardex", busquedaRest.generaKardex(sesionPersona.getiPersona(), sesionPersona.getcToken()));
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("nombre", sesionPersona.getcNombre() + " " + sesionPersona.getcAPaterno() + " " + sesionPersona.getcAMaterno());
+		mav.addObject("iPersona", sesionPersona.getiPersona());
+		
+		return mav;
+	}
 
 	@PostMapping("/historial/alumno/busqueda")
 	public @ResponseBody String busqueda(@ModelAttribute("Persona") Usuario sesionPersona,
@@ -67,7 +89,22 @@ public class Kardex {
 		mav.addObject("kardex", busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		mav.addObject("nombre", cNombre);
+		mav.addObject("iPersona", iPersona);
 		
 		return mav;
+	}
+
+	@GetMapping("/historial/alumno/genera-pdf")
+	public ResponseEntity<InputStreamResource> reporteKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
+			@ModelAttribute("iPersona") Integer iPersona, @ModelAttribute("cNombre") String cNombre){
+		
+		ByteArrayInputStream bis = GeneraKardexPDF.reporteKardex(busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()), cNombre);
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=kardex-" + "" + ".pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bis));
+		
 	}
 }

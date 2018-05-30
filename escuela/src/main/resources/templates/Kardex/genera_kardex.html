@@ -14,7 +14,7 @@
 		
 		<br/>
 		
-		<button type="button" id="generaPDF" class="btn btn-danger">Genera Reporte PDF</button>
+		<button type="button" id="generaPDF" th:onclick= "'generaPDF(\''+ ${iPersona} + '\' , \''+ ${nombre} + '\' );'" class="btn btn-danger">Genera Reporte PDF</button>
 		
 		<br/>
 		
