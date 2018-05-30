@@ -5,30 +5,36 @@ import java.io.ByteArrayOutputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.pdf.draw.DottedLineSeparator;
 import com.sorjuana.escuela.modelo.datos.kardex.KardexM;
 
 public class GeneraKardexPDF {
 
-	public static ByteArrayInputStream reporteKardex(KardexM[] kardex) {
+	public static ByteArrayInputStream reporteKardex(KardexM[] kardex, String cNombre) {
 		
 		Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         
         try {
         	
+        	Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+        	
+        	
+        	
+        	
         	PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(60);
-            table.setWidths(new int[]{1, 3, 3});
-
-            Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+            table.setWidths(new int[]{3, 3, 3});
 
             PdfPCell hcell;
             hcell = new PdfPCell(new Phrase("Materia", headFont));
@@ -66,6 +72,21 @@ public class GeneraKardexPDF {
                 
                 PdfWriter.getInstance(document, out);
                 document.open();
+                
+                document.add(new Paragraph("Institución Educativa y Cultural"));
+                document.add(new Paragraph("\"SOR JUANA INÉS DE LA CRUZ\""));
+                document.add(new Paragraph("JARDIN DE NIÑOS, PRIMARIA Y SECUNDARIA"));
+                document.add(new Paragraph("C.C.T. 15PJN023E1E,C.C.T. 15PST0600J,C.C.T. 15PPR0024N"));
+                
+                DottedLineSeparator separator = new DottedLineSeparator();
+                separator.setPercentage(59500f / 523f);
+                Chunk linebreak = new Chunk(separator);
+                document.add(linebreak);
+                
+                document.add(new Paragraph("El presente documento hace constar que el alumno: " + cNombre + ", a cursado las siguiente materias:" ));
+                
+                
+                
                 document.add(table);
                 
                 document.close();
@@ -80,3 +101,4 @@ public class GeneraKardexPDF {
 	}
 	
 }
+

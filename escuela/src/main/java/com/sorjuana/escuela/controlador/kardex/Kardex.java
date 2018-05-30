@@ -82,7 +82,7 @@ public class Kardex {
 	public ResponseEntity<InputStreamResource> reporteKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
 			@ModelAttribute("iPersona") Integer iPersona, @ModelAttribute("cNombre") String cNombre){
 		
-		ByteArrayInputStream bis = GeneraKardexPDF.reporteKardex(busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
+		ByteArrayInputStream bis = GeneraKardexPDF.reporteKardex(busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()), cNombre);
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-Disposition", "inline; filename=kardex-" + "" + ".pdf");
