@@ -2,6 +2,7 @@ package com.sorjuana.escuela.modelo.datos.kardex;
 
 public class KardexM {
 	
+	private Integer iCalificacion;
 	private Integer iPersona;	
 	private Integer iMateria;	
 	private Integer iPeriodo;	
@@ -93,6 +94,12 @@ public class KardexM {
 	}
 	public void setDtModificado(String dtModificado) {
 		this.dtModificado = dtModificado;
+	}
+	public Integer getiCalificacion() {
+		return iCalificacion;
+	}
+	public void setiCalificacion(Integer iCalificacion) {
+		this.iCalificacion = iCalificacion;
 	}
 	
 }
