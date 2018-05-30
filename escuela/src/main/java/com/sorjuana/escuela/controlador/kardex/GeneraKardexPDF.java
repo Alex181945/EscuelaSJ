@@ -15,7 +15,7 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.itextpdf.text.pdf.draw.DottedLineSeparator;
+import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.sorjuana.escuela.modelo.datos.kardex.KardexM;
 
 public class GeneraKardexPDF {
@@ -28,9 +28,26 @@ public class GeneraKardexPDF {
         try {
         	
         	Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+        	Font smallFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 6.7f);
         	
+        	Paragraph escuela = new Paragraph();
+        	escuela.setAlignment(Element.ALIGN_CENTER);
+        	escuela.add("Institución Educativa y Cultural");
+        	escuela.setFont(smallFont);
         	
+        	Paragraph escuela2 = new Paragraph();
+        	escuela2.setAlignment(Element.ALIGN_CENTER);
+        	escuela2.add("\"SOR JUANA INÉS DE LA CRUZ\"");
         	
+        	Paragraph niveles = new Paragraph();
+        	niveles.setAlignment(Element.ALIGN_CENTER);
+        	niveles.add("JARDIN DE NIÑOS, PRIMARIA Y SECUNDARIA");
+        	niveles.setFont(smallFont);
+        	
+        	Paragraph permisos = new Paragraph();
+        	permisos.setAlignment(Element.ALIGN_CENTER);
+        	permisos.add("C.C.T. 15PJN023E1E,C.C.T. 15PST0600J,C.C.T. 15PPR0024N");
+        	permisos.setFont(smallFont);
         	
         	PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(60);
@@ -73,22 +90,18 @@ public class GeneraKardexPDF {
                 PdfWriter.getInstance(document, out);
                 document.open();
                 
-                document.add(new Paragraph("Institución Educativa y Cultural"));
-                document.add(new Paragraph("\"SOR JUANA INÉS DE LA CRUZ\""));
-                document.add(new Paragraph("JARDIN DE NIÑOS, PRIMARIA Y SECUNDARIA"));
-                document.add(new Paragraph("C.C.T. 15PJN023E1E,C.C.T. 15PST0600J,C.C.T. 15PPR0024N"));
+                document.add(escuela);
+                document.add(escuela2);
+                document.add(niveles);
+                document.add(permisos);
                 
-                DottedLineSeparator separator = new DottedLineSeparator();
+                LineSeparator separator = new LineSeparator();
                 separator.setPercentage(59500f / 523f);
                 Chunk linebreak = new Chunk(separator);
                 document.add(linebreak);
                 
-                document.add(new Paragraph("El presente documento hace constar que el alumno: " + cNombre + ", a cursado las siguiente materias:" ));
-                
-                
-                
-                document.add(table);
-                
+                document.add(new Paragraph("El presente documento hace constar que el alumno: " + cNombre + ", a cursado las siguiente materias: \n\r" ));
+                document.add(table);                
                 document.close();
 				
 			}
