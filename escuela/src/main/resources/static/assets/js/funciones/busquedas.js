@@ -136,6 +136,6 @@ function invocaKardex(iPersona, cNombre){
 	
 }
 
-function generaPDF(){
+function generaPDF(iPersona, cNombre){
 	window.open("/historial/alumno/genera-pdf?iPersona=" + iPersona + "&cNombre=" + cNombre, "_blank");
 }
