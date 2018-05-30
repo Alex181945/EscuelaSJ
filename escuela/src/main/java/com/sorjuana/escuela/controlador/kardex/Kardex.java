@@ -1,6 +1,12 @@
 package com.sorjuana.escuela.controlador.kardex;
 
+import java.io.ByteArrayInputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -69,5 +75,18 @@ public class Kardex {
 		mav.addObject("nombre", cNombre);
 		
 		return mav;
+	}
+
+	public ResponseEntity<InputStreamResource> reporteKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
+			@ModelAttribute("iPersona") Integer iPersona){
+		
+		ByteArrayInputStream bis = GeneraKardexPDF.reporteKardex(busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Content-Disposition", "inline; filename=kardex-" + "" + ".pdf");
+
+		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+				.body(new InputStreamResource(bis));
+		
 	}
 }

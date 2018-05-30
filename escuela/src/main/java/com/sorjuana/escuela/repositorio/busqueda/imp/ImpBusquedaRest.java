@@ -19,7 +19,7 @@ import com.sorjuana.escuela.configuracion.VariablesEntorno;
 import com.sorjuana.escuela.modelo.ct.Alumno;
 import com.sorjuana.escuela.modelo.datos.Validacion;
 import com.sorjuana.escuela.repositorio.busqueda.BusquedaRest;
-import com.sorjuana.escuela.modelo.datos.kardex.Kardex;
+import com.sorjuana.escuela.modelo.datos.kardex.KardexM;
 
 @Component
 public class ImpBusquedaRest implements BusquedaRest {
@@ -90,12 +90,12 @@ public class ImpBusquedaRest implements BusquedaRest {
 	}
 
 	@SuppressWarnings("static-access")
-	public Kardex[] generaKardex(Integer iPersona, String cToken) {
+	public KardexM[] generaKardex(Integer iPersona, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
 		Validacion[] validacion     = null;
-		Kardex[]     calificaciones = null;
+		KardexM[]     calificaciones = null;
 		ObjectMapper mapper         = new ObjectMapper();
 		JsonNode     root           = null;
 		JsonNode     validacionJs   = null;
@@ -133,7 +133,7 @@ public class ImpBusquedaRest implements BusquedaRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				calificaciones = mapper.convertValue(datos, Kardex[].class);
+				calificaciones = mapper.convertValue(datos, KardexM[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}

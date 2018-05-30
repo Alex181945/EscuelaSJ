@@ -1,6 +1,6 @@
 package com.sorjuana.escuela.modelo.datos.kardex;
 
-public class Kardex {
+public class KardexM {
 	
 	private Integer iPersona;	
 	private Integer iMateria;	
