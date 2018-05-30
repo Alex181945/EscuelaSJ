@@ -73,12 +73,14 @@ public class Kardex {
 		mav.addObject("kardex", busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		mav.addObject("nombre", cNombre);
+		mav.addObject("iPersona", iPersona);
 		
 		return mav;
 	}
 
+	@GetMapping("/historial/alumno/genera-pdf")
 	public ResponseEntity<InputStreamResource> reporteKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
-			@ModelAttribute("iPersona") Integer iPersona){
+			@ModelAttribute("iPersona") Integer iPersona, @ModelAttribute("cNombre") String cNombre){
 		
 		ByteArrayInputStream bis = GeneraKardexPDF.reporteKardex(busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
 

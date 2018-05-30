@@ -135,3 +135,7 @@ function invocaKardex(iPersona, cNombre){
 	window.open("/historial/alumno/genera?iPersona=" + iPersona + "&cNombre=" + cNombre, "_blank");
 	
 }
+
+function generaPDF(){
+	window.open("/historial/alumno/genera-pdf?iPersona=" + iPersona + "&cNombre=" + cNombre, "_blank");
+}
