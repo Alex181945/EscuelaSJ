@@ -1,7 +1,12 @@
 <div class="d-flex justify-content-center align-items-center"
 	style="min-height: 75%; min-height: 75vh;" th:fragment="content">
-	<div class="embed-responsive embed-responsive-16by9">
-		<iframe src="https://pwpc-hdez25.000webhostapp.com/index.html" class="embed-responsive-item"></iframe>
+	
+	<div id="logo" style="text-align:center;">
+			<div id="logo_text">
+				<!-- class="logo_colour", allows you to change the colour of the text -->
+				<img class="img-responsive center-block" alt="Sor Juana Ines de la Cruz"  src="#" 
+					th:src="@{/assets/img/sistem.png}" />
+			</div>
 	</div>
 	
 	<script th:inline="javascript">

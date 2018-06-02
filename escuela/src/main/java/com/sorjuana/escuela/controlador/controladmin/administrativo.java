@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.ct.Admin;
+import com.sorjuana.escuela.modelo.ct.CtPersona;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
 import com.sorjuana.escuela.repositorio.modulo.MenuRest;
@@ -32,6 +33,7 @@ public class administrativo {
 				ModelAndView mav = new ModelAndView();
 				mav.setViewName(Vistas.getFormularioadmin());
 				mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+				mav.addObject("objCtPersona", new CtPersona());
 				return mav;
 			}
 			

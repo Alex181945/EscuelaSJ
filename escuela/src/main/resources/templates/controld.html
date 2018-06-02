@@ -4,7 +4,7 @@
 
 		<h1 class="display-6"  style="color: #ffffff;" >Control Docente</h1>
 		<br/>
-		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" > 
+		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" th:object="@{objCtPersona}" > 
     		
     		<div class="row" >    		
 				<div id="NumeroEmpleado" class="col-md-6 row">
@@ -12,7 +12,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="Apellido Paterno" name="Numero de Empleado" placeholder="Numero de Empleado" onkeypress="return validarUsuario(event)" />
+							id="Apellido Paterno" readonly="true" name="Numero de Empleado" placeholder="Numero de Empleado" onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>
 				    					
