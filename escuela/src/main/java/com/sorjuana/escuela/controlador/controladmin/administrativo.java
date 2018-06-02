@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.Gson;
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.ct.Admin;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
@@ -63,5 +66,16 @@ public class administrativo {
 				mav.addObject("controladmin", adm);
 				mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 				return mav;
+			}
+			
+			@PostMapping("/catalogo/administrativo/inserta")	
+			public @ResponseBody String inserta(@ModelAttribute("Persona") Usuario sesionPersona,
+					@ModelAttribute("objPersona") String objPersona, @ModelAttribute("arrayAtributo") String arrayAtributo) {
+				
+				System.out.println("Hola entro");
+				System.out.println(objPersona);
+				System.out.println(arrayAtributo);
+				
+				return new Gson().toJson("");
 			}
 }

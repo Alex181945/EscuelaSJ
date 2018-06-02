@@ -23,8 +23,9 @@ function iPersona(iPersona, iIDTipoPersona, cNombre, cAPaterno, cAMaterno, lGene
 
 function validaCampos(iTipoConsulta, cFormulario){
 	
+	var objPersona;
 	//Array para el detalle
-	arrayAtributo = [];
+	var arrayAtributo = [];
 	
 	switch (iTipoConsulta) {
 	case '1':
@@ -50,7 +51,7 @@ function validaCampos(iTipoConsulta, cFormulario){
 			validaComunes('String', $('#cAMaterno').val());
 			
 
-			var persona = new iPersona($('#iPersona').val(), $(
+			objPersona = new iPersona($('#iPersona').val(), $(
 				'#iIDTipoPersona').val(), $('#cNombre').val(), $(
 				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val(), 
 				$('#dtFechaNac').val());
@@ -75,7 +76,7 @@ function validaCampos(iTipoConsulta, cFormulario){
 			
 			//Email
 			
-			console.log(persona);
+			console.log(objPersona);
 			console.log(arrayAtributo);
 			
 			break;
@@ -132,6 +133,33 @@ function validaCampos(iTipoConsulta, cFormulario){
 		console.log("Ninguna opcion valida, Tipo Formulario");
 		break;
 	}
+	
+	//Funcion Ajax
+	
+	var json1 = JSON.stringify(objPersona);
+	var json2 = JSON.stringify(arrayAtributo);
+	
+	$.ajax({
+		url : "/catalogo/administrativo/inserta",
+		data : {
+			objPersona : json1,
+			arrayAtributo : json2,
+		},
+		type : 'POST',
+		success : function(data) {
+
+			console.log(data);
+			
+		},
+		error : function(xhr, status) {
+			swal('Disculpe, existió un problema');
+		},
+		// código a ejecutar sin importar si la petición
+		// falló o no
+		complete : function(xhr, status) {
+			//alert('Petición realizada');
+		}
+	});
 	
 }
 
