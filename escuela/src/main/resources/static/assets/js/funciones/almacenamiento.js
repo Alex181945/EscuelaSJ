@@ -2,8 +2,3 @@
  * 
  */
 
-$(document).ready(function() {
-	
-	
-	
-});
