@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.google.gson.Gson;
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.ct.Admin;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
 import com.sorjuana.escuela.repositorio.modulo.MenuRest;
+import com.sorjuana.escuela.repositorio.tipopersona.TipoPersonaRest;
 
 
 
@@ -24,6 +24,9 @@ public class administrativo {
 	
 	@Autowired
 	private MenuRest menuRest;
+	
+	@Autowired
+	private TipoPersonaRest tipoPersonaRest;
 		
 			@GetMapping("/catalogo/admin/inserta")
 			public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
@@ -72,9 +75,12 @@ public class administrativo {
 			public @ResponseBody String inserta(@ModelAttribute("Persona") Usuario sesionPersona,
 					@ModelAttribute("objPersona") String objPersona, @ModelAttribute("arrayAtributo") String arrayAtributo) {
 				
+				tipoPersonaRest.insertaTipoPersona(objPersona, arrayAtributo, sesionPersona.getcToken());
 				
+				if (tipoPersonaRest.islResultado()) {
+					return tipoPersonaRest.getMensaje();
+				}
 				
-				
-				return new Gson().toJson("");
+				return "sucess";
 			}
 }

@@ -51,8 +51,7 @@ function validaCampos(iTipoConsulta, cFormulario){
 			validaComunes('String', $('#cAMaterno').val());
 			
 
-			objPersona = new iPersona($('#iPersona').val(), $(
-				'#iIDTipoPersona').val(), $('#cNombre').val(), $(
+			objPersona = new iPersona($('#iPersona').val(), 1, $('#cNombre').val(), $(
 				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val(), 
 				$('#dtFechaNac').val());
 			
@@ -149,6 +148,11 @@ function validaCampos(iTipoConsulta, cFormulario){
 		success : function(data) {
 
 			console.log(data);
+			if(data == "sucess"){
+				swal('Exito...','Exito al registrar','success');
+			} else{
+				swal('Oops...',data,'error');
+			}
 			
 		},
 		error : function(xhr, status) {

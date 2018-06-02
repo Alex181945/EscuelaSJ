@@ -7,6 +7,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +19,7 @@ import com.sorjuana.escuela.configuracion.VariablesEntorno;
 import com.sorjuana.escuela.modelo.datos.Validacion;
 import com.sorjuana.escuela.repositorio.tipopersona.TipoPersonaRest;
 
+@Component
 public class TipoPersonaRestImp implements TipoPersonaRest {
 	
 	private final static Logger LOGGER = Logger.getLogger(TipoPersonaRestImp.class.getName());
