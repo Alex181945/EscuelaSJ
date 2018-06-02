@@ -72,9 +72,8 @@ public class administrativo {
 			public @ResponseBody String inserta(@ModelAttribute("Persona") Usuario sesionPersona,
 					@ModelAttribute("objPersona") String objPersona, @ModelAttribute("arrayAtributo") String arrayAtributo) {
 				
-				System.out.println("Hola entro");
-				System.out.println(objPersona);
-				System.out.println(arrayAtributo);
+				
+				
 				
 				return new Gson().toJson("");
 			}
