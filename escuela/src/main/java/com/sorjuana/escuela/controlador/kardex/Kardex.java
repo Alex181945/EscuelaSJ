@@ -90,6 +90,7 @@ public class Kardex {
 		mav.addObject("kardex", busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		mav.addObject("nombre", cNombre);
+		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false : true);
 		mav.addObject("iPersona", iPersona);
 		
 		return mav;
