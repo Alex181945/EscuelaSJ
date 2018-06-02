@@ -58,6 +58,7 @@ public class Kardex {
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		mav.addObject("nombre", sesionPersona.getcNombre() + " " + sesionPersona.getcAPaterno() + " " + sesionPersona.getcAMaterno());
 		mav.addObject("iPersona", sesionPersona.getiPersona());
+		mav.addObject("habilitaboton", true);
 		
 		return mav;
 	}
@@ -101,7 +102,7 @@ public class Kardex {
 		ByteArrayInputStream bis = GeneraKardexPDF.reporteKardex(busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()), cNombre);
 
 		HttpHeaders headers = new HttpHeaders();
-		headers.add("Content-Disposition", "inline; filename=kardex-" + "" + ".pdf");
+		headers.add("Content-Disposition", "inline; filename=kardex-" + cNombre + ".pdf");
 
 		return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
 				.body(new InputStreamResource(bis));
