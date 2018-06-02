@@ -22,8 +22,11 @@ function validaCampos(iTipoConsulta, cFormulario){
 	opAtributo.cValor;
 	opAtributo.cObs;
 	
+	//Array para el detalle
+	arrayAtributo = [];
+	
 	switch (iTipoConsulta) {
-	case 1:
+	case '1':
 		//Caso del Inserta Registro
 		
 		switch (cFormulario) {
@@ -37,16 +40,36 @@ function validaCampos(iTipoConsulta, cFormulario){
 		case 'administrativo':
 			//Caso del Administrativo
 			
-			console.log(cNombre);
+			/*Para el caso general*/
+			//Para Nombre
+			validaComunes('String', cNombre);			
+			//Para Paterno
+			validaComunes('String', cAPaterno);			
+			//Para Materno
+			validaComunes('String', cAMaterno);
 			
-			if(cNombre == "" || cNombre == null){
-				swal({
-					  type: 'error',
-					  title: 'Oops...',
-					  text: 'El nombre no puede ir vacío'
-					})
-				return ;
-			}
+			/*Para el caso particular*/
+			//Fecha de ingreso
+			validaComunes('String', $('#fechaIngreso').val());
+			opAtributo.iAtributoPer = 0;
+			opAtributo.iAtributo = 1;
+			opAtributo.iIDTipoPersona = 1;
+			opAtributo.iPersona = 0;
+			opAtributo.cValor = $('#fechaIngreso').val();
+			opAtributo.cObs = "";			
+			arrayAtributo.push(opAtributo);
+			
+			//Fecha de ingreso
+			validaComunes('String', $('#area').val());
+			opAtributo.iAtributoPer = 0;
+			opAtributo.iAtributo = 2;
+			opAtributo.iIDTipoPersona = 1;
+			opAtributo.iPersona = 0;
+			opAtributo.cValor = $('#area').val();
+			opAtributo.cObs = "";			
+			arrayAtributo.push(opAtributo);
+			
+			console.log(arrayAtributo);
 			
 			break;
 			
@@ -61,12 +84,13 @@ function validaCampos(iTipoConsulta, cFormulario){
 			break;
 
 		default:
+			console.log("Ninguna opcion valida, Inserta Formulario");
 			break;
 		}
 		
 		break;
 		
-	case 2:
+	case '2':
 		//Caso del Actualiza Registro
 		
 		switch (cFormulario) {
@@ -91,16 +115,40 @@ function validaCampos(iTipoConsulta, cFormulario){
 			break;
 
 		default:
+			console.log("Ninguna opcion valida, Actualiza Formulario");
 			break;
 		}
 		
 		break;
 
 	default:
+		console.log("Ninguna opcion valida, Tipo Formulario");
 		break;
 	}
 	
-	
-	
 }
 
+function validaComunes(cTipoValida, cValor){
+	if(cTipoValida == 'String'){
+		if(cValor == "" || cValor == null){
+			swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: 'El nombre no puede ir vacío'
+				})
+			return ;
+		}
+	}
+	
+	if(cTipoValida == 'Integer'){
+		if(cValor == 0 || cValor == null){
+			swal({
+				  type: 'error',
+				  title: 'Oops...',
+				  text: 'El nombre no puede ir vacío'
+				})
+			return ;
+		}
+	}		
+	
+}
