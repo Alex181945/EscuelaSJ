@@ -74,7 +74,7 @@ public class alumno {
 		Alumno[] al = { alum };
 
 		mav.addObject("controlalum", al);
-		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false:true);
+		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false:true	);
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;
 
