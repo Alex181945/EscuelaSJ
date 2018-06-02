@@ -2,25 +2,26 @@
  * 
  */
 
+function opAtributo(iAtributoPer, iAtributo, iIDTipoPersona, iPersona, cValor, cObs){
+	this.iAtributoPer = iAtributoPer;
+	this.iAtributo = iAtributo;
+	this.iIDTipoPersona = iIDTipoPersona;
+	this.iPersona = iPersona;
+	this.cValor = cValor;
+	this.cObs = cObs;
+}
+
+function iPersona(iPersona, iIDTipoPersona, cNombre, cAPaterno, cAMaterno, lGenero, dtFechaNac) {
+	this.iPersona = iPersona;
+	this.iIDTipoPersona = iIDTipoPersona;
+	this.cNombre = cNombre;
+	this.cAPaterno = cAPaterno;
+	this.cAMaterno = cAMaterno;
+	this.lGenero = lGenero;
+	this.dtFechaNac = dtFechaNac;
+}
+
 function validaCampos(iTipoConsulta, cFormulario){
-	
-	//Encabezado
-	var iPersona       = $('#iPersona').val();
-	var iIDTipoPersona = $('#iIDTipoPersona').val();
-	var cNombre        = $('#cNombre').val();
-	var cAPaterno      = $('#cAPaterno').val();
-	var cAMaterno      = $('#cAMaterno').val();
-	var lGenero        = $('#lGenero').val();
-	var dtFechaNac     = $('#cNombre').val();
-	
-	//Detalle
-	var opAtributo = new Object();
-	opAtributo.iAtributoPer;
-	opAtributo.iAtributo;
-	opAtributo.iIDTipoPersona;
-	opAtributo.iPersona;
-	opAtributo.cValor;
-	opAtributo.cObs;
 	
 	//Array para el detalle
 	arrayAtributo = [];
@@ -42,33 +43,39 @@ function validaCampos(iTipoConsulta, cFormulario){
 			
 			/*Para el caso general*/
 			//Para Nombre
-			validaComunes('String', cNombre);			
+			validaComunes('String', $('#cNombre').val());			
 			//Para Paterno
-			validaComunes('String', cAPaterno);			
+			validaComunes('String', $('#cAPaterno').val());			
 			//Para Materno
-			validaComunes('String', cAMaterno);
+			validaComunes('String', $('#cAMaterno').val());
+			
+
+			var persona = new iPersona($('#iPersona').val(), $(
+				'#iIDTipoPersona').val(), $('#cNombre').val(), $(
+				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val(), 
+				$('#dtFechaNac').val());
 			
 			/*Para el caso particular*/
+			
 			//Fecha de ingreso
 			validaComunes('String', $('#fechaIngreso').val());
-			opAtributo.iAtributoPer = 0;
-			opAtributo.iAtributo = 1;
-			opAtributo.iIDTipoPersona = 1;
-			opAtributo.iPersona = 0;
-			opAtributo.cValor = $('#fechaIngreso').val();
-			opAtributo.cObs = "";			
-			arrayAtributo.push(opAtributo);
+			arrayAtributo.push(new opAtributo(0, 1, 0, 0, $('#fechaIngreso').val(), ""));
 			
 			//Fecha de ingreso
 			validaComunes('String', $('#area').val());
-			opAtributo.iAtributoPer = 0;
-			opAtributo.iAtributo = 2;
-			opAtributo.iIDTipoPersona = 1;
-			opAtributo.iPersona = 0;
-			opAtributo.cValor = $('#area').val();
-			opAtributo.cObs = "";			
-			arrayAtributo.push(opAtributo);
+			arrayAtributo.push(new opAtributo(0,2,0,0,$('#area').val(),""));
 			
+			//Telefono
+			validaComunes('String', $('#telefono').val());
+			arrayAtributo.push(new opAtributo(0, 3, 0, 0, $('#telefono').val(), ""));
+			
+			//Telefono Movil
+			validaComunes('String', $('#telefonoCelular').val());
+			arrayAtributo.push(new opAtributo(0, 4, 0, 0, $('#telefonoCelular').val(), ""));
+			
+			//Email
+			
+			console.log(persona);
 			console.log(arrayAtributo);
 			
 			break;
@@ -134,7 +141,7 @@ function validaComunes(cTipoValida, cValor){
 			swal({
 				  type: 'error',
 				  title: 'Oops...',
-				  text: 'El nombre no puede ir vacío'
+				  text: 'El campo no puede ir vacío'
 				})
 			return ;
 		}
@@ -145,7 +152,7 @@ function validaComunes(cTipoValida, cValor){
 			swal({
 				  type: 'error',
 				  title: 'Oops...',
-				  text: 'El nombre no puede ir vacío'
+				  text: 'El campo no puede ir vacío'
 				})
 			return ;
 		}
