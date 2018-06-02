@@ -52,7 +52,7 @@ function validaCampos(iTipoConsulta, cFormulario){
 			
 
 			objPersona = new iPersona($('#iPersona').val(), 1, $('#cNombre').val(), $(
-				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val(), 
+				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val() != "" ? $('#lGenero').val() : 0, 
 				$('#dtFechaNac').val());
 			
 			/*Para el caso particular*/
