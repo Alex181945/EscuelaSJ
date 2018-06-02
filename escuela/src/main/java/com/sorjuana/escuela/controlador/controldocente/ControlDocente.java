@@ -69,6 +69,7 @@ public class ControlDocente {
 
 			mav.addObject("controld", docen);
 			mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+			mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false : true);
 			return mav;
 		}
 		
