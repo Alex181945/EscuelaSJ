@@ -63,19 +63,19 @@ function validaCampos(iTipoConsulta, cFormulario){
 			
 			//Fecha de ingreso
 			validaComunes('String', $('#fechaIngreso').val());
-			arrayAtributo.push(new opAtributo(0, 1, 0, 0, $('#fechaIngreso').val(), ""));
+			arrayAtributo.push(new opAtributo(0, 1, 1, 0, $('#fechaIngreso').val(), ""));
 			
 			//Fecha de ingreso
 			validaComunes('String', $('#area').val());
-			arrayAtributo.push(new opAtributo(0,2,0,0,$('#area').val(),""));
+			arrayAtributo.push(new opAtributo(0,2,1,0,$('#area').val(),""));
 			
 			//Telefono
 			validaComunes('String', $('#telefono').val());
-			arrayAtributo.push(new opAtributo(0, 3, 0, 0, $('#telefono').val(), ""));
+			arrayAtributo.push(new opAtributo(0, 3, 1, 0, $('#telefono').val(), ""));
 			
 			//Telefono Movil
 			validaComunes('String', $('#telefonoCelular').val());
-			arrayAtributo.push(new opAtributo(0, 4, 0, 0, $('#telefonoCelular').val(), ""));
+			arrayAtributo.push(new opAtributo(0, 4, 1, 0, $('#telefonoCelular').val(), ""));
 			
 			//Email
 			
