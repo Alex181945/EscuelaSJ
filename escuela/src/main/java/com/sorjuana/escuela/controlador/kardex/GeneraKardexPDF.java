@@ -20,7 +20,7 @@ import com.sorjuana.escuela.modelo.datos.kardex.KardexM;
 
 public class GeneraKardexPDF {
 
-	public static ByteArrayInputStream reporteKardex(KardexM[] kardex, String cNombre) {
+	public static ByteArrayInputStream reporteKardex(KardexM[] kardex, String cNombre, String cCicloEscolar, String cGrado) {
 		
 		Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -66,6 +66,17 @@ public class GeneraKardexPDF {
             hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
             table.addCell(hcell);
             
+            Paragraph PiePagina = new Paragraph();
+            PiePagina.setAlignment(Element.ALIGN_CENTER);
+            PiePagina.add("Atentamente\n ______________________\n Rebeca Gomez Palma.\n Directora General.");
+        	
+        	
+        	Paragraph Direccion = new Paragraph();
+        	Direccion.setAlignment(Element.ALIGN_CENTER);
+        	Direccion.add("RIO DE LOS REMEDIOS NO. 81 COL. SAN JUAN IXHUATEPEC, TLALNEPANTLA EDO. DE MEX., C.P. 54180 INCORPORADA A LA SEP.\n C.C.T. 15PJN023E1E, C.C.T. 15PST0600J, C.C.T. 15PPR0024N");
+        	Direccion.setFont(smallFont);
+             
+            /*este genera el kardex*/
             for (KardexM kardex2 : kardex) {
             	
             	PdfPCell cell;
@@ -100,8 +111,12 @@ public class GeneraKardexPDF {
                 Chunk linebreak = new Chunk(separator);
                 document.add(linebreak);
                 
-                document.add(new Paragraph("El presente documento hace constar que el alumno: " + cNombre + ", a cursado las siguiente materias: \n\r" ));
-                document.add(table);                
+                document.add(new Paragraph("La que suscribe C. Directora de esta Institucion hace Constar que el alumno: " + cNombre + ", inscrito en el ciclo escolar: "+ cCicloEscolar +", en el grado "+ cGrado +" ,obteniendo las siguientes calificaciones \n\r" ));
+               //* document.add(new Paragraph("La que suscribe C. Directora de esta Institucion hace Constar que el alumno:______________________________________________________, inscrito en el ciclo escolar: _______________________, en el grado ______________ ,obteniendo las siguientes calificaciones \n\r" ));
+                document.add(table); 
+                document.add(linebreak);
+                document.add(PiePagina);
+                document.add(Direccion);
                 document.close();
 				
 			}
