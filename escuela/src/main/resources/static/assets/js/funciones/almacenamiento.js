@@ -49,10 +49,14 @@ function validaCampos(iTipoConsulta, cFormulario){
 			validaComunes('String', $('#cAPaterno').val());			
 			//Para Materno
 			validaComunes('String', $('#cAMaterno').val());
+			//Para Fecha de Nacimiento
+			validaComunes('String', $('#dtFechaNac').val());
+			//Para Genero
+			validaComunes('Integer',$('#lGenero').val());
 			
 
 			objPersona = new iPersona($('#iPersona').val(), 1, $('#cNombre').val(), $(
-				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val() != "" ? $('#lGenero').val() : 0, 
+				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val(), 
 				$('#dtFechaNac').val());
 			
 			/*Para el caso particular*/
