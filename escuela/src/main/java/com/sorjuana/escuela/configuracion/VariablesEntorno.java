@@ -3,7 +3,7 @@ package com.sorjuana.escuela.configuracion;
 public class VariablesEntorno {
 	
 	private static final String URLWSD = "http://localhost:3000/";
-	private static final String URLWSP = "http://localhost:3000/";
+	private static final String URLWSP = "https://restmysqlsj.herokuapp.com/";
 	private static final String TOKEN_PREFIX = "Bearer ";
     private static final String HEADER_STRING = "Authorization";
 	

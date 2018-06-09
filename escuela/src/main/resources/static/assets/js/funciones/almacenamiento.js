@@ -49,29 +49,33 @@ function validaCampos(iTipoConsulta, cFormulario){
 			validaComunes('String', $('#cAPaterno').val());			
 			//Para Materno
 			validaComunes('String', $('#cAMaterno').val());
+			//Para Fecha de Nacimiento
+			validaComunes('String', $('#dtFechaNac').val());
+			//Para Genero
+			validaComunes('Integer',$('#lGenero').val());
 			
 
 			objPersona = new iPersona($('#iPersona').val(), 1, $('#cNombre').val(), $(
-				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val() != "" ? $('#lGenero').val() : 0, 
+				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val(), 
 				$('#dtFechaNac').val());
 			
 			/*Para el caso particular*/
 			
 			//Fecha de ingreso
 			validaComunes('String', $('#fechaIngreso').val());
-			arrayAtributo.push(new opAtributo(0, 1, 0, 0, $('#fechaIngreso').val(), ""));
+			arrayAtributo.push(new opAtributo(0, 1, 1, 0, $('#fechaIngreso').val(), ""));
 			
 			//Fecha de ingreso
 			validaComunes('String', $('#area').val());
-			arrayAtributo.push(new opAtributo(0,2,0,0,$('#area').val(),""));
+			arrayAtributo.push(new opAtributo(0,2,1,0,$('#area').val(),""));
 			
 			//Telefono
 			validaComunes('String', $('#telefono').val());
-			arrayAtributo.push(new opAtributo(0, 3, 0, 0, $('#telefono').val(), ""));
+			arrayAtributo.push(new opAtributo(0, 3, 1, 0, $('#telefono').val(), ""));
 			
 			//Telefono Movil
 			validaComunes('String', $('#telefonoCelular').val());
-			arrayAtributo.push(new opAtributo(0, 4, 0, 0, $('#telefonoCelular').val(), ""));
+			arrayAtributo.push(new opAtributo(0, 4, 1, 0, $('#telefonoCelular').val(), ""));
 			
 			//Email
 			
