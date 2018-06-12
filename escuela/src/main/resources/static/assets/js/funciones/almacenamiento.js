@@ -44,15 +44,15 @@ function validaCampos(iTipoConsulta, cFormulario){
 			
 			/*Para el caso general*/
 			//Para Nombre
-			validaComunes('String', $('#cNombre').val());			
+			if(validaComunes('String', $('#cNombre').val())){ break; }			
 			//Para Paterno
-			validaComunes('String', $('#cAPaterno').val());			
+			if(validaComunes('String', $('#cAPaterno').val())){ break; }			
 			//Para Materno
-			validaComunes('String', $('#cAMaterno').val());
+			if(validaComunes('String', $('#cAMaterno').val())){ break; }
 			//Para Fecha de Nacimiento
-			validaComunes('String', $('#dtFechaNac').val());
+			if(validaComunes('String', $('#dtFechaNac').val())){ break; }
 			//Para Genero
-			validaComunes('Integer',$('#lGenero').val());
+			if(validaComunes('String',$('#lGenero').val())){ break; }
 			
 
 			objPersona = new iPersona($('#iPersona').val(), 1, $('#cNombre').val(), $(
@@ -142,6 +142,11 @@ function validaCampos(iTipoConsulta, cFormulario){
 	var json1 = JSON.stringify(objPersona);
 	var json2 = JSON.stringify(arrayAtributo);
 	
+	if(typeof objPersona === "undefined" || typeof arrayAtributo === "undefined" ||
+		typeof json1 === "undefined" || typeof json2 === "undefined"){
+		return;
+	}
+	
 	$.ajax({
 		url : "/catalogo/administrativo/inserta",
 		data : {
@@ -172,6 +177,7 @@ function validaCampos(iTipoConsulta, cFormulario){
 }
 
 function validaComunes(cTipoValida, cValor){
+	
 	if(cTipoValida == 'String'){
 		if(cValor == "" || cValor == null){
 			swal({
@@ -179,7 +185,7 @@ function validaComunes(cTipoValida, cValor){
 				  title: 'Oops...',
 				  text: 'El campo no puede ir vacío'
 				})
-			return ;
+			return true;
 		}
 	}
 	
@@ -190,8 +196,10 @@ function validaComunes(cTipoValida, cValor){
 				  title: 'Oops...',
 				  text: 'El campo no puede ir vacío'
 				})
-			return ;
+			return true;
 		}
 	}		
+	
+	return false;
 	
 }

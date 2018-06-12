@@ -12,7 +12,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="iPersona" name="Numero de Empleado" placeholder="Numero de Empleado" onkeypress="return validarUsuario(event)" />
+							id="iPersona" name="Numero de Empleado" placeholder="Numero de Empleado" readonly="true" />
 					</div>
 				</div>
 							
@@ -32,7 +32,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="cAPaterno" name="Apellido Paterno" placeholder="Apellido Paterno" onkeypress="return validarUsuario(event)" />
+							id="cAPaterno" name="Apellido Paterno" placeholder="Apellido Paterno" />
 					</div>
 				</div>
 				
@@ -41,7 +41,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="cAMaterno" name="Apellido Materno" placeholder="Apellido Materno" onkeypress="return validarUsuario(event)" />
+							id="cAMaterno" name="Apellido Materno" placeholder="Apellido Materno" />
 					</div>
 				</div>
 				</div>
@@ -52,7 +52,7 @@
 							class="col-md-4  text-center text-white col-form-label"><h5 class="lead">Fecha de Nacimiento:</h5></label>
 						<div class="col-md-8">
 							<input type="date" class="form-control form-control-lg"
-								id="dtFechaNac" name="Fecha de Ingreso" placeholder="Fecha de Nacimiento" onkeypress="return validarUsuario(event)" />
+								id="dtFechaNac" name="Fecha de Ingreso" placeholder="Fecha de Nacimiento"  />
 						</div>
 					</div>
 					
@@ -70,7 +70,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Fecha de Ingreso:</h5></label>
 					<div class="col-md-8">
 						<input type="date" class="form-control form-control-lg"
-							id="fechaIngreso" name="Fecha de Ingreso" placeholder="Fecha de Ingreso" onkeypress="return validarUsuario(event)" />	
+							id="fechaIngreso" name="Fecha de Ingreso" placeholder="Fecha de Ingreso" />	
 					</div>
 				</div>
 				
@@ -89,7 +89,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Telefono:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="telefono" name="Telefono" placeholder="Telefono" onkeypress="return validarUsuario(event)" />
+							id="telefono" name="Telefono" placeholder="Telefono"  />
 					</div>
 				</div>
 				
@@ -98,7 +98,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Telefono Celular:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="telefonoCelular" name="Telefono Celular" placeholder="Telefono Celular" onkeypress="return validarUsuario(event)" />
+							id="telefonoCelular" name="Telefono Celular" placeholder="Telefono Celular" />
 					</div>
 				</div>					
 				
@@ -107,7 +107,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Email:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="email" name="Email" placeholder="Email" onkeypress="return validarUsuario(event)" />
+							id="email" name="Email" placeholder="Email"  />
 					</div>
 				</div>	
 				</div>				
@@ -117,7 +117,7 @@
 					<center>	
 					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
 
-					<button type="button" class="btn btn-outline-primary" th:onclick=  "'validaCampos(\''+ ${iTipoConsulta} + '\' , \''+ ${cFormulario} + '\' );'" style ="width: 110px;">Guardar</button>				
+					<button type="button" class="btn btn-outline-primary" th:onclick="'validaCampos(\''+ ${iTipoConsulta} + '\' , \''+ ${cFormulario} + '\' );'" style ="width: 110px;">Guardar</button>				
 
 					<button type="button" class="btn btn-outline-primary"   style ="width: 110px;"> <a href="/catalogo/administrativo">Regresar</a></button>	</center>			
 				</div>
