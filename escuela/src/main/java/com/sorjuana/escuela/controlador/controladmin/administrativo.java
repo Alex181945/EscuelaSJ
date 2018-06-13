@@ -52,21 +52,6 @@ public class administrativo {
 				
 				ModelAndView mav = new ModelAndView();
 				mav.setViewName(Vistas.getControladmin());
-				Admin ad = new Admin();
-				ad.setiPersona(1);
-				ad.setcNumEm("8952325");
-				ad.setcNombre("Ruben");
-				ad.setcAPaterno("Hernandez");
-				ad.setcAMaterno("Aguilar");
-				ad.setcFecIng("12/12/2006");
-				ad.setcArea("Administrativo");
-				ad.setcTel("57-98-51-23");
-				ad.setcTelCel("55-89-69-74-21");
-				ad.setcEmail("cdvcv@gmail.com");
-				ad.setlActivo(1);
-				Admin[] adm = {ad};
-				
-				mav.addObject("controladmin", adm);
 				mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 				return mav;
 			}
