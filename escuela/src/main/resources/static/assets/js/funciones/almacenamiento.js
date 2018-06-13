@@ -155,6 +155,7 @@ function validaCampos(iTipoConsulta, cFormulario){
 			console.log(data);
 			if(data == "sucess"){
 				swal('Exito...','Exito al registrar','success');
+				limpia();
 			} else{
 				swal('Oops...',data,'error');
 			}
@@ -198,4 +199,16 @@ function validaComunes(cTipoValida, cValor){
 	
 	return false;
 	
+}
+
+function limpia(){
+	$('#cNombre').val()         = "";
+	$('#cAPaterno').val()       = "";
+	$('#cAMaterno').val()       = "";
+	$('#dtFechaNac').val()      = "";
+	$('#lGenero').val()         = "";
+	$('#fechaIngreso').val()    = "";
+	$('#area').val()            = "";
+	$('#telefono').val()        = "";
+	$('#telefonoCelular').val() = "";
 }
