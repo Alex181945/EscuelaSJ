@@ -1,5 +1,8 @@
 package com.sorjuana.escuela.modelo.ct;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class CtPersona {
 
 	private Integer iPersona;
