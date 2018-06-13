@@ -10,6 +10,7 @@ public class CtPersona {
 	private String cNombre;
 	private String cAPaterno;
 	private String cAMaterno;
+	private String cNomCompleto;
 	private Integer lGenero;
 	private String dtFechaNac;
 	private Integer lActivo;
@@ -46,6 +47,13 @@ public class CtPersona {
 	public void setcAMaterno(String cAMaterno) {
 		this.cAMaterno = cAMaterno;
 	}
+	public String getcNomCompleto() {
+		cNomCompleto = cNombre + " " + cAPaterno + " " + cAMaterno;
+		return cNomCompleto;
+	}
+	public void setcNomCompleto(String cNomCompleto) {
+		this.cNomCompleto = cNomCompleto;
+	}
 	public Integer getlGenero() {
 		return lGenero;
 	}
@@ -76,5 +84,5 @@ public class CtPersona {
 	public void setDtModificado(String dtModificado) {
 		this.dtModificado = dtModificado;
 	}
-	
+		
 }
