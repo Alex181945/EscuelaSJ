@@ -51,7 +51,7 @@ public class administrativo {
 				
 				ModelAndView mav = new ModelAndView();
 				mav.setViewName(Vistas.getControladmin());
-				mav.addObject("listaAdm", tipoPersonaRest.consultaTipoPersona(1, sesionPersona.getcToken()));
+				mav.addObject("controladmin", tipoPersonaRest.consultaTipoPersona(1, sesionPersona.getcToken()));
 				mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 				return mav;
 			}
