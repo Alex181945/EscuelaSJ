@@ -84,6 +84,64 @@ public class TipoPersonaRestImp implements TipoPersonaRest {
 		
 	}
 
+	public String consultaTipoPersona(Integer tipoPersona, String cToken) {
+		
+		RestTemplate restTemplate = new RestTemplate();		
+		
+		Validacion[] validacion   = null;
+		ObjectMapper mapper       = new ObjectMapper();
+		JsonNode     root         = null;
+		JsonNode     validacionJs = null;
+		JsonNode     datos        = null;
+		
+		try {
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
+			body.add("iTipoPersona", tipoPersona.toString());
+
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
+			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/tipo-persona/consulta",
+					HttpMethod.POST ,httpEntity, String.class);
+			
+			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+			}
+			
+			validacionJs = root.path("validacion");
+			datos = root.path("datos");
+			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+			} else {
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+		}
+		
+		System.out.println(datos.toString());
+		
+		return datos.toString();
+	}
+	
 	@Override
 	public boolean islResultado() {
 		return this.getResultadoLocal();

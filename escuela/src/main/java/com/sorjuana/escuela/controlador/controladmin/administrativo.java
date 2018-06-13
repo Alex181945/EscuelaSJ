@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sorjuana.escuela.configuracion.Vistas;
-import com.sorjuana.escuela.modelo.ct.Admin;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
 import com.sorjuana.escuela.repositorio.modulo.MenuRest;
@@ -52,7 +51,7 @@ public class administrativo {
 				
 				ModelAndView mav = new ModelAndView();
 				mav.setViewName(Vistas.getControladmin());
-				mav.addObject("listaAdm", attributeValue);
+				mav.addObject("listaAdm", tipoPersonaRest.consultaTipoPersona(1, sesionPersona.getcToken()));
 				mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 				return mav;
 			}
