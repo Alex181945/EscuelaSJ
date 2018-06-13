@@ -16,6 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorjuana.escuela.configuracion.MensajeError;
 import com.sorjuana.escuela.configuracion.VariablesEntorno;
+import com.sorjuana.escuela.modelo.ct.CtPersona;
 import com.sorjuana.escuela.modelo.datos.Validacion;
 import com.sorjuana.escuela.repositorio.tipopersona.TipoPersonaRest;
 
@@ -84,10 +85,11 @@ public class TipoPersonaRestImp implements TipoPersonaRest {
 		
 	}
 
-	public String consultaTipoPersona(Integer tipoPersona, String cToken) {
+	public CtPersona[] consultaTipoPersona(Integer tipoPersona, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
+		CtPersona[]  persona      = null;
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
@@ -126,6 +128,7 @@ public class TipoPersonaRestImp implements TipoPersonaRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
+				persona = mapper.convertValue(datos, CtPersona[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
@@ -137,9 +140,7 @@ public class TipoPersonaRestImp implements TipoPersonaRest {
 			}.getClass().getEnclosingMethod().getName());
 		}
 		
-		System.out.println(datos.toString());
-		
-		return datos.toString();
+		return persona;
 	}
 	
 	@Override
