@@ -29,6 +29,9 @@ public class Menu {
 		mav.setViewName("prueba");
 		mav.addObject("titulo", "Bienvenido");
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("nombreC", sesionPersona.getcNombre() + " " + sesionPersona.getcAPaterno() + " " + sesionPersona.getcAMaterno());
+		mav.addObject("tipoUsu", sesionPersona.getiIDTipoPersona() == 1 ? "Administrativo"
+				: sesionPersona.getiIDTipoPersona() == 2 ? "Alumno" : "Docente");
 		return mav;
 	}
 
