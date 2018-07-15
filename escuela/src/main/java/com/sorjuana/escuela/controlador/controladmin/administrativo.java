@@ -23,49 +23,62 @@ public class administrativo {
 	
 	@Autowired
 	private MenuRest menuRest;
-	
+
 	@Autowired
 	private TipoPersonaRest tipoPersonaRest;
+
+	@GetMapping("/catalogo/admin/inserta")
+	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
+
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getFormularioadmin());
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("iTipoConsulta", 1);
+		mav.addObject("cFormulario", "administrativo");
+
+		return mav;
+	}
+
+	@GetMapping("/catalogo/administrativo")
+	public ModelAndView menu(@ModelAttribute("Persona") Usuario sesionPersona) {
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getControladmin());
+		mav.addObject("controladmin", tipoPersonaRest.consultaTipoPersona(1, sesionPersona.getcToken()));
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		return mav;
+	}
+
+	@PostMapping("/catalogo/administrativo/inserta")
+	public @ResponseBody String inserta(@ModelAttribute("Persona") Usuario sesionPersona,
+			@ModelAttribute("objPersona") String objPersona, @ModelAttribute("arrayAtributo") String arrayAtributo) {
+
+		tipoPersonaRest.insertaTipoPersona(objPersona, arrayAtributo, sesionPersona.getcToken());
+
+		if (tipoPersonaRest.islResultado()) {
+			return tipoPersonaRest.getMensaje();
+		}
+
+		return "sucess";
+	}
+
+	@GetMapping("/catalogo/administrativo/consulta/uno")
+	public ModelAndView cargaRegistro(@ModelAttribute("Persona") Usuario sesionPersona,
+			@ModelAttribute("iIDAdministrativo") Integer iIDAdmin) {
 		
-			@GetMapping("/catalogo/admin/inserta")
-			public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
-				
-				DosParametrosEnteros consulta = new DosParametrosEnteros();
-				consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
-				consulta.setParametro2(sesionPersona.getiIDTipoPersona());
-				
-				ModelAndView mav = new ModelAndView();
-				mav.setViewName(Vistas.getFormularioadmin());
-				mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
-				mav.addObject("iTipoConsulta", 1);
-				mav.addObject("cFormulario", "administrativo");
-				
-				return mav;
-			}
+		System.out.println(iIDAdmin);
+
+		ModelAndView mav = new ModelAndView();
+
+		return mav;
+
+	}
 			
-			@GetMapping("/catalogo/administrativo")
-			public ModelAndView menu(@ModelAttribute("Persona") Usuario sesionPersona) {
-				DosParametrosEnteros consulta = new DosParametrosEnteros();
-				consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
-				consulta.setParametro2(sesionPersona.getiIDTipoPersona());
-				
-				ModelAndView mav = new ModelAndView();
-				mav.setViewName(Vistas.getControladmin());
-				mav.addObject("controladmin", tipoPersonaRest.consultaTipoPersona(1, sesionPersona.getcToken()));
-				mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
-				return mav;
-			}
-			
-			@PostMapping("/catalogo/administrativo/inserta")	
-			public @ResponseBody String inserta(@ModelAttribute("Persona") Usuario sesionPersona,
-					@ModelAttribute("objPersona") String objPersona, @ModelAttribute("arrayAtributo") String arrayAtributo) {
-				
-				tipoPersonaRest.insertaTipoPersona(objPersona, arrayAtributo, sesionPersona.getcToken());
-				
-				if (tipoPersonaRest.islResultado()) {
-					return tipoPersonaRest.getMensaje();
-				}
-				
-				return "sucess";
-			}
 }
