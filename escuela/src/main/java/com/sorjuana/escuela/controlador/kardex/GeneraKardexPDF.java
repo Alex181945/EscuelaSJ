@@ -17,6 +17,8 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
 import com.sorjuana.escuela.modelo.datos.kardex.KardexM;
+import com.itextpdf.text.Image;
+
 
 public class GeneraKardexPDF {
 
@@ -25,8 +27,17 @@ public class GeneraKardexPDF {
 		Document document = new Document();
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         
+        
         try {
-        	
+        	  
+             	//Image imagen = Image.getInstance("/assets/img/sorjuanablanco.png");
+        	  
+        	  //Asignamos un 20 porciento de ancho.
+            //  imagen.scaleAbsoluteWidth(20f);
+              
+              //Agregamos la imagen al documento.
+        	 // document.add(imagen);
+             
         	Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
         	Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 5.0f);
         	
@@ -44,11 +55,7 @@ public class GeneraKardexPDF {
         	niveles.add("SECUNDARIA");
         	niveles.setFont(smallFont);
         	
-        	Paragraph permisos = new Paragraph();
-        	permisos.setAlignment(Element.ALIGN_CENTER);
-        	permisos.add("C.C.T. 15PJN023E1E,C.C.T. 15PST0600J,C.C.T. 15PPR0024N");
-        	permisos.setFont(smallFont);
-        	
+
         	PdfPTable table = new PdfPTable(3);
             table.setWidthPercentage(60);
             table.setWidths(new int[]{3, 3, 3});
@@ -75,7 +82,8 @@ public class GeneraKardexPDF {
         	Direccion.setAlignment(Element.ALIGN_CENTER);
         	Direccion.add("RIO DE LOS REMEDIOS NO. 81 COL. SAN JUAN IXHUATEPEC, TLALNEPANTLA EDO. DE MEX., C.P. 54180 INCORPORADA A LA SEP.\n C.C.T. 15PJN023E1E, C.C.T. 15PST0600J, C.C.T. 15PPR0024N");
         	Direccion.setFont(smallFont);
-             
+        	
+        	
             /*este genera el kardex*/
             for (KardexM kardex2 : kardex) {
             	
@@ -104,8 +112,7 @@ public class GeneraKardexPDF {
                 document.add(escuela);
                 document.add(escuela2);
                 document.add(niveles);
-                document.add(permisos);
-                
+
                 LineSeparator separator = new LineSeparator();
                 separator.setPercentage(59500f / 523f);
                 Chunk linebreak = new Chunk(separator);
