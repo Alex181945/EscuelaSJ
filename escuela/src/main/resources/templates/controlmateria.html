@@ -27,6 +27,7 @@
 				</div>
 				</div>
 				
+			
 				<div class="row" >	
 					
 				<div id="NivelEducativo" class="col-md-4 row">
@@ -41,7 +42,7 @@
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Periodo:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="iPeriodo" name="Periodo" placeholder="Periodo" onkeypress="return validarUsuario(event)" />
+							id="Periodo" name="Periodo" placeholder="Periodo" onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>
 				</div>
@@ -61,138 +62,5 @@
     	</div>
     </div>
 
-<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" id="site_content" th:fragment="content">
-    	<div class="container">
 
-		<h1 class="display-6"  style="color: #ffffff;" >Control Docente</h1>
-		<br/>
-		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" > 
-    		
-    		<div class="row" >    		
-				<div id="NumeroEmpleado" class="col-md-6 row">
-					<label for="Numero de Empleado"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Numero de Empleado:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="iNumEmp" readonly="true" name="Numero de Empleado" placeholder="Numero de Empleado" onkeypress="return validarUsuario(event)" />
-					</div>
-				</div>
-				    					
-				<div id="Nombre(s)" class="col-md-6 row">
-					<label for="Nombre(s)"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Nombre(s):</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="cNombre" name="Nombre(s)" placeholder="Nombre(s)" />
-
-					</div>
-				</div>
-				</div>
-				
-				<div class="row" >	
-					
-				<div id="Apepaterno" class="col-md-6 row">
-					<label for="Apellido Paterno"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="cAPaterno" name="Apellido Paterno" placeholder="Apellido Paterno" onkeypress="return validarUsuario(event)" />	
-					</div>
-				</div>
-				
-				<div id="ApeMaterno" class="col-md-6 row">
-					<label for="Apellido Materno"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Apellido Materno:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="cAMaterno" name="Apellido Materno" placeholder="Apellido Materno" onkeypress="return validarUsuario(event)" />
-					</div>
-				</div>
-				</div>
-			
-			<div class="row" >
-				
-				<div id="Cedula" class="col-md-6 row">
-					<label for="Cedula Profesional"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Cedula Profesional:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="CeduPro" name="Apellido Materno" placeholder="Cedula Profesional" onkeypress="return validarUsuario(event)" />	
-					</div>
-				</div>
-				
-				
-			  <div id="FechaIngreso" class="col-md-6 row">
-					<label for="Fecha de Ingreso"
-						class="col-md-4	 text-center text-white col-form-label"><h5 class="lead">Fecha de Ingreso:</h5></label>
-					<div class="col-md-8">
-						<input type="date" class="form-control form-control-lg"
-							id="FechaIn" name="Fecha de Ingreso" placeholder="Fecha de Ingreso" onkeypress="return validarUsuario(event)" />
-					</div>
-				</div>
-				</div>
-				
-				
-				<div class="row" >
-		    	<div id="Tel" class="col-md-6 row">
-					<label for="Telefono"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Telefono:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="cTel" name="Telefono" placeholder="Telefono" onkeypress="return validarUsuario(event)" />
-					</div>
-				</div>
-				
-				
-								
-				<div id="Email" class="col-md-6 row">
-					<label for="Email"
-						class="col-md-4  text-center text-white col-form-label"><h5 class="lead">Email:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="cEmail" name="Email" placeholder="Email" onkeypress="return validarUsuario(event)" />
-					</div>
-				</div>
-
-				</div>	
-							
-				<br/>
-				<div class="row" >				
-				
-				<div id="Genero" class="col-md-5 row">
-					<label for="Genero" class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Genero:</h5></label>
-					<div class="col-md-6">
-			        <select name="lGenero" class="form-control text-white form-control-lg"> <option>Hombre</option> <option>Mujer</option></select>
-					</div>
-				</div>
-							
-				<div id="NivelEducativo" class="col-md-4 row">
-					<label for="Nivel Educativo" class="col-md-5 text-white col-form-label"><h5 class="lead">Nivel Educativo:</h5></label>
-					<div class="col-md-6">
-					<select name="NivEdu" class="form-control form-control-lg"> <option>Maternal</option> <option>Kinder</option> <option>Primaria</option><option>Secundaria</option>  </select> 
-					</div>
-				</div>				
-				
-				<div id="Grado" class="col-md-3 row">
-					<label for="Grado"	class="col-md-3 text-white col-form-label"><h5 class="lead">Grado:</h5></label>
-					<div class="col-md-6">
-					<select name="iGrado" class="form-control form-control-lg"> <option>1ro</option> <option>2do</option> <option>3ro</option></select>
-					</div>
-				</div>		
-			    </div>
-			    <br/>
-				<div>
-				
-					<center>	
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
-
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
-
-					<button type="button" class="btn btn-outline-primary" style ="width: 110px;"><a href="/catalogo/docente">Regresar</a></button>	</center>			
-				</div>
-				<br/>
-			</form>
-
-    	</div>
-    </div>
     
