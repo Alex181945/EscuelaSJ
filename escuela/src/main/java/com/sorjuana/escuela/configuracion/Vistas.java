@@ -26,6 +26,7 @@ public class Vistas {
 	private static final String FORMULARIODOCENTE = "controld";
 	private static final String FORMULARIOKARDEX = "Kardex/kardex";
 	private static final String HISTORIALKARDEX  = "Kardex/genera_kardex";
+	private static final String CARGAKARDEX = "Kardex/carga_kardex";
 	/********************************* Fin ***********************************/
 	
 	/*************************************************************************/
@@ -96,6 +97,9 @@ public class Vistas {
 	}
 	public static String getControlmateria() {
 		return CONTROLMATERIA;
+	}
+	public static String getCargakardex() {
+		return CARGAKARDEX;
 	}
 	
 }

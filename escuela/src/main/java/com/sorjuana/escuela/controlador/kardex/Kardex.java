@@ -95,6 +95,25 @@ public class Kardex {
 		
 		return mav;
 	}
+	
+	@GetMapping("/historial/alumno/carga")
+	public ModelAndView cargaKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
+			@ModelAttribute("iPersona") Integer iPersona, @ModelAttribute("cNombre") String cNombre) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getHistorialkardex());
+		mav.addObject("kardex", busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("nombre", cNombre);
+		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false : true);
+		mav.addObject("iPersona", iPersona);
+		
+		return mav;
+	}
 
 	@GetMapping("/historial/alumno/genera-pdf")
 	public ResponseEntity<InputStreamResource> reporteKardex(@ModelAttribute("Persona") Usuario sesionPersona, 
