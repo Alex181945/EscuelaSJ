@@ -105,7 +105,7 @@ public class Kardex {
 		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getHistorialkardex());
+		mav.setViewName(Vistas.getCargakardex());
 		mav.addObject("kardex", busquedaRest.generaKardex(iPersona, sesionPersona.getcToken()));
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		mav.addObject("nombre", cNombre);

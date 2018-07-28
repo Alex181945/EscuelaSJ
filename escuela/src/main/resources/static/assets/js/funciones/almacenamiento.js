@@ -212,3 +212,7 @@ function limpia(){
 	$('#telefono').val()        = "";
 	$('#telefonoCelular').val() = "";
 }
+
+function cargaKardex(){
+	
+}
