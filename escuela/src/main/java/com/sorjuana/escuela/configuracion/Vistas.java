@@ -18,6 +18,7 @@ public class Vistas {
 	private static final String CONTROLALUMNO = "consultaalumno";
 	private static final String FORMULARIOALUMNO = "controlalum";
 	private static final String CONTROLMATERIA = "controlmateria";
+	private static final String CONTROLCALIFICACIONES = "controlcalif";
 	private static final String CONTROLASISTENCIA = "consultaasis";
 	private static final String FORMULARIOASISTENCIA = "controlasis";
 	private static final String FORMULARIOADMIN = "controladmin";
@@ -101,5 +102,7 @@ public class Vistas {
 	public static String getCargakardex() {
 		return CARGAKARDEX;
 	}
-	
-}
+	public static String getControlcalificaciones() {
+		return CONTROLCALIFICACIONES;
+	}
+	}
