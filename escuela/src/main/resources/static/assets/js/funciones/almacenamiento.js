@@ -53,7 +53,6 @@ function validaCampos(iTipoConsulta, cFormulario){
 			if(validaComunes('String', $('#dtFechaNac').val())){ break; }
 			//Para Genero
 			if(validaComunes('String',$('#lGenero').val())){ break; }
-			
 
 			objPersona = new iPersona($('#iPersona').val(), 1, $('#cNombre').val(), $(
 				'#cAPaterno').val(), $('#cAMaterno').val(), $('#lGenero').val(), 
@@ -62,25 +61,22 @@ function validaCampos(iTipoConsulta, cFormulario){
 			/*Para el caso particular*/
 			
 			//Fecha de ingreso
-			validaComunes('String', $('#fechaIngreso').val());
+			if(validaComunes('String', $('#fechaIngreso').val())){ break; }
 			arrayAtributo.push(new opAtributo(0, 1, 1, 0, $('#fechaIngreso').val(), ""));
 			
 			//Fecha de ingreso
-			validaComunes('String', $('#area').val());
+			if(validaComunes('String', $('#area').val())){ break; }
 			arrayAtributo.push(new opAtributo(0,2,1,0,$('#area').val(),""));
 			
 			//Telefono
-			validaComunes('String', $('#telefono').val());
+			if(validaComunes('String', $('#telefono').val())){ break; }
 			arrayAtributo.push(new opAtributo(0, 3, 1, 0, $('#telefono').val(), ""));
 			
 			//Telefono Movil
-			validaComunes('String', $('#telefonoCelular').val());
+			if(validaComunes('String', $('#telefonoCelular').val())){ break; }
 			arrayAtributo.push(new opAtributo(0, 4, 1, 0, $('#telefonoCelular').val(), ""));
 			
 			//Email
-			
-			console.log(objPersona);
-			console.log(arrayAtributo);
 			
 			break;
 			
@@ -159,6 +155,7 @@ function validaCampos(iTipoConsulta, cFormulario){
 			console.log(data);
 			if(data == "sucess"){
 				swal('Exito...','Exito al registrar','success');
+				limpia();
 			} else{
 				swal('Oops...',data,'error');
 			}
@@ -201,5 +198,21 @@ function validaComunes(cTipoValida, cValor){
 	}		
 	
 	return false;
+	
+}
+
+function limpia(){
+	$('#cNombre').val()         = "";
+	$('#cAPaterno').val()       = "";
+	$('#cAMaterno').val()       = "";
+	$('#dtFechaNac').val()      = "";
+	$('#lGenero').val()         = "";
+	$('#fechaIngreso').val()    = "";
+	$('#area').val()            = "";
+	$('#telefono').val()        = "";
+	$('#telefonoCelular').val() = "";
+}
+
+function cargaKardex(){
 	
 }

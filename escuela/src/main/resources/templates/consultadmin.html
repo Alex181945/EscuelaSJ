@@ -17,13 +17,13 @@
 			<thead >
 				<tr>
 					<th>ID</th>
-					<th>Numero de Empleado</th>
+					<!--  <th>Numero de Empleado</th> -->
 					<th>Nombre del Administrativo</th>
-					<th>Fecha de Ingreso</th>
+					<!-- <th>Fecha de Ingreso</th>
 					<th>Area</th>
 					<th>Telefono</th>
 					<th>Telefono Celular</th>
-					<th>Email</th>
+					<th>Email</th> -->
 					<th>Activo</th>
 					<th>Editar</th>
 					<th>Eliminar</th>
@@ -32,16 +32,16 @@
 			<tbody>
 				<tr th:each="lista : ${controladmin}">
 					<td><span th:text="${lista.iPersona}">ID</span></td>
-					<td><span th:text="${lista.cNumEm}">Numero de Empleado</span></td>
-					<td><span th:text="${lista.cNomAdm}">Nombre del Administrativo</span></td>
-					<td><span th:text="${lista.cFecIng}">Fecha de Ingresos</span></td>
+					<!-- <td><span th:text="${lista.cNumEm}">Numero de Empleado</span></td> -->
+					<td><span th:text="${lista.cNomCompleto}">Nombre del Administrativo</span></td>
+					<!-- <td><span th:text="${lista.cFecIng}">Fecha de Ingresos</span></td> 
 					<td><span th:text="${lista.cArea}">Area</span></td>					
 					<td><span th:text="${lista.cTel}">Telefono</span></td>
 					<td><span th:text="${lista.cTelCel}">Telefono Celular</span></td>
-					<td><span th:text="${lista.cEmail}">Email</span></td>
+					<td><span th:text="${lista.cEmail}">Email</span></td> -->
 					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
 					<td>
-						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iPersona=__${lista.iPersona}__}">
+						<a href="#" th:href="@{/catalogo/administrativo/consulta/uno?iPersona=__${lista.iPersona}__}">
 							<button type="button" class="btn btn-info">
 								<span class="fas fa-edit" aria-hidden="true"></span>
 							</button>

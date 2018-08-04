@@ -104,7 +104,7 @@ public class Alumno {
 		return cNomAlum ;
 	}
 	public void setcNomAlum(String cNomAlum) {
-		this.cNomAlum = cNomAlum;
+		this.cNomAlum = cNombre + " " + cAPaterno + " " + cAMaterno;
 	}
 	public String getcCURP() {
 		return cCURP;
@@ -216,9 +216,8 @@ public class Alumno {
 	public void setcObs(String cObs) {
 		this.cObs = cObs;
 	}
-	
-	
-	
-	
+	public String getcNombreCompleto() {
+		return cNomAlum;
+	}
 	
 }

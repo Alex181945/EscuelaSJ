@@ -88,14 +88,24 @@ function listaAlumno(dataSet){
 	//console.log(uniqueNames);
 	
 	$('#Listas').DataTable( {
+		"autoWidth": true,
         data: uniqueNames,
         "columns" : [
-        	{ "data" : "iPersona" },
-            { "data" : "cNombre" },
+        	{ "data" : "iPersona", "width": "20%"  },
+            { "data" : "cNombre" , "render": function ( data, type, full, meta ) {
+                return full.cNombre + " " + full.cAPaterno + " " + full.cAMaterno;
+            }, "width": "60%"  },
             { "data": null,
                 "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {                                  	
                 	$(nTd).html(" <button type='button' id='btnEliminarCli' class='btn btn-info' onclick='invocaKardex(" + oData.iPersona +  ", \"" + oData.cNombre + " " + oData.cAPaterno + " " + oData.cAMaterno +"\")' >" + "<span class='fas fa-search'  aria-hidden='true'></span> </button>");
-                }
+                },
+	          
+            },
+            { "data": null,
+                "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {                                  	
+                	$(nTd).html(" <button type='button' id='btnKardexCli' class='btn btn-warning' onclick='cargaKardex(" + oData.iPersona +  ", \"" + oData.cNombre + " " + oData.cAPaterno + " " + oData.cAMaterno +"\")' >" + "<span class='fas fa-pencil-alt'  aria-hidden='true'></span> </button>");
+                },
+	          
             },
 			
 		],
@@ -133,6 +143,12 @@ function listaAlumno(dataSet){
 function invocaKardex(iPersona, cNombre){
 	
 	window.open("/historial/alumno/genera?iPersona=" + iPersona + "&cNombre=" + cNombre, "_blank");
+	
+}
+
+function cargaKardex(iPersona, cNombre){
+	
+	window.open("/historial/alumno/carga?iPersona=" + iPersona + "&cNombre=" + cNombre, "_blank");
 	
 }
 
