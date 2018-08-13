@@ -1,80 +1,104 @@
 
-<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" id="site_content" th:fragment="content">
-    	<div class="container">
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" id="site_content"
+	th:fragment="content">
+	<div class="container">
 
-		<h1 class="display-6"  style="color: #ffffff;" >Control Docente</h1>
-		<br/>
-		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" > 
-    		
-    		<div class="row" >    		
+		<h1 class="display-6" style="color: #ffffff;">Control
+			Calificaciones</h1>
+		<br />
+		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST">
+
+			<div class="row">
 				<div id="iMateria" class="col-md-6 row">
 					<label for="Numero de Empleado"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Clave:</h5></label>
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">Clave:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="iMateria" readonly="true" name="iMateria" placeholder="iMateria" onkeypress="return validarUsuario(event)" />
+							id="iMateria" readonly="true" name="iMateria"
+							placeholder="Materia" onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>
-				    					
+
 				<div id="cMateria" class="col-md-6 row">
 					<label for="Materia"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Materia:</h5></label>
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">Materia:</h5></label>
 					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id=""cMateria"" name=""cMateria"" placeholder=""cMateria"" />
+						<input type="text" class="form-control form-control-lg" id=""
+							 name="" placeholder="" />
 
 					</div>
 				</div>
-				</div>
-				
-				<div class="row" >	
-					
+			</div>
+
+			<div class="row">
+
 				<div id="Calif" class="col-md-6 row">
 					<label for="Apellido Paterno"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Apellido Paterno:</h5></label>
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">Apellido Paterno:</h5></label>
 					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="Calif" name="Calif" placeholder="Apellido Paterno" onkeypress="return validarUsuario(event)" />	
+						<input type="text" class="form-control form-control-lg" id="Calif"
+							name="Calif" placeholder="Apellido Paterno"
+							onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>
-				
+
 				<div id="NivelEducativo" class="col-md-4 row">
-					<label for="Nivel Educativo" class="col-md-5 text-white col-form-label"><h5 class="lead">Nivel Educativo:</h5></label>
+					<label for="Nivel Educativo"
+						class="col-md-5 text-white col-form-label"><h5
+							class="lead">Nivel Educativo:</h5></label>
 					<div class="col-md-6">
-					<select name="NivEdu" class="form-control form-control-lg"> <option>Kinder</option> <option>Primaria</option><option>Secundaria</option>  </select> 
+						<select name="NivEdu" class="form-control form-control-lg">
+							<option>Kinder</option>
+							<option>Primaria</option>
+							<option>Secundaria</option>
+						</select>
 					</div>
 				</div>
-				
+			</div>
 
 				<div id="cGrado" class="col-md-6 row">
 					<label for="Apellido Paterno"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Grado:</h5></label>
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">Grado:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="cGrado" name="cGrado" placeholder="cGrado" onkeypress="return validarUsuario(event)" />	
+							id="cGrado" name="Grado" placeholder="cGrado"
+							onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>
-			
-			<div class="row" >
-				
-				<div id="cNomAlum" class="col-md-6 row">
-					<label for="Cedula Profesional"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Nombre del Alumno:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="cNomAlum" name="cNomAlum" placeholder="cNomAlum" onkeypress="return validarUsuario(event)" />	
+
+				<div class="row">
+
+					<div id="cNomAlum" class="col-md-6 row">
+						<label for="Cedula Profesional"
+							class="col-md-4 text-center text-white col-form-label"><h5
+								class="lead">Nombre del Alumno:</h5></label>
+						<div class="col-md-8">
+							<input type="text" class="form-control form-control-lg"
+								id="cNomAlum" name="cNomAlum" placeholder="cNomAlum"
+								onkeypress="return validarUsuario(event)" />
+						</div>
 					</div>
+
+					<center>
+						<button type="button" class="btn btn-outline-primary"
+							onclick="segValidaForm();" style="width: 110px;">Nuevo</button>
+
+						<button type="button" class="btn btn-outline-primary"
+							onclick="segValidaForm();" style="width: 110px;">Guardar</button>
+
+						<button type="button" class="btn btn-outline-primary"
+							style="width: 110px;">
+							<a href="/catalogo/calificacion">Regresar</a>
+						</button>
+					</center>
 				</div>
-				
-					<center>	
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
+				<br />
+		</form>
 
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
-
-					<button type="button" class="btn btn-outline-primary" style ="width: 110px;"><a href="/catalogo/docente">Regresar</a></button>	</center>			
-				</div>
-				<br/>
-			</form>
-
-    	</div>
-    </div>
+	</div>
+</div>

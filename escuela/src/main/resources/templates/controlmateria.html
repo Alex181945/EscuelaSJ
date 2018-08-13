@@ -1,66 +1,98 @@
 
-<div class="d-flex justify-content-center align-items-center" style="min-height: 75%; min-height: 75vh;" id="site_content" th:fragment="content">
-    	<div class="container">
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" id="site_content"
+	th:fragment="content">
+	<div class="container">
 
-		<h1 class="display-6"  style="color: #ffffff;" >Control De Materia</h1>
-		<br/>
-		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST" > 
-    		
-    		<div class="row" >    		
-				<div id="Clave" class="col-md-6 row">
+		<h1 class="display-6" style="color: #ffffff;">Control De Materia</h1>
+		<br />
+		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST">
+		
+		  <div class="row">
+				<div id="iID" class="col-md-6 row">
 					<label for="Clave"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Clave:</h5></label>
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">ID:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
-							id="iClave" readonly="true" name="Clave" placeholder="Clave" onkeypress="return validarUsuario(event)" />
+							id="iID" readonly="true" name="iID" placeholder="ID"
+							onkeypress="return validarUsuario(event)" />
 					</div>
 				</div>
-				    					
-				<div id="Materia" class="col-md-6 row">
-					<label for="Materia"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Materia:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="iMateria" name="Materia" placeholder="Materia" />
+			</div>
 
-					</div>
+			<div id="cClave" class="col-md-6 row">
+				<label for="cClave"
+					class="col-md-4 text-center text-white col-form-label"><h5
+						class="lead">Clave SEP:</h5></label>
+				<div class="col-md-8">
+					<input type="text" class="form-control form-control-lg" id="cClave"
+						name="cClave" placeholder="Clave SEP" />
+
 				</div>
-				</div>
-				
-			
-				<div class="row" >	
-					
+			</div>
+
+			<div class="row">
+
 				<div id="NivelEducativo" class="col-md-4 row">
-					<label for="Nivel Educativo" class="col-md-5 text-white col-form-label"><h5 class="lead">Nivel Educativo:</h5></label>
+					<label for="Nivel Educativo"
+						class="col-md-5 text-white col-form-label"><h5
+							class="lead">Nivel Educativo:</h5></label>
 					<div class="col-md-6">
-					<select name="NivEdu" class="form-control form-control-lg">  <option>Kinder</option> <option>Primaria</option><option>Secundaria</option>  </select> 
-					</div>
-				</div>	
-				
-				<div id="Periodo" class="col-md-6 row">
-					<label for="Periodo"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Periodo:</h5></label>
-					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg"
-							id="Periodo" name="Periodo" placeholder="Periodo" onkeypress="return validarUsuario(event)" />
+						<select name="NivEdu" class="form-control form-control-lg">
+							<option>Maternal</option>
+							<option>Kinder</option>
+							<option>Primaria</option>
+							<option>Secundaria</option>
+						</select>
 					</div>
 				</div>
+			</div>
+
+			<div class="row">
+
+				<div id="iPeriodo" class="col-md-4 row">
+					<label for="Periodo" class="col-md-5 text-white col-form-label"><h5
+							class="lead">Periodo:</h5></label>
+					<div class="col-md-6">
+						<select name="iPeriodo" class="form-control form-control-lg">
+							<option>1ro</option>
+							<option>2do</option>
+							<option>3ro</option>
+						</select>
+					</div>
 				</div>
+			</div>
 
-				<div>
-				
-					<center>	
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();" style ="width: 110px;">Nuevo</button>
 
-					<button type="button" class="btn btn-outline-primary" onclick="segValidaForm();"  style ="width: 110px;">Guardar</button>				
+			<div id="Materia" class="col-md-6 row">
+				<label for="Materia"
+					class="col-md-4 text-center text-white col-form-label"><h5
+						class="lead">Materia:</h5></label>
+				<div class="col-md-8">
+					<input type="text" class="form-control form-control-lg"
+						id="iMateria" name="Materia" placeholder="Materia" />
 
-					<button type="button" class="btn btn-outline-primary" style ="width: 110px;"><a href="/catalogo/docente">Regresar</a></button>	</center>			
 				</div>
-				<br/>
-			</form>
+			</div>
 
-    	</div>
-    </div>
+			<div>
+				<center>
+					<button type="button" class="btn btn-outline-primary"
+						onclick="segValidaForm();" style="width: 110px;">Nuevo</button>
+
+					<button type="button" class="btn btn-outline-primary"
+						onclick="segValidaForm();" style="width: 110px;">Guardar</button>
+
+					<button type="button" class="btn btn-outline-primary"
+						style="width: 110px;">
+						<a href="/catalogo/materia">Regresar</a>
+					</button>
+				</center>
+			</div>
+			<br />
+		</form>
+	</div>
+</div>
 
 
-    

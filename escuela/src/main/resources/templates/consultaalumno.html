@@ -53,7 +53,7 @@
 					<td><span th:text="${lista.cNomTu}">Nombre del Tutor</span></td>
 					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
 					<td>
-						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iPersona=__${lista.iPersona}__}">
+						<a href="#" th:href="@{/config/catalogos/alumno/consulta/uno?iPersona=__${lista.iPersona}__}">
 							<button type="button" class="btn btn-info">
 								<span class="fas fa-edit" aria-hidden="true"></span>
 							</button>

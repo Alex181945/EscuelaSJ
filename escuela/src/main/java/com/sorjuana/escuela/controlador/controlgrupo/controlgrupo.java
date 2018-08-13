@@ -1,4 +1,4 @@
-package com.sorjuana.escuela.controlador.controlmateria;
+package com.sorjuana.escuela.controlador.controlgrupo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,19 +14,19 @@ import com.sorjuana.escuela.repositorio.modulo.MenuRest;
 
 @Controller
 @SessionAttributes("Persona")
-public class controlmateria {
+public class controlgrupo {
 	
 	@Autowired
 	private MenuRest menuRest;
 	
-	@GetMapping("/catalogo/materias/inserta")
+	@GetMapping("/catalogo/grupo/inserta")
 	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
 		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getControlmateria());
+		mav.setViewName(Vistas.getControlgrupo());
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;
 	}
