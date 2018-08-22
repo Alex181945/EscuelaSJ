@@ -19,7 +19,7 @@ public class controlmateria {
 	@Autowired
 	private MenuRest menuRest;
 	
-	@GetMapping("/catalogo/materias/inserta")
+	@GetMapping("/catalogo/materias")
 	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos

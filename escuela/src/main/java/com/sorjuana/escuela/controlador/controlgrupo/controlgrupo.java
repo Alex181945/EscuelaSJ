@@ -19,7 +19,7 @@ public class controlgrupo {
 	@Autowired
 	private MenuRest menuRest;
 	
-	@GetMapping("/catalogo/grupo/inserta")
+	@GetMapping("/catalogo/grupo")
 	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
