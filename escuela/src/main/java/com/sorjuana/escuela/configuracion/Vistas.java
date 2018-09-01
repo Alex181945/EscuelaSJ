@@ -17,7 +17,8 @@ public class Vistas {
 	private static final String MENU = "menu/menu";
 	private static final String CONTROLALUMNO = "consultaalumno";
 	private static final String FORMULARIOALUMNO = "controlalum";
-	private static final String CONTROLMATERIA = "controlmateria";
+	private static final String FORMULARIOMATERIA = "controlmateria";
+	private static final String CONSULTAOMATERIA = "consultamat";
 	private static final String CONTROLCALIFICACIONES = "controlcalif";
 	private static final String CONTROLGRUPO = "controlgrupo";
 	private static final String CONTROLASISTENCIA = "consultaasis";
@@ -108,5 +109,11 @@ public class Vistas {
 	}
 	public static String getControlgrupo() {
 		return CONTROLGRUPO;
+	}
+	public static String getFormulariomateria() {
+		return FORMULARIOMATERIA;
+	}
+	public static String getConsultaomateria() {
+		return CONSULTAOMATERIA;
 	}
 	}

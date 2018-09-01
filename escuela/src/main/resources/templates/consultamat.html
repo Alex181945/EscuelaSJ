@@ -3,9 +3,9 @@
 	
 	<div class="container">
 		
-		<h1 class="display-6 text-white">Consulta Grupo</h1>
+		<h1 class="display-6 text-white">Consulta Materia</h1>
 
-		<a href="#" th:href="@{/catalogo/grupo/consulta}" >
+		<a href="#" th:href="@{/catalogo/materia/consulta}" >
 			<button type="button" class="btn btn-secondary btn-lg btn-block">
 				<i class="fas fa-plus-circle"></i>Nuevo
 			</button>
@@ -18,11 +18,12 @@
 			<thead >
 				<tr>
 					<th>ID</th>
-					<th>Nombre de Salon</th>
+					<th>Clave SEP</th>
 					<th>Grado</th>
 					<th>Nivel Educativo</th>
-					<th>Nombre del Alumno</th>
-					<th>Nombre del Profesor</th>					
+					<th>Periodo</th>
+					<th>Materia</th>	
+					<th>Profesor</th>		
 					<th>Activo</th>
 					<th>Editar</th>
 					<th>Eliminar</th>
@@ -31,11 +32,11 @@
 			<tbody>
 				<tr th:each="lista : ${controlasis}">
 					<td><span th:text="${lista.iPersona}">ID</span></td>
-					<td><span th:text="${lista.cSalon}">Nombre de Salon</span></td>
-					<td><span th:text="${lista.cGrado}">Grado</span></td>
-					<td><span th:text="${lista.cNivelE}">Nivel Educativo</span></td>
-					<td><span th:text="${lista.cAlum}">Nombre del Alumno</span></td>
-					<td><span th:text="${lista.cProfesor}">Nombre del Profesor</span></td>
+					<td><span th:text="${lista.cClave}">Clase SEP</span></td>
+					<td><span th:text="${lista.cNivEdu}">Nivel Educativo</span></td>
+					<td><span th:text="${lista.cPeriodo}">Periodo</span></td>
+					<td><span th:text="${lista.cMateria}">Materia</span></td>
+					<td><span th:text="${lista.cProf}">Nombre del Profesor</span></td>
 					<td><span th:text="${lista.cObs}">Observaciones</span></td>
 					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
 					<td>

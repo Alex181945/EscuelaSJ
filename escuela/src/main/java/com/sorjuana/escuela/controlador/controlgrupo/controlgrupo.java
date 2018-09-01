@@ -20,7 +20,7 @@ public class controlgrupo {
 	@Autowired
 	private MenuRest menuRest;
 	
-	@GetMapping("/catalogo/grupo")
+	@GetMapping("/catalogo/grupo/consulta")
 	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
@@ -42,15 +42,15 @@ public class controlgrupo {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getControlgrupo());
-		Grupo alum = new Grupo();
-		alum.setiPersona(1);
-		alum.setcSalon("1a");
-		alum.setcGrado("1ro");
-		alum.setcNivelE("Primaria");
-		alum.setcAlum("Jonathan Alejandro Robles Ortega");
-		alum.setcProfesor("Luis Ortge Molina");
-		alum.setlActivo(1);
-		Grupo[] al = { grupo };
+		Grupo gru = new Grupo();
+		gru.setiPersona(1);
+		gru.setcSalon("1a");
+		gru.setcGrado("1ro");
+		gru.setcNivelE("Primaria");
+		gru.setcObs("Jonathan Alejandro Robles Ortega");
+		gru.setcProfesor("Luis Ortge Molina");
+		gru.setlActivo(1);
+		Grupo[] al = { gru };
 
 		mav.addObject("controlalum", al);
 		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false:true	);
