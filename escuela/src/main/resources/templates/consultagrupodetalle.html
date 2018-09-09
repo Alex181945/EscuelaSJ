@@ -1,0 +1,93 @@
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" id="site_content" th:fragment="content">
+	
+	<div class="container">
+		
+		<h1 class="display-6 text-white">Consulta Detalle Grupo</h1>
+		
+		<form id="Nombre" th:action="@{/ticket/inserta}" th:object="${opGrupo}" method="POST" >	
+     		
+     		   	<div class="row" >
+				<div id="ID" class="col-md-6 row">
+					<label for="ID"
+						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">ID:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
+							id="idGrupo" name="idGrupo" th:field="*{iGrupo}" th:value="${iGrupo}" placeholder="ID Grupo" readonly="true" />
+					</div>
+				</div>
+							
+				<div id="Grupo" class="col-md-6 row">
+					<label for="Grupo"
+						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Grupo:</h5></label>
+						 <div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
+							id="cGrupo" name="cGrupo" th:field="*{cGrupo}" th:value="${cGrupo}" placeholder="Grupo" />
+					</div>
+				</div>
+				</div>				
+				
+				<div class="row" >
+				
+					<div id="carrera" class="form-group col-md-4">
+						<label for="carrera">
+							<h5 class="lead">Carrera:</h5>
+						</label>
+						<div>
+							<select class="form-control col-md-8" id="iCarrera" th:field="*{iCarrera}" name="iCarrera" >
+								<option th:each="dropDownItem : ${carreras}"
+								th:value="${dropDownItem.iCarrera}"
+								th:text="${dropDownItem.cCarrera}" />
+							</select>
+						</div>
+					</div>
+					
+					<div id="periodo" class="form-group col-md-4">
+						<label for="periodo">
+							<h5 class="lead">Grado:</h5>
+						</label>
+						<div>
+							<select class="form-control col-md-8" id="iPeriodo" th:field="*{iPeriodo}" name="iPeriodo" >
+								<option th:each="dropDownItem : ${periodos}"
+								th:value="${dropDownItem.iPeriodo}"
+								th:text="${dropDownItem.cPeriodo}" />
+							</select>
+						</div>
+					</div>
+				
+				
+				</div>
+				
+			</form>
+
+		<a href="#" th:href="@{/catalogo/grupo/consulta}" >
+			<button type="button" class="btn btn-secondary btn-lg btn-block">
+				<i class="fas fa-plus-circle"></i>Nuevo
+			</button>
+		</a>
+		
+		<br/>
+		
+		<table class="table table-striped table-hover dataTable no-footer table-custom dt-responsive nowrap" style="width: 100%"  id="Listas">
+		
+			<thead >
+				<tr>
+					<th>ID</th>
+					<th>Docente</th>
+					<th>Materia</th>							
+					<th>Activo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lista : ${listaGrupoDetalle}">
+					<td><span th:text="${lista.iPartida}">ID</span></td>
+					<td><span th:text="${lista.cPersona}">Docente</span></td>
+					<td><span th:text="${lista.cMateria}">Materia</span></td>					
+					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+
+</div>

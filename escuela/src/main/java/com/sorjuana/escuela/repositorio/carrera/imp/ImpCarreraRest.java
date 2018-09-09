@@ -1,4 +1,4 @@
-package com.sorjuana.escuela.repositorio.grupo.imp;
+package com.sorjuana.escuela.repositorio.carrera.imp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,24 +16,24 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorjuana.escuela.configuracion.MensajeError;
 import com.sorjuana.escuela.configuracion.VariablesEntorno;
-import com.sorjuana.escuela.modelo.ct.Grupo;
+import com.sorjuana.escuela.modelo.ct.Carrera;
 import com.sorjuana.escuela.modelo.datos.Validacion;
-import com.sorjuana.escuela.repositorio.grupo.GrupoRest;
+import com.sorjuana.escuela.repositorio.carrera.CarreraRest;
 
 @Component
-public class ImpGrupoRest implements GrupoRest {
+public class ImpCarreraRest implements CarreraRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpGrupoRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpCarreraRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
 	@SuppressWarnings("static-access")
 	@Override
-	public Grupo[] consultaGrupo(String cToken) {
+	public Carrera[] consultaCarrera(String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
-		Grupo[]      grupo        = null;
+		Carrera[]    carrera      = null;
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
@@ -50,7 +50,7 @@ public class ImpGrupoRest implements GrupoRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/grupo/consulta",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carrera/consulta",
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -60,7 +60,7 @@ public class ImpGrupoRest implements GrupoRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return grupo = Grupo.grupoDefault();
+				return carrera = Carrera.carreraDefault();
 			}
 			
 			validacionJs = root.path("validacion");
@@ -72,7 +72,7 @@ public class ImpGrupoRest implements GrupoRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				grupo = mapper.convertValue(datos, Grupo[].class);
+				carrera = mapper.convertValue(datos, Carrera[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
@@ -84,9 +84,9 @@ public class ImpGrupoRest implements GrupoRest {
 			}.getClass().getEnclosingMethod().getName());
 		}
 		
-		return grupo;
+		return carrera;
 	}
-
+	
 	public Boolean getResultadoLocal() {
 		return resultadoLocal;
 	}

@@ -1,4 +1,4 @@
-package com.sorjuana.escuela.repositorio.grupo.imp;
+package com.sorjuana.escuela.repositorio.periodo.imp;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -7,7 +7,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -16,24 +15,23 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sorjuana.escuela.configuracion.MensajeError;
 import com.sorjuana.escuela.configuracion.VariablesEntorno;
-import com.sorjuana.escuela.modelo.ct.Grupo;
+import com.sorjuana.escuela.modelo.ct.Periodo;
 import com.sorjuana.escuela.modelo.datos.Validacion;
-import com.sorjuana.escuela.repositorio.grupo.GrupoRest;
+import com.sorjuana.escuela.repositorio.periodo.PeriodoRest;
 
-@Component
-public class ImpGrupoRest implements GrupoRest {
+public class ImpPeriodoRest implements PeriodoRest {
 	
-	private final static Logger LOGGER = Logger.getLogger(ImpGrupoRest.class.getName());
+	private final static Logger LOGGER = Logger.getLogger(ImpPeriodoRest.class.getName());
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
 	@SuppressWarnings("static-access")
 	@Override
-	public Grupo[] consultaGrupo(String cToken) {
+	public Periodo[] consultaPeriodoCarrera(String cToken, Integer iCarrera) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
-		Grupo[]      grupo        = null;
+		Periodo[]    periodo      = null;
 		Validacion[] validacion   = null;
 		ObjectMapper mapper       = new ObjectMapper();
 		JsonNode     root         = null;
@@ -50,7 +48,7 @@ public class ImpGrupoRest implements GrupoRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/grupo/consulta",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/periodo/consulta?iCarrera=" + iCarrera,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());
@@ -60,7 +58,7 @@ public class ImpGrupoRest implements GrupoRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(MensajeError.getERROR1());
 				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
-				return grupo = Grupo.grupoDefault();
+				return periodo = Periodo.periodoDefault();
 			}
 			
 			validacionJs = root.path("validacion");
@@ -72,7 +70,7 @@ public class ImpGrupoRest implements GrupoRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
-				grupo = mapper.convertValue(datos, Grupo[].class);
+				periodo = mapper.convertValue(datos, Periodo[].class);
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}
@@ -84,7 +82,7 @@ public class ImpGrupoRest implements GrupoRest {
 			}.getClass().getEnclosingMethod().getName());
 		}
 		
-		return grupo;
+		return periodo;
 	}
 
 	public Boolean getResultadoLocal() {
