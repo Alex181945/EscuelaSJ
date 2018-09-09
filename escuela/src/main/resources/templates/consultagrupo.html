@@ -18,28 +18,23 @@
 			<thead >
 				<tr>
 					<th>ID</th>
-					<th>Nombre de Salon</th>
-					<th>Grado</th>
+					<th>Grupo</th>
 					<th>Nivel Educativo</th>
-					<th>Nombre del Alumno</th>
-					<th>Nombre del Profesor</th>					
+					<th>Grado</th>										
 					<th>Activo</th>
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="lista : ${controlasis}">
-					<td><span th:text="${lista.iPersona}">ID</span></td>
-					<td><span th:text="${lista.cSalon}">Nombre de Salon</span></td>
-					<td><span th:text="${lista.cGrado}">Grado</span></td>
-					<td><span th:text="${lista.cNivelE}">Nivel Educativo</span></td>
-					<td><span th:text="${lista.cAlum}">Nombre del Alumno</span></td>
-					<td><span th:text="${lista.cProfesor}">Nombre del Profesor</span></td>
-					<td><span th:text="${lista.cObs}">Observaciones</span></td>
+				<tr th:each="lista : ${listaGrupo}">
+					<td><span th:text="${lista.iGrupo}">ID</span></td>
+					<td><span th:text="${lista.cGrupo}">Grupo</span></td>
+					<td><span th:text="${lista.cCarrera}">Nivel Educativo</span></td>
+					<td><span th:text="${lista.cPeriodo}">Grado</span></td>					
 					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
 					<td>
-						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iPersona=__${lista.iPersona}__}">
+						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iPersona=__${lista.iGrupo}__}">
 							<button type="button" class="btn btn-info">
 								<span class="fas fa-edit" aria-hidden="true"></span>
 							</button>
@@ -47,7 +42,7 @@
 					</td>
 					<td>
 						<button type="button" id="btnEliminar" class="btn btn-danger"
-						th:onclick=  "'eliminar(1 , \''+ ${lista.iPersona} + '\' );'">						
+						th:onclick=  "'eliminar(1 , \''+ ${lista.iGrupo} + '\' );'">						
 							<span class="fas fa-trash"  aria-hidden="true"></span>
 						</button>
 					</td>

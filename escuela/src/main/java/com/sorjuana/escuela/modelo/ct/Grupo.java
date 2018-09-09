@@ -1,118 +1,90 @@
 package com.sorjuana.escuela.modelo.ct;
 
 public class Grupo {
-		private Integer iPersona;
-		private Integer iIDTipoPersona;
-		private String cNombre;
-		private String cAPaterno;
-		private String cAMaterno;
-		private Integer lGenero;
-		private String dtFechaNac;
-		private Integer lActivo;
-		private String dtCreado;
-		private String dtModificado;
-		
-		private String cSalon;
-		private String cGrado;
-		private String cNivelE;
-		private String cAlumno;
-		private String cProfesor;
-		private String cObs;
-		
-		public Integer getiPersona() {
-			return iPersona;
-		}
-		public void setiPersona(Integer iPersona) {
-			this.iPersona = iPersona;
-		}
-		public Integer getiIDTipoPersona() {
-			return iIDTipoPersona;
-		}
-		public void setiIDTipoPersona(Integer iIDTipoPersona) {
-			this.iIDTipoPersona = iIDTipoPersona;
-		}
-		public String getcNombre() {
-			return cNombre;
-		}
-		public void setcNombre(String cNombre) {
-			this.cNombre = cNombre;
-		}
-		public String getcAPaterno() {
-			return cAPaterno;
-		}
-		public void setcAPaterno(String cAPaterno) {
-			this.cAPaterno = cAPaterno;
-		}
-		public String getcAMaterno() {
-			return cAMaterno;
-		}
-		public void setcAMaterno(String cAMaterno) {
-			this.cAMaterno = cAMaterno;
-		}
-		public Integer getlGenero() {
-			return lGenero;
-		}
-		public void setlGenero(Integer lGenero) {
-			this.lGenero = lGenero;
-		}
-		public String getDtFechaNac() {
-			return dtFechaNac;
-		}
-		public void setDtFechaNac(String dtFechaNac) {
-			this.dtFechaNac = dtFechaNac;
-		}
-		public Integer getlActivo() {
-			return lActivo;
-		}
-		public void setlActivo(Integer lActivo) {
-			this.lActivo = lActivo;
-		}
-		public String getDtCreado() {
-			return dtCreado;
-		}
-		public void setDtCreado(String dtCreado) {
-			this.dtCreado = dtCreado;
-		}
-		public String getDtModificado() {
-			return dtModificado;
-		}
-		public void setDtModificado(String dtModificado) {
-			this.dtModificado = dtModificado;
-		}
-		public String getcSalon() {
-			return cSalon;
-		}
-		public void setcSalon(String cSalon) {
-			this.cSalon = cSalon;
-		}
-		public String getcAlumno() {
-			cAlumno = cNombre + " " + cAPaterno + " " + cAMaterno;
-			return cAlumno;
-		}
-		public String getcGrado() {
-			return cGrado;
-		}
-		public void setcGrado(String cGrado) {
-			this.cGrado = cGrado;
-		}
-		public String getcNivelE() {
-			return cNivelE;
-		}
-		public void setcNivelE(String cNivelE) {
-			this.cNivelE = cNivelE;
-		}
-		public String getcProfesor() {
-			return cProfesor;
-		}
-		public void setcProfesor(String cProfesor) {
-			this.cProfesor = cProfesor;
-		}
-		public String getcObs() {
-			return cObs;
-		}
-		public void setcObs(String cObs) {
-			this.cObs = cObs;
-		}
-
+	
+	private Integer iGrupo;
+	private String  cGrupo;
+	private Integer iCarrera;
+	private Integer iPeriodo;
+	private Integer lActivo;
+	private String  dtCreado;
+	private String  dtModificado;
+	
+	/*Campos extras a la base*/
+	private String cCarrera;
+	private String cPeriodo;
+	
+	public Integer getiGrupo() {
+		return iGrupo;
 	}
-
+	public void setiGrupo(Integer iGrupo) {
+		this.iGrupo = iGrupo;
+	}
+	public String getcGrupo() {
+		return cGrupo;
+	}
+	public void setcGrupo(String cGrupo) {
+		this.cGrupo = cGrupo;
+	}
+	public Integer getiCarrera() {
+		return iCarrera;
+	}
+	public void setiCarrera(Integer iCarrera) {
+		this.iCarrera = iCarrera;
+	}
+	public Integer getiPeriodo() {
+		return iPeriodo;
+	}
+	public void setiPeriodo(Integer iPeriodo) {
+		this.iPeriodo = iPeriodo;
+	}
+	public Integer getlActivo() {
+		return lActivo;
+	}
+	public void setlActivo(Integer lActivo) {
+		this.lActivo = lActivo;
+	}
+	public String getDtCreado() {
+		return dtCreado;
+	}
+	public void setDtCreado(String dtCreado) {
+		this.dtCreado = dtCreado;
+	}
+	public String getDtModificado() {
+		return dtModificado;
+	}
+	public void setDtModificado(String dtModificado) {
+		this.dtModificado = dtModificado;
+	}
+	public String getcCarrera() {
+		return cCarrera;
+	}
+	public void setcCarrera(String cCarrera) {
+		this.cCarrera = cCarrera;
+	}
+	public String getcPeriodo() {
+		return cPeriodo;
+	}
+	public void setcPeriodo(String cPeriodo) {
+		this.cPeriodo = cPeriodo;
+	}
+	
+	public static Grupo[] grupoDefault() {
+		
+		Grupo grupo = new Grupo();
+		grupo.setiGrupo(0);
+		grupo.setcGrupo("N/A");
+		grupo.setiCarrera(0);
+		grupo.setiPeriodo(0);
+		grupo.setlActivo(0);
+		grupo.setDtCreado("N/A");
+		grupo.setDtModificado("N/A");
+		grupo.setcCarrera("N/A");
+		grupo.setcGrupo("N/A");
+		
+		Grupo[] grupoDefault = {grupo};
+		
+		return grupoDefault;
+	}
+	
+}
