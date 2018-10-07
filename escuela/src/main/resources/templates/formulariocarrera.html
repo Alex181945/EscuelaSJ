@@ -1,0 +1,60 @@
+
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" id="site_content"
+	th:fragment="content">
+	<div class="container">
+
+		<h1 class="display-6" style="color: #ffffff;">Formulario</h1>
+		<br />
+		<form id="Nombre" th:action="${lInserta} ? ${estatusCarreraInserta} : ${estatusCarreraActualiza}" th:object="${objCarrera}" method="POST" >
+
+			<div class="row">
+				<div id="iID" class="col-md-6 row">
+					<label for="iID"
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">ID:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg" id="iID"
+							readonly="true" name="iID" placeholder="ID"
+							onkeypress="return validarUsuario(event)" th:field="*{iCarrera}"
+								th:value="${iCarrera}" />
+					</div>
+				</div>
+			</div>
+			<br />
+
+				<div id="cNivelE" class="col-md-6 row">
+					<label for="cNivelE" class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">Nivel Educativo:</h5></label>
+					<div class="col-md-8">
+						<div id="cNivelE" class="form-control-feedback"> <input type="text" class="form-control form-control-lg"
+						id="cNivelE" name="cNivelE" placeholder="Alumno" th:field="*{cCarrera}"
+								th:value="${cCarrera}"/> </div>	
+					</div>
+				</div>
+			
+				<br />
+				
+				<div th:if="!${lInserta}" class="d-flex justify-content-center">
+					<div class="custom-switch custom-switch-label-yesno">
+					  <input type="checkbox" class="custom-switch-input" id="activo" name="activo" th:checked="${objCarrera.lActivo} == 1 ? cheked" />
+					  <label class="custom-switch-btn" for="activo"></label>
+					  <div class="custom-switch-content-checked text-color-white text-center">Activo</div>
+					  <div class="custom-switch-content-unchecked text-color-white text-center">Inactivo</div>
+					</div>
+				</div>
+				
+				<div>
+					<center>
+						<button type="button" class="btn btn-outline-primary"
+							onclick="segValidaForm();" style="width: 110px;">Registrar</button>
+
+						<button type="button" class="btn btn-outline-primary"
+							onclick="segValidaForm();" style="width: 110px;">Cancelar</button>
+
+					</center>
+				</div>
+				<br />
+		</form>
+	</div>
+</div>

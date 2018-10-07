@@ -7,6 +7,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,7 @@ import com.sorjuana.escuela.modelo.ct.Periodo;
 import com.sorjuana.escuela.modelo.datos.Validacion;
 import com.sorjuana.escuela.repositorio.periodo.PeriodoRest;
 
+@Component	
 public class ImpPeriodoRest implements PeriodoRest {
 	
 	private final static Logger LOGGER = Logger.getLogger(ImpPeriodoRest.class.getName());

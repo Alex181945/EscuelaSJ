@@ -21,8 +21,10 @@ public class Vistas {
 	private static final String CONSULTAOMATERIA = "consultamat";
 	private static final String CONTROLCALIFICACIONES = "controlcalif";
 	private static final String CONTROLGRUPO = "controlgrupo";
+	private static final String CONTROLCARRERA = "controlcarrera";
 	private static final String CONTROLASISTENCIA = "consultaasis";
 	private static final String FORMULARIOASISTENCIA = "controlasis";
+	private static final String FORMULARIOCARRERA = "formulariocarrera";
 	private static final String FORMULARIOADMIN = "controladmin";
 	private static final String CONTROLADMIN = "consultadmin";
 	private static final String CONTROLDOCENTE = "consultadoc";
@@ -141,5 +143,11 @@ public class Vistas {
 
 	public static String getConsultagrupo() {
 		return CONSULTAGRUPO;
+	}
+	public static String getControlcarrera() {
+		return CONTROLCARRERA;
+	}
+	public static String getFormulariocarrera() {
+		return FORMULARIOCARRERA;
 	}
 }
