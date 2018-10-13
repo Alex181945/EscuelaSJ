@@ -7,9 +7,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sorjuana.escuela.configuracion.MensajeError;
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.ct.Carrera;
 import com.sorjuana.escuela.modelo.ct.Grupo;
+import com.sorjuana.escuela.modelo.ct.GrupoDetalle;
 import com.sorjuana.escuela.modelo.ct.Periodo;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
@@ -53,41 +55,45 @@ public class controlgrupo {
 	}
 	
 	@GetMapping("/catalogo/grupo/consulta/detalle")
-	public ModelAndView consultaDetalle(@ModelAttribute("Persona") Usuario sesionPersona) {
+	public ModelAndView consultaDetalle(@ModelAttribute("Persona") Usuario sesionPersona,
+			@ModelAttribute("iGrupo") Integer iGrupo) {
 
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
 		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
 		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getConsultagrupo());
+		mav.setViewName(Vistas.getControlgrupodetalle());
 		
-		Grupo[] grupoList = grupoRest.consultaGrupo(sesionPersona.getcToken());
+		Grupo opGrupo = grupoRest.consultaUnGrupo(sesionPersona.getcToken(), 1, iGrupo);
 		
-		if(grupoRest.islResultado()) {
-			mav.addObject("error", grupoRest.getMensaje());
-			return mav;
-		}
-		
-		Carrera[] carreraList = carreraRest.consultaCarrera(sesionPersona.getcToken());
+		Carrera[] carreraList = carreraRest.consultaCarrera(sesionPersona.getcToken(), 1);
 		
 		if(carreraRest.islResultado()) {
 			mav.addObject("error", carreraRest.getMensaje());
 			return mav;
 		}
 		
-		Periodo[] periodoList = periodoRest.consultaPeriodoCarrera(sesionPersona.getcToken(), 0);
+		Periodo[] periodoList = periodoRest.consultaPeriodoCarrera(sesionPersona.getcToken(), 1, opGrupo.getiCarrera());
+		
 		if(periodoRest.islResultado()) {
 			mav.addObject("error", periodoRest.getMensaje());
 			return mav;
 		}
 		
+		GrupoDetalle[] grupoList = grupoRest.consultaGrupoDetalle(sesionPersona.getcToken(), 1, opGrupo.getiGrupo());
 		
+		if(grupoRest.islResultado()) {
+			mav.addObject("error", grupoRest.getMensaje());
+			return mav;
+		} else if(grupoList.length < 1) {
+			mav.addObject("error", MensajeError.getError2());
+		}
 
-		mav.addObject("opGrupo", grupoList);
+		mav.addObject("opGrupo", opGrupo);
 		mav.addObject("carreras", carreraList);
 		mav.addObject("periodos", periodoList);
-		mav.addObject("listaGrupoDetalle", grupoRest.consultaGrupo(sesionPersona.getcToken()));
+		mav.addObject("listaGrupoDetalle", grupoList);
 		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false:true	);
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;

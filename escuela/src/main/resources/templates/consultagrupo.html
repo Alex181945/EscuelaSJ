@@ -22,7 +22,7 @@
 					<th>Nivel Educativo</th>
 					<th>Grado</th>										
 					<th>Activo</th>
-					<th>Editar</th>
+					<th>Detalle</th>
 					<th>Eliminar</th>
 				</tr>
 			</thead>
@@ -34,7 +34,7 @@
 					<td><span th:text="${lista.cPeriodo}">Grado</span></td>					
 					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
 					<td>
-						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iPersona=__${lista.iGrupo}__}">
+						<a href="#" th:href="@{/catalogo/grupo/consulta/detalle?iGrupo=__${lista.iGrupo}__}">
 							<button type="button" class="btn btn-info">
 								<span class="fas fa-edit" aria-hidden="true"></span>
 							</button>

@@ -87,4 +87,21 @@ public class Grupo {
 		return grupoDefault;
 	}
 	
+	public static Grupo grupoVacio() {
+		
+		Grupo grupo = new Grupo();
+		grupo.setiGrupo(0);
+		grupo.setcGrupo("N/A");
+		grupo.setiCarrera(0);
+		grupo.setiPeriodo(0);
+		grupo.setlActivo(0);
+		grupo.setDtCreado("N/A");
+		grupo.setDtModificado("N/A");
+		grupo.setcCarrera("N/A");
+		grupo.setcGrupo("N/A");
+		
+		return grupo;
+		
+	}
+	
 }

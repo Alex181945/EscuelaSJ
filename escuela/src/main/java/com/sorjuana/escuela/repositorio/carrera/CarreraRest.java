@@ -4,7 +4,7 @@ import com.sorjuana.escuela.modelo.ct.Carrera;
 
 public interface CarreraRest {
 
-	public Carrera[] consultaCarrera(String cToken);
+	public Carrera[] consultaCarrera(String cToken, Integer idTipoConsulta);
 	public boolean islResultado();
 	public String getMensaje();
 	

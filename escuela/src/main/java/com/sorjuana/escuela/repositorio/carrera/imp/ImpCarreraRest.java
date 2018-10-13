@@ -29,7 +29,7 @@ public class ImpCarreraRest implements CarreraRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public Carrera[] consultaCarrera(String cToken) {
+	public Carrera[] consultaCarrera(String cToken, Integer idTipoConsulta) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
@@ -50,7 +50,7 @@ public class ImpCarreraRest implements CarreraRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carrera/consulta",
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carrera/consulta?iTipoConsulta=" + idTipoConsulta,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());

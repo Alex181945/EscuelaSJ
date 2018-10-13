@@ -7,6 +7,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -19,6 +20,7 @@ import com.sorjuana.escuela.modelo.ct.Periodo;
 import com.sorjuana.escuela.modelo.datos.Validacion;
 import com.sorjuana.escuela.repositorio.periodo.PeriodoRest;
 
+@Component
 public class ImpPeriodoRest implements PeriodoRest {
 	
 	private final static Logger LOGGER = Logger.getLogger(ImpPeriodoRest.class.getName());
@@ -27,7 +29,7 @@ public class ImpPeriodoRest implements PeriodoRest {
 
 	@SuppressWarnings("static-access")
 	@Override
-	public Periodo[] consultaPeriodoCarrera(String cToken, Integer iCarrera) {
+	public Periodo[] consultaPeriodoCarrera(String cToken, Integer iTipoConsulta, Integer iCarrera) {
 		
 		RestTemplate restTemplate = new RestTemplate();		
 		
@@ -48,7 +50,7 @@ public class ImpPeriodoRest implements PeriodoRest {
 			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
 			
 			/*JSON obtenido de forma plana*/
-			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/periodo/consulta?iCarrera=" + iCarrera,
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/periodo/consulta?iTipoConsulta=" + iTipoConsulta + "&iCarrera=" + iCarrera,
 					HttpMethod.GET ,httpEntity, String.class);
 			
 			root = mapper.readTree(response.getBody());

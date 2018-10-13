@@ -29,9 +29,9 @@
 				
 				<div class="row" >
 				
-					<div id="carrera" class="form-group col-md-4">
+					<div id="carrera" class="form-group col-md-6">
 						<label for="carrera">
-							<h5 class="lead">Carrera:</h5>
+							<h5 class="lead text-white">Nivel Educativo:</h5>
 						</label>
 						<div>
 							<select class="form-control col-md-8" id="iCarrera" th:field="*{iCarrera}" name="iCarrera" >
@@ -42,9 +42,9 @@
 						</div>
 					</div>
 					
-					<div id="periodo" class="form-group col-md-4">
+					<div id="periodo" class="form-group col-md-6">
 						<label for="periodo">
-							<h5 class="lead">Grado:</h5>
+							<h5 class="lead text-white">Grado:</h5>
 						</label>
 						<div>
 							<select class="form-control col-md-8" id="iPeriodo" th:field="*{iPeriodo}" name="iPeriodo" >
@@ -60,7 +60,7 @@
 				
 			</form>
 
-		<a href="#" th:href="@{/catalogo/grupo/consulta}" >
+		<a href="#" th:href="@{/catalogo/grupo-detalle/form}" >
 			<button type="button" class="btn btn-secondary btn-lg btn-block">
 				<i class="fas fa-plus-circle"></i>Nuevo
 			</button>
@@ -76,6 +76,8 @@
 					<th>Docente</th>
 					<th>Materia</th>							
 					<th>Activo</th>
+					<th>Editar</th>							
+					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -84,6 +86,19 @@
 					<td><span th:text="${lista.cPersona}">Docente</span></td>
 					<td><span th:text="${lista.cMateria}">Materia</span></td>					
 					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
+					<td>
+						<a href="#" th:href="@{/catalogo/grupo/consulta/detalle?(iGrupo=${lista.iGrupo}, iPartida=${lista.iPartida})}">
+							<button type="button" class="btn btn-info">
+								<span class="fas fa-edit" aria-hidden="true"></span>
+							</button>
+						</a>					
+					</td>
+					<td>
+						<button type="button" id="btnEliminar" class="btn btn-danger"
+						th:onclick=  "'eliminar(1 , \''+ ${lista.iGrupo} + '\' - \''+ ${lista.iPartida} + '\' );'">						
+							<span class="fas fa-trash"  aria-hidden="true"></span>
+						</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
