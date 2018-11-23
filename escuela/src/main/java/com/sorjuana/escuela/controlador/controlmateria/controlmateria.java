@@ -38,8 +38,6 @@ public class controlmateria {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName(Vistas.getConsultaomateria());
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
-		mav.addObject("listaCarrera",carreraRest.consultaCarrera(sesionPersona.getcToken(), 1));
-		mav.addObject("srvsolicitado",periodoRest.consultaPeriodoSinCarrera(sesionPersona.getcToken(), 1));
 		return mav;
 	}
 	
