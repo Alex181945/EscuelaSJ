@@ -6,7 +6,7 @@
 
 		<h1 class="display-6" style="color: #ffffff;">Control De Materia</h1>
 		<br />
-		<form id="Nombre" th:action="@{/segValidaSesionP}" method="POST">
+		<form id="Nombre" th:action="@{/segValidaSesionP}" th:object="${materia}" method="POST">
 
 			<div class="row">
 				<div id="iID" class="col-md-6 row">

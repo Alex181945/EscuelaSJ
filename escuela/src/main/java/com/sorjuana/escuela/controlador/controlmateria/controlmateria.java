@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sorjuana.escuela.configuracion.Vistas;
+import com.sorjuana.escuela.modelo.ct.Materia;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
 import com.sorjuana.escuela.repositorio.carrera.CarreraRest;
@@ -63,6 +64,7 @@ public class controlmateria {
 		Materia[] al = { mat };
 
 		mav.addObject("controlalum", al);*/
+		mav.addObject("materia", new Materia());
 		mav.addObject("listaCarrera",carreraRest.consultaCarrera(sesionPersona.getcToken(), 1));
 		mav.addObject("srvsolicitado",periodoRest.consultaPeriodoSinCarrera(sesionPersona.getcToken(), 1));
 		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false:true	);
