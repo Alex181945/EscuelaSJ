@@ -51,8 +51,8 @@ public class controlmateria {
 		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
 
 		ModelAndView mav = new ModelAndView();
-		/*mav.setViewName(Vistas.getControlmateria());
-		Materia mat = new Materia();
+		mav.setViewName(Vistas.getFormulariomateria());
+		/*Materia mat = new Materia();
 		mat.setiPersona(1);
 		mat.setcClave("CD155FV845");
 		mat.setcNivEdu("Primaria");
@@ -63,6 +63,8 @@ public class controlmateria {
 		Materia[] al = { mat };
 
 		mav.addObject("controlalum", al);*/
+		mav.addObject("listaCarrera",carreraRest.consultaCarrera(sesionPersona.getcToken(), 1));
+		mav.addObject("srvsolicitado",periodoRest.consultaPeriodoSinCarrera(sesionPersona.getcToken(), 1));
 		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false:true	);
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;
