@@ -86,6 +86,67 @@ public class ImpPeriodoRest implements PeriodoRest {
 		
 		return periodo;
 	}
+	
+	@SuppressWarnings("static-access")
+	@Override
+	public Periodo[] consultaPeriodoSinCarrera(String cToken, Integer iTipoConsulta) {
+		
+		RestTemplate restTemplate = new RestTemplate();		
+		
+		Periodo[]    periodo      = null;
+		Validacion[] validacion   = null;
+		ObjectMapper mapper       = new ObjectMapper();
+		JsonNode     root         = null;
+		JsonNode     validacionJs = null;
+		JsonNode     datos        = null;
+		
+		try {
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();
+			
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
+			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/periodo/consulta-sin-carrera?iTipoConsulta=" + iTipoConsulta,
+					HttpMethod.GET ,httpEntity, String.class);
+			
+			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return periodo = Periodo.periodoDefault();
+			}
+			
+			validacionJs = root.path("validacion");
+			datos = root.path("datos");
+			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+			} else {
+				periodo = mapper.convertValue(datos, Periodo[].class);
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+		}
+		
+		return periodo;
+		
+	}
 
 	public Boolean getResultadoLocal() {
 		return resultadoLocal;

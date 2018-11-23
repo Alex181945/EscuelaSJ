@@ -38,8 +38,11 @@
 					<label for="Nivel Educativo"
 						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Nivel Educativo:</h5></label>
 					<div class="col-md-8">
-						<select name="iNivEdu" class="form-control form-control-lg"> <option>Maternal</option> <option>Kinder</option>
-							<option>Primaria</option> <option>Secundaria</option> </select>
+						<select class="form-control col-md-8" id="iCarrera" th:field="*{iCarrera}" onchange="cargaComboSecundario();" name="iCarrera" >
+								<option th:each="dropDownItem : ${listaCarrera}"
+								th:value="${dropDownItem.iCarrera}"
+								th:text="${dropDownItem.cCarrera}" />
+							</select>
 							<div id="cNivEdu" class="form-control-feedback"></div>
 					</div>
 				</div>
@@ -51,8 +54,9 @@
 					<label for="Periodo" 
 					class="col-md-4 text-center text-white col-form-label"><h5	class="lead">Periodo:</h5></label>
 					<div class="col-md-8">
-						<select name="iPeriodo" class="form-control form-control-lg"> <option>1ro</option> <option>2do</option> <option>3ro</option>
-						</select>
+						<select class="form-control" id="srvSolicitado"
+								name="srvSolicitado" th:field="*{iPartida}">
+							</select>
 						<div id="cPeriodo" class="form-control-feedback"></div>
 					</div>
 				</div>
@@ -98,6 +102,48 @@
 			<br />
 		</form>
 	</div>
+	
+	
+	<!-- Script especifico -->
+	<script th:inline="javascript">
+	
+		window.onload = function(){cargaComboSecundario(); soloLectura();}
+		
+		function cargaComboSecundario(){
+			var elemToBind = document.getElementById("iCarrera");
+			limpaComboSecundario();
+
+	        /*<![CDATA[*/	    
+	         var srvsolicitado = /*[[${srvsolicitado}]]*/ ;
+	       /*]]>*/
+	       
+	       var comboSecundario = document.getElementById("srvSolicitado");
+	       for(valor in srvsolicitado){
+	    	   var option   = document.createElement("option");
+	    	   option.text  = srvsolicitado[valor].cPeriodo;
+	    	   option.value = srvsolicitado[valor].iPeriodo;
+	    	   if(srvsolicitado[valor].iCarrera == elemToBind.value){
+	    		   comboSecundario.add(option);
+	    	   }	    	   
+	       }
+	       
+		}
+		
+		function limpaComboSecundario(){
+			document.getElementById("srvSolicitado").options.length = 0;			
+		}
+		
+		function soloLectura(){
+			document.getElementById("user").readOnly = true;
+			document.getElementById("edificio").readOnly = true;
+			document.getElementById("piso").readOnly = true;
+			document.getElementById("oficina").readOnly = true;
+			document.getElementById("resguardante").readOnly = true;
+		}
+
+	</script>
+	
+	
 </div>
 
 

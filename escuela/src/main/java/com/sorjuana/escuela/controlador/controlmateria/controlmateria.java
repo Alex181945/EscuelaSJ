@@ -10,7 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
+import com.sorjuana.escuela.repositorio.carrera.CarreraRest;
 import com.sorjuana.escuela.repositorio.modulo.MenuRest;
+import com.sorjuana.escuela.repositorio.periodo.PeriodoRest;
 
 
 @Controller
@@ -20,6 +22,12 @@ public class controlmateria {
 	@Autowired
 	private MenuRest menuRest;
 	
+	@Autowired
+	private CarreraRest carreraRest;
+	
+	@Autowired
+	private PeriodoRest periodoRest;
+	
 	@GetMapping("/catalogo/materia")
 	public ModelAndView inserta(@ModelAttribute("Persona") Usuario sesionPersona) {
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
@@ -27,8 +35,10 @@ public class controlmateria {
 		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getControlgrupo());
+		mav.setViewName(Vistas.getConsultaomateria());
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("listaCarrera",carreraRest.consultaCarrera(sesionPersona.getcToken(), 1));
+		mav.addObject("srvsolicitado",periodoRest.consultaPeriodoSinCarrera(sesionPersona.getcToken(), 1));
 		return mav;
 	}
 	
