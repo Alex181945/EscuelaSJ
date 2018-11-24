@@ -6,7 +6,7 @@
 
 		<h1 class="display-6" style="color: #ffffff;">Control De Materia</h1>
 		<br />
-		<form id="Nombre" th:action="@{/segValidaSesionP}" th:object="${materia}" method="POST">
+		<form id="Nombre" th:action="@{/catalogo/materia/inserta}" th:object="${materia}" method="POST">
 
 			<div class="row">
 				<div id="iID" class="col-md-6 row">
@@ -15,8 +15,7 @@
 							class="lead">ID:</h5></label>
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg" id="iID"
-							readonly="true" name="iID" placeholder="ID"
-							onkeypress="return validarUsuario(event)" />
+							readonly="true" name="iID" th:field="*{iCarrera}" th:value="${iCarrera}" placeholder="ID" />
 					</div>
 				</div>
 			</div>
@@ -27,7 +26,7 @@
 						class="lead">Clave SEP:</h5></label>
 				<div class="col-md-8">
 					<input type="text" class="form-control form-control-lg" id="cClave"
-						name="cClave" placeholder="Clave SEP" />
+						name="cClave" th:field="*{cClaveSEP}" th:value="${cClaveSEP}" placeholder="Clave SEP" />
 
 				</div>
 			</div>
@@ -69,35 +68,16 @@
 						class="lead">Materia:</h5></label>
 				<div class="col-md-8">
 					<input type="text" class="form-control form-control-lg"
-						id="cMateria" name="Materia" placeholder="Materia" />
+						id="cMateria" name="Materia" th:field="*{cMateria}" th:value="${cMateria}" placeholder="Materia" />
 
 				</div>
 			</div>
 			<br />
-			<div id="cProf" class="col-md-6 row">
-				<label for="Profesor"
-					class="col-md-4 text-center text-white col-form-label"><h5
-						class="lead">Profesor:</h5></label>
-				<div class="col-md-8">
-					<input type="text" class="form-control form-control-lg" id="cProf"
-						name="Profesor" placeholder="Materia" />
-
-				</div>
-			</div>
-		    <br />
-			<div>
-				<center>
-					<button type="button" class="btn btn-outline-primary"
-						onclick="segValidaForm();" style="width: 110px;">Nuevo</button>
-
-					<button type="button" class="btn btn-outline-primary"
-						onclick="segValidaForm();" style="width: 110px;">Guardar</button>
-
-					<button type="button" class="btn btn-outline-primary"
-						style="width: 110px;">
-						<a href="/catalogo/materia">Regresar</a>
-					</button>
-				</center>
+			<div class="form-row"> <!-- Row Botones-->
+				<button type="button" class="btn btn-outline-primary col-md-3 offset-md-1">Nuevo</button>
+				<button type="submit" class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button>
+				<button type="button" class="btn btn-outline-danger col-md-3 offset-md-1">Regresar</button>
+				<div class="offset-md-1"></div>
 			</div>
 			<br />
 		</form>
@@ -131,14 +111,6 @@
 		
 		function limpaComboSecundario(){
 			document.getElementById("srvSolicitado").options.length = 0;			
-		}
-		
-		function soloLectura(){
-			document.getElementById("user").readOnly = true;
-			document.getElementById("edificio").readOnly = true;
-			document.getElementById("piso").readOnly = true;
-			document.getElementById("oficina").readOnly = true;
-			document.getElementById("resguardante").readOnly = true;
 		}
 
 	</script>

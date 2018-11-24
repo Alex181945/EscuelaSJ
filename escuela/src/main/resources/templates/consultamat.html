@@ -5,7 +5,7 @@
 		
 		<h1 class="display-6 text-white">Consulta Materia</h1>
 
-		<a href="#" th:href="@{/catalogo/materia/consulta}" >
+		<a href="#" th:href="@{/catalogo/materia/formulario}" >
 			<button type="button" class="btn btn-secondary btn-lg btn-block">
 				<i class="fas fa-plus-circle"></i>Nuevo
 			</button>
@@ -19,28 +19,24 @@
 				<tr>
 					<th>ID</th>
 					<th>Clave SEP</th>
-					<th>Grado</th>
-					<th>Nivel Educativo</th>
-					<th>Periodo</th>
-					<th>Materia</th>	
-					<th>Profesor</th>		
+					<th>Materia</th>
+					<th>Nivel Educativo</th>			
+					<th>Grado</th>		
 					<th>Activo</th>
 					<th>Editar</th>
 					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="lista : ${controlasis}">
-					<td><span th:text="${lista.iPersona}">ID</span></td>
-					<td><span th:text="${lista.cClave}">Clase SEP</span></td>
-					<td><span th:text="${lista.cNivEdu}">Nivel Educativo</span></td>
-					<td><span th:text="${lista.cPeriodo}">Periodo</span></td>
-					<td><span th:text="${lista.cMateria}">Materia</span></td>
-					<td><span th:text="${lista.cProf}">Nombre del Profesor</span></td>
-					<td><span th:text="${lista.cObs}">Observaciones</span></td>
+				<tr th:each="lista : ${controlMateria}">
+					<td><span th:text="${lista.iMateria}">ID</span></td>
+					<td><span th:text="${lista.cClaveSEP}">Clave SEP</span></td>
+					<td><span th:text="${lista.cMateria}">Materia</span></td>					
+					<td><span th:text="${lista.cCarrera}">Nivel Educativo</span></td>
+					<td><span th:text="${lista.cPeriodo}">Grado</span></td>
 					<td><span th:text="${lista.lActivo} == 1 ? SI : NO">Activo</span></td>
 					<td>
-						<a href="#" th:href="@{/config/catalogos/edificio/consulta/uno?iPersona=__${lista.iPersona}__}">
+						<a href="#" th:href="@{/catalogo/materia/consulta/uno?iMateria=__${lista.iMateria}__}">
 							<button type="button" class="btn btn-info">
 								<span class="fas fa-edit" aria-hidden="true"></span>
 							</button>
@@ -48,7 +44,7 @@
 					</td>
 					<td>
 						<button type="button" id="btnEliminar" class="btn btn-danger"
-						th:onclick=  "'eliminar(1 , \''+ ${lista.iPersona} + '\' );'">						
+						th:onclick=  "'eliminar(1 , \''+ ${lista.iMateria} + '\' );'">						
 							<span class="fas fa-trash"  aria-hidden="true"></span>
 						</button>
 					</td>
