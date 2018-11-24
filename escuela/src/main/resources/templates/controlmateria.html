@@ -6,7 +6,8 @@
 
 		<h1 class="display-6" style="color: #ffffff;">Control De Materia</h1>
 		<br />
-		<form id="Nombre" th:action="@{/catalogo/materia/inserta}" th:object="${materia}" method="POST">
+		<form id="Nombre" th:action="${lInserta} ? ${materiaInserta} : ${materiaActualiza}"
+			th:object="${materia}" method="POST">
 
 			<div class="row">
 				<div id="iID" class="col-md-6 row">
@@ -14,8 +15,9 @@
 						class="col-md-4 text-center text-white col-form-label"><h5
 							class="lead">ID:</h5></label>
 					<div class="col-md-8">
-						<input type="text" class="form-control form-control-lg" id="iMateria"
-							readonly="true" name="iMateria" th:field="*{iMateria}" th:value="${iMateria}" placeholder="ID" />
+						<input type="text" class="form-control form-control-lg"
+							id="iMateria" readonly="true" name="iMateria"
+							th:field="*{iMateria}" th:value="${iMateria}" placeholder="ID" />
 					</div>
 				</div>
 			</div>
@@ -26,36 +28,40 @@
 						class="lead">Clave SEP:</h5></label>
 				<div class="col-md-8">
 					<input type="text" class="form-control form-control-lg" id="cClave"
-						name="cClave" th:field="*{cClaveSEP}" th:value="${cClaveSEP}" placeholder="Clave SEP" />
+						name="cClave" th:field="*{cClaveSEP}" th:value="${cClaveSEP}"
+						placeholder="Clave SEP" />
 
 				</div>
 			</div>
 			<br />
-			
+
 			<div class="row">
 				<div id="cNivEdu" class="col-md-6 row">
 					<label for="Nivel Educativo"
-						class="col-md-4 text-center text-white col-form-label"><h5 class="lead">Nivel Educativo:</h5></label>
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">Nivel Educativo:</h5></label>
 					<div class="col-md-8">
-						<select class="form-control" id="iCarrera" name="iCarrera" th:field="*{iCarrera}" onchange="cargaComboSecundario();" >
-								<option th:each="dropDownItem : ${listaCarrera}"
+						<select class="form-control" id="iCarrera" name="iCarrera"
+							th:field="*{iCarrera}" onchange="cargaComboSecundario();">
+							<option th:each="dropDownItem : ${listaCarrera}"
 								th:value="${dropDownItem.iCarrera}"
 								th:text="${dropDownItem.cCarrera}" />
-							</select>
-							<div id="cNivEdu" class="form-control-feedback"></div>
+						</select>
+						<div id="cNivEdu" class="form-control-feedback"></div>
 					</div>
 				</div>
 			</div>
 			<br />
-			
+
 			<div class="row">
 				<div id="cPeriodo" class="col-md-6 row">
-					<label for="Periodo" 
-					class="col-md-4 text-center text-white col-form-label"><h5	class="lead">Periodo:</h5></label>
+					<label for="Periodo"
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">Periodo:</h5></label>
 					<div class="col-md-8">
 						<select class="form-control" id="srvSolicitado"
-								name="srvSolicitado" th:field="*{iPeriodo}">
-							</select>
+							name="srvSolicitado" th:field="*{iPeriodo}">
+						</select>
 						<div id="cPeriodo" class="form-control-feedback"></div>
 					</div>
 				</div>
@@ -68,26 +74,48 @@
 						class="lead">Materia:</h5></label>
 				<div class="col-md-8">
 					<input type="text" class="form-control form-control-lg"
-						id="cMateria" name="Materia" th:field="*{cMateria}" th:value="${cMateria}" placeholder="Materia" />
+						id="cMateria" name="Materia" th:field="*{cMateria}"
+						th:value="${cMateria}" placeholder="Materia" />
 
 				</div>
 			</div>
+			
+			
 			<br />
-			<div class="form-row"> <!-- Row Botones-->
-				<button type="button" class="btn btn-outline-primary col-md-3 offset-md-1">Nuevo</button>
-				<button type="submit" class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button>
-				<button type="button" class="btn btn-outline-danger col-md-3 offset-md-1">Regresar</button>
+
+			<div th:if="!${lInserta}" class="d-flex justify-content-center">
+				<div class="custom-switch custom-switch-label-yesno">
+					<input type="checkbox" class="custom-switch-input" id="activo"
+						name="activo" th:checked="${materia.lActivo} == 1 ? cheked" />
+					<label class="custom-switch-btn" for="activo"></label>
+					<div
+						class="custom-switch-content-checked text-white text-center">Activo</div>
+					<div
+						class="custom-switch-content-unchecked text-white text-center">Inactivo</div>
+				</div>
+			</div>
+
+			<br />
+
+			<div class="form-row">
+				<!-- Row Botones-->
+				<button type="button"
+					class="btn btn-outline-primary col-md-3 offset-md-1">Nuevo</button>
+				<button type="submit"
+					class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button>
+				<button type="button"
+					class="btn btn-outline-danger col-md-3 offset-md-1"><a href="/catalogo/materia">Regresar</a></button>
 				<div class="offset-md-1"></div>
 			</div>
 			<br />
 		</form>
 	</div>
-	
-	
+
+
 	<!-- Script especifico -->
 	<script th:inline="javascript">
 	
-		window.onload = function(){cargaComboSecundario(); soloLectura();}
+		window.onload = function(){cargaComboSecundario();}
 		
 		function cargaComboSecundario(){
 			var elemToBind = document.getElementById("iCarrera");
@@ -114,8 +142,8 @@
 		}
 
 	</script>
-	
-	
+
+
 </div>
 
 
