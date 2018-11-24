@@ -14,3 +14,14 @@
 function modal() {
 	$('.modal').modal('show');
 }
+
+$(document).ready(function() {
+    if(document.getElementById("messageError").innerHTML != ""){
+		swal('Oops...',document.getElementById("messageError").innerHTML,'error');
+	}
+    
+    if(document.getElementById("messageExito").innerHTML != ""){
+		swal('Exito...',document.getElementById("messageExito").innerHTML,'success');
+	}
+
+});
