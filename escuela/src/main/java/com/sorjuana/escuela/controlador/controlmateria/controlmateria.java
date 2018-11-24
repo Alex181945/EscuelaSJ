@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sorjuana.escuela.configuracion.MensajeExito;
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.ct.Materia;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
@@ -69,7 +70,7 @@ public class controlmateria {
 	}
 	
 	@PostMapping("/catalogo/materia/inserta")
-	public ModelAndView insertaMateria(@ModelAttribute("Usuario") Usuario sesionPersona,
+	public ModelAndView insertaMateria(@ModelAttribute("Persona") Usuario sesionPersona,
 			@ModelAttribute("materia") Materia objMateria){
 		
 		DosParametrosEnteros consulta = new DosParametrosEnteros();
@@ -77,9 +78,52 @@ public class controlmateria {
 		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(Vistas.getFormulariomateria());
 		
-		return null;
+		materiaRest.insertaMateria(sesionPersona.getcToken(), objMateria);
+		
+		if(materiaRest.islResultado()) {
+			mav.setViewName(Vistas.getFormulariomateria());
+			mav.addObject("materia", objMateria);
+			mav.addObject("listaCarrera",carreraRest.consultaCarrera(sesionPersona.getcToken(), 1));
+			mav.addObject("srvsolicitado",periodoRest.consultaPeriodoSinCarrera(sesionPersona.getcToken(), 1));
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+			mav.addObject("error", materiaRest.getMensaje());
+			//mav.addObject("estatusEdificioConsulta", Vistas.CT_EDIFICIO_CONSULTA_R);
+		} else {
+			mav = cargaDatos(sesionPersona, MensajeExito.getExitoCtMateriaInserta(), "");
+		}
+
+		return mav;
+		
+	}
+	
+	public ModelAndView cargaDatos(@ModelAttribute("Persona") Usuario sesionPersona, String mensajeExito,
+			String mensajeError) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getConsultaomateria());
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("controlMateria", materiaRest.consultaMateria(sesionPersona.getcToken(), 1));
+		
+		/*Consulta los registros de catalogo*/
+		if (materiaRest.islResultado()) {
+			mav.addObject("error", materiaRest.getMensaje());
+		}
+				
+		/*Captura y manda en caso de existir los mensajes de exito o erro*/
+		if(mensajeExito != "" || mensajeExito != null) {
+			mav.addObject("exito", mensajeExito);
+		}
+		if(mensajeError != "" || mensajeError != null) {
+			mav.addObject("error", mensajeError);
+		}
+		
+		return mav;
+		
 	}
 	
 }
