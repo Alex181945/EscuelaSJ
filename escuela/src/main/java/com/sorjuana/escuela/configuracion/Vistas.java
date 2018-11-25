@@ -32,6 +32,8 @@ public class Vistas {
 	private static final String HISTORIALKARDEX = "Kardex/genera_kardex";
 	private static final String CARGAKARDEX = "Kardex/carga_kardex";
 	private static final String CONSULTAGRUPO = "consultagrupo";
+	private static final String CONSULTACARRERA = "carrera/consultaCarrera";
+	private static final String FORMUALRIOCARRERA = "carrera/formularioCarrera";
 	/********************************* Fin ***********************************/
 
 	/*************************************************************************/
@@ -146,5 +148,13 @@ public class Vistas {
 
 	public static String getControlgrupodetalle() {
 		return CONTROLGRUPODETALLE;
+	}
+
+	public static String getConsultacarrera() {
+		return CONSULTACARRERA;
+	}
+
+	public static String getFormualriocarrera() {
+		return FORMUALRIOCARRERA;
 	}
 }

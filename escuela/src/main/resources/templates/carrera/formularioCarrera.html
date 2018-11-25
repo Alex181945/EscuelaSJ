@@ -1,0 +1,69 @@
+
+<div class="d-flex justify-content-center align-items-center"
+	style="min-height: 75%; min-height: 75vh;" id="site_content"
+	th:fragment="content">
+	<div class="container">
+
+		<h1 class="display-6" style="color: #ffffff;">Control De Nivel Educativo</h1>
+		<br />
+		<form id="Nombre" th:action="${lInserta} ? ${carreraInserta} : ${carreraActualiza}"
+			th:object="${carrera}" method="POST">
+
+			<div class="row">
+				<div id="iID" class="col-md-6 row">
+					<label for="Clave"
+						class="col-md-4 text-center text-white col-form-label"><h5
+							class="lead">ID:</h5></label>
+					<div class="col-md-8">
+						<input type="text" class="form-control form-control-lg"
+							id="iCarrera" readonly="true" name="iCarrera"
+							th:field="*{iCarrera}" th:value="${iCarrera}" placeholder="ID" />
+					</div>
+				</div>
+			</div>
+			<br />
+			<div id="cClave" class="col-md-6 row">
+				<label for="cClave"
+					class="col-md-4 text-center text-white col-form-label"><h5
+						class="lead">Nivel Educativo:</h5></label>
+				<div class="col-md-8">
+					<input type="text" class="form-control form-control-lg" id="cCarrera"
+						name="cCarrera" th:field="*{cCarrera}" th:value="${cCarrera}"
+						placeholder="Nivel Educativo" />
+
+				</div>
+			</div>
+			
+			<br />
+
+			<div th:if="!${lInserta}" class="d-flex justify-content-center">
+				<div class="custom-switch custom-switch-label-yesno">
+					<input type="checkbox" class="custom-switch-input" id="activo"
+						name="activo" th:checked="${carrera.lActivo} == 1 ? cheked" />
+					<label class="custom-switch-btn" for="activo"></label>
+					<div
+						class="custom-switch-content-checked text-white text-center">Activo</div>
+					<div
+						class="custom-switch-content-unchecked text-white text-center">Inactivo</div>
+				</div>
+			</div>
+
+			<br />
+
+			<div class="form-row">
+				<!-- Row Botones-->
+				<button type="button"
+					class="btn btn-outline-primary col-md-3 offset-md-1">Nuevo</button>
+				<button type="submit"
+					class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button>
+				<button type="button"
+					class="btn btn-outline-danger col-md-3 offset-md-1"><a href="/catalogo/carrera">Regresar</a></button>
+				<div class="offset-md-1"></div>
+			</div>
+			<br />
+		</form>
+	</div>
+
+</div>
+
+

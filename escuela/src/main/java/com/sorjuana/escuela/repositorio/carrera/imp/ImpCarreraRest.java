@@ -87,6 +87,62 @@ public class ImpCarreraRest implements CarreraRest {
 		return carrera;
 	}
 	
+	@SuppressWarnings("static-access")
+	@Override
+	public void borraCarrera(String cToken, Integer iCarrera) {
+		
+		RestTemplate restTemplate = new RestTemplate();		
+		
+		Validacion[] validacion   = null;
+		ObjectMapper mapper       = new ObjectMapper();
+		JsonNode     root         = null;
+		JsonNode     validacionJs = null;		
+		
+		try {
+			
+			HttpHeaders headers = new HttpHeaders();
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			
+			MultiValueMap<String, String> body = new LinkedMultiValueMap<String, String>();     
+			body.add("iCarrera", iCarrera.toString());
+			
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(body, headers);
+			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carrera/borra",
+					HttpMethod.DELETE ,httpEntity, String.class);
+			
+			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return;
+			}
+			
+			validacionJs = root.path("validacion");
+			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+			} else {
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+		}
+		
+	}
+	
 	public Boolean getResultadoLocal() {
 		return resultadoLocal;
 	}
