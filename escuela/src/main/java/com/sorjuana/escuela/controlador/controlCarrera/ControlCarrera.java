@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sorjuana.escuela.configuracion.MensajeExito;
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.ct.Carrera;
+import com.sorjuana.escuela.modelo.ct.Periodo;
 import com.sorjuana.escuela.modelo.datos.consulta.DosParametrosEnteros;
 import com.sorjuana.escuela.modelo.seg.Usuario;
 import com.sorjuana.escuela.repositorio.carrera.CarreraRest;
@@ -55,8 +57,69 @@ public class ControlCarrera {
 		mav.setViewName(Vistas.getFormualriocarrera());
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		mav.addObject("carrera", new Carrera());
+		mav.addObject("periodo", new Periodo());
 		mav.addObject("lInserta", true);
 		mav.addObject("carreraInserta", "/catalogo/carrera/inserta");
+		
+		return mav;
+		
+	}
+	
+	@PostMapping("/catalogo/carrera/inserta")
+	public ModelAndView insertaCarrera(@ModelAttribute("Persona") Usuario sesionPersona, @ModelAttribute("carrera") Carrera objCarrera) {
+		
+		System.out.println("Entra en el inserta carrera");
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+		
+		ModelAndView mav = new ModelAndView();
+		
+		carreraRest.insertaCarrera(sesionPersona.getcToken(), objCarrera);
+		
+		if(carreraRest.islResultado()) {
+			mav.setViewName(Vistas.getFormulariomateria());
+			mav.addObject("objEdificio", objCarrera);
+			mav.addObject("lInserta", true);
+			mav.addObject("carreraInserta", "/catalogo/carrera/inserta");
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+			mav.addObject("error", carreraRest.getMensaje());
+		} else {
+			
+			mav = cargaDatos(sesionPersona, MensajeExito.getExitoCtMateriaEdita(), "");
+			
+		}
+		
+		
+		return mav;
+	}
+	
+	@PostMapping("/catalogo/carrera/actualiza")
+	public ModelAndView edita(@ModelAttribute("Persona") Usuario sessionUsu,
+			@ModelAttribute("carrera") Carrera objCarrera, 
+			@ModelAttribute("activo") String lActivo) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sessionUsu.getiIDTipoPersona());
+
+		objCarrera.setlActivo(lActivo.equals("on") ? 1 : 0);
+		carreraRest.actualizaCarrera(sessionUsu.getcToken(), objCarrera);
+		ModelAndView mav = new ModelAndView();
+		
+		if(carreraRest.islResultado()) {
+			mav.setViewName(Vistas.getFormulariomateria());
+			mav.addObject("objEdificio", objCarrera);
+			mav.addObject("lInserta", false);
+			mav.addObject("carreraActualiza", "/catalogo/carrera/actualiza");
+			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
+			mav.addObject("error", carreraRest.getMensaje());
+		} else {
+			
+			mav = cargaDatos(sessionUsu, MensajeExito.getExitoCtMateriaEdita(), "");
+			
+		}
 		
 		return mav;
 		
@@ -73,6 +136,35 @@ public class ControlCarrera {
 		} 
 		
 		return "success";
+	}
+	
+	public ModelAndView cargaDatos(@ModelAttribute("Persona") Usuario sesionPersona, String mensajeExito,
+			String mensajeError) {
+		
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+		
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getConsultaomateria());
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		mav.addObject("controlMateria", carreraRest.consultaCarrera(sesionPersona.getcToken(), 1));
+		
+		/*Consulta los registros de catalogo*/
+		if (carreraRest.islResultado()) {
+			mav.addObject("error", carreraRest.getMensaje());
+		}
+				
+		/*Captura y manda en caso de existir los mensajes de exito o erro*/
+		if(mensajeExito != "" || mensajeExito != null) {
+			mav.addObject("exito", mensajeExito);
+		}
+		if(mensajeError != "" || mensajeError != null) {
+			mav.addObject("error", mensajeError);
+		}
+		
+		return mav;
+		
 	}
 
 }

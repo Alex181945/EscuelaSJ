@@ -266,4 +266,21 @@ function cargaKardex(){
 	
 }
 
+function enviaInfoCarreraYPeriodo(url){
+	
+	$('#formCarrera').on('submit', function(e){
+	    e.preventDefault();
+	    $.ajax({
+	       type: "POST",
+	       url: url,
+	       data: $(this).serialize(),
+	       success: function() {
+	         alert('success');
+	       }
+	    });
+	});
+}
 
+function guardaPeriodos(){
+	
+}

@@ -6,8 +6,7 @@
 
 		<h1 class="display-6" style="color: #ffffff;">Control De Nivel Educativo</h1>
 		<br />
-		<form id="Nombre" th:action="${lInserta} ? ${carreraInserta} : ${carreraActualiza}"
-			th:object="${carrera}" method="POST">
+		<form id="formCarrera" th:action="${lInserta} ? ${carreraInserta} : ${carreraActualiza}" method="POST">
 
 			<div class="row">
 				<div id="iID" class="col-md-6 row">
@@ -17,7 +16,7 @@
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="iCarrera" readonly="true" name="iCarrera"
-							th:field="*{iCarrera}" th:value="${iCarrera}" placeholder="ID" />
+							th:field="${carrera.iCarrera}" th:value="${carrera.iCarrera}" placeholder="ID" />
 					</div>
 				</div>
 			</div>
@@ -28,7 +27,7 @@
 						class="lead">Nivel Educativo:</h5></label>
 				<div class="col-md-8">
 					<input type="text" class="form-control form-control-lg" id="cCarrera"
-						name="cCarrera" th:field="*{cCarrera}" th:value="${cCarrera}"
+						name="cCarrera" th:field="${carrera.cCarrera}" th:value="${carrera.cCarrera}"
 						placeholder="Nivel Educativo" />
 
 				</div>
@@ -49,12 +48,38 @@
 			</div>
 
 			<br />
+			
+			<div class="col-12 row">
+				<h4 class="display-6" style="color: #ffffff;">
+					A&ntilde;adir Grado <i onclick="agregaPeriodo();" class="fas fa-plus-circle"></i>
+				</h4>
+			</div>
+
+	        <div class="col-12">
+	        	<div id="formPeriodo">
+	                <div class="form-row align-items-center">
+	                    <!--  <div class="col-auto">
+	                        <label class="sr-only" for="inlineFormInput">Grado</label>
+	                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Grado" />
+	                    </div>
+	
+	                    <div class="col-auto">
+	                        <button type="button" class="btn btn-primary mb-2">Editar</button>
+	                        <button type="button" class="btn btn-primary mb-2">Eliminar</button>
+	                    </div> -->
+	                </div>
+                </div> 	          
+	        </div>
+			
+			<br />
 
 			<div class="form-row">
 				<!-- Row Botones-->
 				<button type="button"
 					class="btn btn-outline-primary col-md-3 offset-md-1">Nuevo</button>
-				<button type="submit"
+				<!--  <button type="button" th:onclick="'enviaInfoCarreraYPeriodo(\'' + (${lInserta} ? ${carreraInserta} : ${carreraActualiza}) + '\' );'"
+					class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button> -->					
+				<button type="submit" 
 					class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button>
 				<button type="button"
 					class="btn btn-outline-danger col-md-3 offset-md-1"><a href="/catalogo/carrera">Regresar</a></button>
@@ -63,7 +88,6 @@
 			<br />
 		</form>
 	</div>
-
 </div>
 
 

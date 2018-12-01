@@ -1,5 +1,7 @@
 package com.sorjuana.escuela.modelo.ct;
 
+import java.util.List;
+
 public class Carrera {
 	
 	private Integer iCarrera;
@@ -7,6 +9,8 @@ public class Carrera {
 	private Integer lActivo;
 	private String dtCreado;
 	private String dtModificado;
+	
+	private List<Periodo> listPeriodo;
 	
 	public Integer getiCarrera() {
 		return iCarrera;
@@ -52,6 +56,17 @@ public class Carrera {
 		Carrera[] carreraDefault = {carrera};
 		
 		return carreraDefault;
+	}
+	public List<Periodo> getListPeriodo() {
+		return listPeriodo;
+	}
+	public void setListPeriodo(List<Periodo> listPeriodo) {
+		this.listPeriodo = listPeriodo;
+	}
+	@Override
+	public String toString() {
+		return "Carrera [iCarrera=" + iCarrera + ", cCarrera=" + cCarrera + ", lActivo=" + lActivo + ", dtCreado="
+				+ dtCreado + ", dtModificado=" + dtModificado + ", listPeriodo=" + listPeriodo + "]";
 	}
 
 }
