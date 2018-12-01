@@ -6,7 +6,7 @@
 
 		<h1 class="display-6" style="color: #ffffff;">Control De Nivel Educativo</h1>
 		<br />
-		<form id="formCarrera" th:action="${lInserta} ? ${carreraInserta} : ${carreraActualiza}" method="POST">
+		<form id="formCarrera">
 
 			<div class="row">
 				<div id="iID" class="col-md-6 row">
@@ -16,7 +16,7 @@
 					<div class="col-md-8">
 						<input type="text" class="form-control form-control-lg"
 							id="iCarrera" readonly="true" name="iCarrera"
-							th:field="${carrera.iCarrera}" th:value="${carrera.iCarrera}" placeholder="ID" />
+							placeholder="ID" />
 					</div>
 				</div>
 			</div>
@@ -27,7 +27,7 @@
 						class="lead">Nivel Educativo:</h5></label>
 				<div class="col-md-8">
 					<input type="text" class="form-control form-control-lg" id="cCarrera"
-						name="cCarrera" th:field="${carrera.cCarrera}" th:value="${carrera.cCarrera}"
+						name="cCarrera"
 						placeholder="Nivel Educativo" />
 
 				</div>
@@ -37,8 +37,8 @@
 
 			<div th:if="!${lInserta}" class="d-flex justify-content-center">
 				<div class="custom-switch custom-switch-label-yesno">
-					<input type="checkbox" class="custom-switch-input" id="activo"
-						name="activo" th:checked="${carrera.lActivo} == 1 ? cheked" />
+					<input type="checkbox" class="custom-switch-input" id="activoCarrera"
+						name="activoCarrera" />
 					<label class="custom-switch-btn" for="activo"></label>
 					<div
 						class="custom-switch-content-checked text-white text-center">Activo</div>
@@ -57,8 +57,8 @@
 
 	        <div class="col-12">
 	        	<div id="formPeriodo">
-	                <div class="form-row align-items-center">
-	                    <!--  <div class="col-auto">
+	                <!-- <div class="form-row align-items-center">
+	                      <div class="col-auto">
 	                        <label class="sr-only" for="inlineFormInput">Grado</label>
 	                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Grado" />
 	                    </div>
@@ -66,8 +66,8 @@
 	                    <div class="col-auto">
 	                        <button type="button" class="btn btn-primary mb-2">Editar</button>
 	                        <button type="button" class="btn btn-primary mb-2">Eliminar</button>
-	                    </div> -->
-	                </div>
+	                    </div> 
+	                </div> -->
                 </div> 	          
 	        </div>
 			
@@ -77,9 +77,7 @@
 				<!-- Row Botones-->
 				<button type="button"
 					class="btn btn-outline-primary col-md-3 offset-md-1">Nuevo</button>
-				<!--  <button type="button" th:onclick="'enviaInfoCarreraYPeriodo(\'' + (${lInserta} ? ${carreraInserta} : ${carreraActualiza}) + '\' );'"
-					class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button> -->					
-				<button type="submit" 
+				<button type="button" th:onclick="'enviaInfoCarreraYPeriodo(\'' + (${lInserta} ? ${carreraInserta} : ${carreraActualiza}) + '\' );'"
 					class="btn btn-outline-primary col-md-2 offset-md-1">Guardar</button>
 				<button type="button"
 					class="btn btn-outline-danger col-md-3 offset-md-1"><a href="/catalogo/carrera">Regresar</a></button>

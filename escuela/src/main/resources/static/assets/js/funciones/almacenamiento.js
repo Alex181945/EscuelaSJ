@@ -21,6 +21,23 @@ function iPersona(iPersona, iIDTipoPersona, cNombre, cAPaterno, cAMaterno, lGene
 	this.dtFechaNac = dtFechaNac;
 }
 
+function Carrera(iCarrera, cCarrera, lActivo, dtCreado, dtModificado) {
+	this.iCarrera = iCarrera;
+	this.cCarrera = cCarrera;
+	this.lActivo  = lActivo;
+	this.dtCreado = dtCreado;
+	this.dtModificado = dtModificado;
+}
+
+function Periodo(iPeriodo, iCarrera, cPeriodo, lActivo, dtCreado, dtModificado) {
+	this.iPeriodo = iPeriodo;
+	this.iCarrera = iCarrera;
+	this.cPeriodo = cPeriodo;
+	this.lActivo  = lActivo;
+	this.dtCreado = dtCreado;
+	this.dtModificado = dtModificado;
+}
+
 function validaCampos(iTipoConsulta, cFormulario){
 	
 	var objPersona;
@@ -268,17 +285,47 @@ function cargaKardex(){
 
 function enviaInfoCarreraYPeriodo(url){
 	
-	$('#formCarrera').on('submit', function(e){
-	    e.preventDefault();
-	    $.ajax({
-	       type: "POST",
-	       url: url,
-	       data: $(this).serialize(),
-	       success: function() {
-	         alert('success');
-	       }
-	    });
-	});
+	var objCarrera = new Carrera($('#iCarrera').val(), $('#cCarrera').val(), $(
+	'#activoCarrera').val(), "", "");
+	
+	var arrayPeriodo = [];
+	var texto = "#texto";
+	var activ = "#activo";
+	
+	if($("#formPeriodo").find($("input")).length > 0){
+		
+		for (var i = 0; i < $("#formPeriodo").find($("p")).length; i++) {
+			var objPeriodo = new Periodo($("#iCarrera"+(i+1)).val(), $("#iPeriodo"+(i+1)).val(), $(texto+(i+1)).val(), $(activ+(i+1)).val(), "", "");
+			arrayPeriodo.push(objPeriodo);
+		}
+		
+		$.ajax({
+		       type: "POST",
+		       url: url,
+		       data: {
+		    	   objCarrera : JSON.stringify(objCarrera),
+		    	   arrayPeriodo : JSON.stringify(arrayPeriodo)
+		       },
+		       success: function(data) {
+		    	   
+		    	   if(data == "sucess"){
+						swal('Exito...','Exito al registrar','success');
+						limpia();
+					} else{
+						swal('Oops...',data,'error');
+					}
+		    	   
+		       },
+				error : function(xhr, status) {
+					swal('Disculpe, existió un problema');
+				},
+				// código a ejecutar sin importar si la petición
+				// falló o no
+				complete : function(xhr, status) {
+					//alert('Petición realizada');
+				}
+		});
+	}
 }
 
 function guardaPeriodos(){

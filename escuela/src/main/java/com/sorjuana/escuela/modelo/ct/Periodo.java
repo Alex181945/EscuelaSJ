@@ -61,5 +61,10 @@ public class Periodo {
 		
 		return periodoDefault;
 	}
+	@Override
+	public String toString() {
+		return "Periodo [iPeriodo=" + iPeriodo + ", iCarrera=" + iCarrera + ", cPeriodo=" + cPeriodo + ", lActivo="
+				+ lActivo + ", dtCreado=" + dtCreado + ", dtModificado=" + dtModificado + "]";
+	}
 	
 }

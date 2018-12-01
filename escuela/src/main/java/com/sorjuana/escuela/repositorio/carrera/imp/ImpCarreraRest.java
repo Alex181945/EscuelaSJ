@@ -130,6 +130,7 @@ public class ImpCarreraRest implements CarreraRest {
 				this.setResultadoLocal(true);
 				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
 			} else {
+				objCarrera.setiCarrera(Integer.parseInt(validacionJs.get(0).get("iCarrera").toString()));
 				this.setResultadoLocal(false);
 				this.setMensajeLocal("");
 			}

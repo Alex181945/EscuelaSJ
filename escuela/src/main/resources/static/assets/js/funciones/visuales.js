@@ -30,12 +30,16 @@ $(document).ready(function() {
 function agregaPeriodo(){
 	
     var campo = "<div class='form-row align-items-center'>";
+    campo += "<p></p>";
     campo += "<div class='col-auto'>";
     campo += "<label class='sr-only' for='inlineFormInput'>Grado</label>" ;
-    campo += "<input type='text' class='form-control mb-2'  th:field='${periodo.cPeriodo}' th:value='${carrera.listPeriodo.add(periodo)}' id='inlineFormInput' placeholder='Grado' value='Grado Genérico' />" ;
+    campo += "<input type='hidden' class='form-control mb-2' id='iCarrera"+contador+"' placeholder='Grado' />" ;
+    campo += "<input type='hidden' class='form-control mb-2' id='iPeriodo"+contador+"' placeholder='Grado' />" ;
+    campo += "<input type='text' class='form-control mb-2' id='texto"+contador+"' placeholder='Grado' value='Grado Genérico' />" ;
+    campo += "<input type='hidden' class='form-control mb-2' id='activo"+contador+"' placeholder='Grado' />" ;
     campo += "</div>" ;
     campo += "<div class='col-auto'>";
-    campo += "<button type='button' class='btn btn-primary mb-2' onclick='eliminaPeriodo((myfieldid" + contador + "));'>Eliminar</button>" ;
+    campo += "<button type='button' class='btn btn-primary mb-2' onclick='eliminaPeriodo((myfieldid" + contador + "), "+ contador +");'>Eliminar</button>" ;
     campo += "</div>" ;
     campo += "</div>" ;
 
@@ -49,6 +53,7 @@ function agregaPeriodo(){
 
 }
 
-function eliminaPeriodo(id){
-	id.remove();
+function eliminaPeriodo(id, cont){
+	$(("#activo"+cont)).val(0);
+	id.hide();
 }
