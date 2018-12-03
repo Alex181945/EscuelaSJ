@@ -89,6 +89,65 @@ public class ImpCarreraRest implements CarreraRest {
 	
 	@SuppressWarnings("static-access")
 	@Override
+	public Carrera consultaCarreraUno(String cToken, Integer iCarrera) {
+		
+		RestTemplate restTemplate = new RestTemplate();		
+		
+		Carrera    carrera        = null;
+		Validacion[] validacion   = null;
+		ObjectMapper mapper       = new ObjectMapper();
+		JsonNode     root         = null;
+		JsonNode     validacionJs = null;
+		JsonNode     datos        = null;
+		
+		try {
+			HttpHeaders headers = new HttpHeaders();
+			headers.add(VariablesEntorno.getHeaderString(), VariablesEntorno.getTokenPrefix() + cToken);
+			
+			HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
+			
+			/*JSON obtenido de forma plana*/
+			ResponseEntity<String> response = restTemplate.exchange(VariablesEntorno.getUrlwsd() + "/carrera/consulta/uno?iCarrera=" + iCarrera,
+					HttpMethod.GET ,httpEntity, String.class);
+			
+			root = mapper.readTree(response.getBody());
+			
+			/*Maneja los errores del servicio rest*/
+			if(root.has("error")) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(MensajeError.getERROR1());
+				this.LOGGER.log(Level.SEVERE,root.path("error").toString());
+				return Carrera.carreraDefault()[0];
+			}
+			
+			validacionJs = root.path("validacion");
+			datos = root.path("datos");
+			
+			validacion = mapper.convertValue(validacionJs, Validacion[].class);
+			
+			if(validacion[0].getlError() == 1) {
+				this.setResultadoLocal(true);
+				this.setMensajeLocal(validacion[0].getcSqlState()+" "+validacion[0].getcError());
+				carrera = Carrera.carreraDefault()[0];
+			} else {
+				Carrera[] edificioTemp = mapper.convertValue(datos, Carrera[].class);
+				carrera = edificioTemp[0]; 
+				this.setResultadoLocal(false);
+				this.setMensajeLocal("");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setResultadoLocal(true);
+			this.setMensajeLocal("Error: Exception en " + new Object() {
+			}.getClass().getEnclosingMethod().getName());
+		}
+		
+		return carrera;
+		
+	}
+	
+	@SuppressWarnings("static-access")
+	@Override
 	public void insertaCarrera(String cToken, Carrera objCarrera){
 		
 		RestTemplate restTemplate = new RestTemplate();		

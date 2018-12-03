@@ -50,9 +50,10 @@
 			<br />
 			
 			<div class="col-12 row">
-				<h4 class="display-6" style="color: #ffffff;">
+				<h4 th:if="${lInserta}" class="display-6" style="color: #ffffff;">
 					A&ntilde;adir Grado <i onclick="agregaPeriodo();" class="fas fa-plus-circle"></i>
 				</h4>
+				<h4 th:if="${!lInserta}" class="display-6" style="color: #ffffff;">Grados</h4>
 			</div>
 
 	        <div class="col-12">
@@ -86,6 +87,41 @@
 			<br />
 		</form>
 	</div>
+	
+	
+	<!-- Script especifico -->
+	<script th:inline="javascript">
+	
+		window.onload = function(){llenaCampos()}
+	  	
+	  	function llenaCampos(){
+	  		
+	  		/*<![CDATA[*/	    
+		    var objCarrera = /*[[${objCarrera}]]*/ ;
+		  /*]]>*/
+		  
+		  /*<![CDATA[*/	    
+		    var arrayPeriodo = /*[[${arrayPeriodo}]]*/ ;
+		  /*]]>*/
+		  
+		  $('#iCarrera').val(objCarrera.iCarrera);
+		  $('#cCarrera').val(objCarrera.cCarrera);
+		  
+		  if(objCarrera.lActivo == 1){
+			  $('#activoCarrera').prop('checked', true);
+		  } else {
+			  $('#activoCarrera').prop('checked', false);  
+		  }
+		  
+		  for(valor in arrayPeriodo){
+			  console.log(arrayPeriodo[valor]);
+	    	  agregaPeriodoConDatos(arrayPeriodo[valor].iCarrera, arrayPeriodo[valor].iPeriodo, arrayPeriodo[valor].cPeriodo, arrayPeriodo[valor].lActivo)
+	       }
+	  		
+		}		
+
+	</script>
+
 </div>
 
 

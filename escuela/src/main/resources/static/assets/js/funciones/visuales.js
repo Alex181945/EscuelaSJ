@@ -53,6 +53,32 @@ function agregaPeriodo(){
 
 }
 
+function agregaPeriodoConDatos(iCarrera, iPeriodo, cPeriodo, lActivo){
+	
+    var campo = "<div class='form-row align-items-center'>";
+    campo += "<p></p>";
+    campo += "<div class='col-auto'>";
+    campo += "<label class='sr-only' for='inlineFormInput'>Grado</label>" ;
+    campo += "<input type='hidden' class='form-control mb-2' id='iCarrera"+contador+"' value='"+iCarrera+"' placeholder='Grado' />" ;
+    campo += "<input type='hidden' class='form-control mb-2' id='iPeriodo"+contador+"' value='"+iPeriodo+"' placeholder='Grado' />" ;
+    campo += "<input type='text' class='form-control mb-2' id='texto"+contador+"' placeholder='Grado' value='"+cPeriodo+"' />" ;
+    campo += "<input type='hidden' class='form-control mb-2' id='activo"+contador+"' value='"+lActivo+"' placeholder='Grado' />" ;
+    campo += "</div>" ;
+    campo += "<div class='col-auto'>";
+    campo += "<button type='button' class='btn btn-primary mb-2' onclick='eliminaPeriodo((myfieldid" + contador + "), "+ contador +");'>Eliminar</button>" ;
+    campo += "</div>" ;
+    campo += "</div>" ;
+
+    // append input control at end of form
+    $(campo)
+        .attr("id", ("myfieldid" + contador))
+        .attr("name", ("myfieldid" + contador))
+        .appendTo("#formPeriodo");
+    
+    contador ++;
+
+}
+
 function eliminaPeriodo(id, cont){
 	$(("#activo"+cont)).val(0);
 	id.hide();

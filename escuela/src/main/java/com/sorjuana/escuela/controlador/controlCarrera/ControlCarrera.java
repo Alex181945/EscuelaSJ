@@ -71,6 +71,28 @@ public class ControlCarrera {
 		
 	}
 	
+	@GetMapping("/catalogo/carrera/consulta/uno")
+	public ModelAndView consultaUno(@ModelAttribute("Persona") Usuario sesionPersona, @ModelAttribute("iCarrera") Integer iCarrera) {
+
+		DosParametrosEnteros consulta = new DosParametrosEnteros();
+		consulta.setParametro1(1); // Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
+		consulta.setParametro2(sesionPersona.getiIDTipoPersona());
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName(Vistas.getFormualriocarrera());
+		
+		Carrera objCarrera = carreraRest.consultaCarreraUno(sesionPersona.getcToken(), iCarrera);
+		Periodo[] arrayPeriodo = periodoRest.consultaPeriodoCarrera(sesionPersona.getcToken(), 1, objCarrera.getiCarrera()); 
+
+		mav.addObject("objCarrera", objCarrera);
+		mav.addObject("arrayPeriodo", arrayPeriodo);
+		mav.addObject("lInserta", false);
+		mav.addObject("carreraActualiza", "/catalogo/carrera/actualiza");
+		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
+		return mav;
+
+	}
+	
 	@PostMapping("/catalogo/carrera/inserta")
 	public @ResponseBody String insertaCarrera(@ModelAttribute("Persona") Usuario sesionPersona,
 			@ModelAttribute("objCarrera") String objCarreraS, @ModelAttribute("arrayPeriodo") String arrayAtributoS) {
