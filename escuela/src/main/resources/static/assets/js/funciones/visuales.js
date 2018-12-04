@@ -81,5 +81,15 @@ function agregaPeriodoConDatos(iCarrera, iPeriodo, cPeriodo, lActivo){
 
 function eliminaPeriodo(id, cont){
 	$(("#activo"+cont)).val(0);
-	id.hide();
+	$(id).hide();
+}
+
+function cambiaValorSwitch(){
+	
+	if($("#activoCarrera").val() == 1){
+		$("#activoCarrera").val(0);
+	} else if($("#activoCarrera").val() == 0){
+		$("#activoCarrera").val(1);
+	}
+	
 }

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sorjuana.escuela.configuracion.MensajeExito;
 import com.sorjuana.escuela.configuracion.Vistas;
 import com.sorjuana.escuela.modelo.ct.Carrera;
 import com.sorjuana.escuela.modelo.ct.Periodo;
@@ -127,32 +126,36 @@ public class ControlCarrera {
 	}
 	
 	@PostMapping("/catalogo/carrera/actualiza")
-	public ModelAndView edita(@ModelAttribute("Persona") Usuario sessionUsu,
-			@ModelAttribute("carrera") Carrera objCarrera, 
-			@ModelAttribute("activo") String lActivo) {
+	public @ResponseBody String edita(@ModelAttribute("Persona") Usuario sesionPersona,
+			@ModelAttribute("objCarrera") String objCarreraS, @ModelAttribute("arrayPeriodo") String arrayAtributoS) {
 		
-		DosParametrosEnteros consulta = new DosParametrosEnteros();
-		consulta.setParametro1(1); //Tipo de Consulta 0 inactivos, 1 activos, 2 ambos
-		consulta.setParametro2(sessionUsu.getiIDTipoPersona());
-
-		objCarrera.setlActivo(lActivo.equals("on") ? 1 : 0);
-		carreraRest.actualizaCarrera(sessionUsu.getcToken(), objCarrera);
-		ModelAndView mav = new ModelAndView();
-		
-		if(carreraRest.islResultado()) {
-			mav.setViewName(Vistas.getFormulariomateria());
-			mav.addObject("carrera", objCarrera);
-			mav.addObject("lInserta", false);
-			mav.addObject("carreraActualiza", "/catalogo/carrera/actualiza");
-			mav.addObject("menu", menuRest.cargaMenu(consulta, sessionUsu.getcToken()));
-			mav.addObject("error", carreraRest.getMensaje());
-		} else {
-			
-			mav = cargaDatos(sessionUsu, MensajeExito.getExitoCtMateriaEdita(), "");
-			
+		ObjectMapper mapper = new ObjectMapper();
+		Carrera objCarrera = new Carrera();
+		Periodo[] listPeriodo = null;
+		try {
+			objCarreraS = objCarreraS.replace("on", "1");
+			objCarrera = mapper.readValue(objCarreraS, Carrera.class);
+			listPeriodo = mapper.readValue(arrayAtributoS, Periodo[].class);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return e.getMessage();
 		}
 		
-		return mav;
+		carreraRest.actualizaCarrera(sesionPersona.getcToken(), objCarrera);
+		
+		if(carreraRest.islResultado()) {			
+			return carreraRest.getMensaje();
+		} else {
+			for (Periodo periodo : listPeriodo) {
+				periodoRest.actualizaPeriodo(sesionPersona.getcToken(), periodo);
+				
+				if(periodoRest.islResultado()) {
+					return periodoRest.getMensaje();
+				}
+			}
+		} 
+		
+		return "sucess";
 		
 	}
 	

@@ -38,8 +38,8 @@
 			<div th:if="!${lInserta}" class="d-flex justify-content-center">
 				<div class="custom-switch custom-switch-label-yesno">
 					<input type="checkbox" class="custom-switch-input" id="activoCarrera"
-						name="activoCarrera" />
-					<label class="custom-switch-btn" for="activo"></label>
+						name="activoCarrera" onclick="cambiaValorSwitch();" />
+					<label class="custom-switch-btn" for="activoCarrera"></label>
 					<div
 						class="custom-switch-content-checked text-white text-center">Activo</div>
 					<div
@@ -109,13 +109,14 @@
 		  
 		  if(objCarrera.lActivo == 1){
 			  $('#activoCarrera').prop('checked', true);
+			  $('#activoCarrera').val(1);
 		  } else {
-			  $('#activoCarrera').prop('checked', false);  
+			  $('#activoCarrera').prop('checked', false);
+			  $('#activoCarrera').val(0);
 		  }
 		  
 		  for(valor in arrayPeriodo){
-			  console.log(arrayPeriodo[valor]);
-	    	  agregaPeriodoConDatos(arrayPeriodo[valor].iCarrera, arrayPeriodo[valor].iPeriodo, arrayPeriodo[valor].cPeriodo, arrayPeriodo[valor].lActivo)
+	    	  agregaPeriodoConDatos(arrayPeriodo[valor].iPeriodo, arrayPeriodo[valor].iCarrera, arrayPeriodo[valor].cPeriodo, arrayPeriodo[valor].lActivo)
 	       }
 	  		
 		}		
