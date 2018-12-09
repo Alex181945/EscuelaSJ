@@ -16,6 +16,8 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.pdf.draw.LineSeparator;
+import com.sorjuana.escuela.modelo.ct.Alumno;
+import com.sorjuana.escuela.modelo.ct.Grupo;
 import com.sorjuana.escuela.modelo.datos.kardex.KardexM;
 
 
@@ -126,6 +128,105 @@ public class GeneraKardexPDF {
                 document.close();
 				
 			}
+			
+		} catch (Exception e) {
+			Logger.getLogger(GeneraKardexPDF.class.getName()).log(Level.SEVERE, null, e);
+		}
+	
+		return new ByteArrayInputStream(out.toByteArray());
+	}
+
+	
+	public static ByteArrayInputStream reporteListaAlumnos(Grupo grupo, Alumno[] alumnoLista) {
+		
+		Document document = new Document();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        
+        
+        try {
+             
+        	Font headFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD);
+        	Font smallFont = FontFactory.getFont(FontFactory.HELVETICA, 5.0f);
+        	
+        	Paragraph escuela = new Paragraph();
+        	escuela.setAlignment(Element.ALIGN_CENTER);
+        	escuela.add("Institución Educativa y Cultural");
+        	escuela.setFont(smallFont);
+        	
+        	Paragraph escuela2 = new Paragraph();
+        	escuela2.setAlignment(Element.ALIGN_CENTER);
+        	escuela2.add("\"SOR JUANA INÉS DE LA CRUZ\"");
+        	
+        	Paragraph niveles = new Paragraph();
+        	niveles.setAlignment(Element.ALIGN_LEFT);
+        	niveles.add("Grupo: " + grupo.getcGrupo());
+        	niveles.setFont(smallFont);
+        	
+
+        	PdfPTable table = new PdfPTable(3);
+            table.setWidthPercentage(90);
+            table.setWidths(new int[]{1, 2, 3});            
+
+            PdfPCell hcell;
+            
+            hcell = new PdfPCell(new Phrase("N°", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+            
+            hcell = new PdfPCell(new Phrase("Alumno", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+
+            hcell = new PdfPCell(new Phrase("Asistencia", headFont));
+            hcell.setHorizontalAlignment(Element.ALIGN_CENTER);
+            table.addCell(hcell);
+        	
+        	Paragraph Direccion = new Paragraph();
+        	Direccion.setAlignment(Element.ALIGN_CENTER);
+        	Direccion.add("RIO DE LOS REMEDIOS NO. 81 COL. SAN JUAN IXHUATEPEC, TLALNEPANTLA EDO. DE MEX., C.P. 54180 INCORPORADA A LA SEP.\n C.C.T. 15PJN023E1E, C.C.T. 15PST0600J, C.C.T. 15PPR0024N");
+        	Direccion.setFont(smallFont);
+        	
+        	Integer contador = 1;
+        	
+            /*este genera el kardex*/
+            for (Alumno alumno : alumnoLista) {
+            	
+            	PdfPCell cell;
+            	
+            	cell = new PdfPCell(new Phrase(contador+".-"));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                table.addCell(cell);
+            	
+                cell = new PdfPCell(new Phrase(alumno.getcAPaterno() + " " + alumno.getcAMaterno() + " " + alumno.getcNombre()));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_LEFT);
+                table.addCell(cell);
+                
+                cell = new PdfPCell(new Phrase(""));
+                cell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+                cell.setHorizontalAlignment(Element.ALIGN_CENTER);
+                table.addCell(cell);
+
+                contador ++;
+				
+			}
+            
+            LineSeparator separator = new LineSeparator();
+            separator.setPercentage(59500f / 523f);
+            Chunk linebreak = new Chunk(separator);
+            
+            PdfWriter.getInstance(document, out);
+            document.open();
+            
+            document.add(escuela);
+            document.add(escuela2);
+            document.add(niveles);
+            document.add(linebreak);
+            document.add(table);             
+            document.add(Direccion);
+            
+            document.close();
 			
 		} catch (Exception e) {
 			Logger.getLogger(GeneraKardexPDF.class.getName()).log(Level.SEVERE, null, e);

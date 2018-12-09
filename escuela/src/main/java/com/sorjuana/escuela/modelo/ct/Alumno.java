@@ -1,5 +1,8 @@
 package com.sorjuana.escuela.modelo.ct;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Alumno {
 	private Integer iPersona;
 	private Integer iIDTipoPersona;
@@ -218,6 +221,19 @@ public class Alumno {
 	}
 	public String getcNombreCompleto() {
 		return cNomAlum;
+	}
+	
+	public static Alumno[] alumnoDefault() {
+		
+		Alumno alumno = new Alumno();
+		alumno.setcNombre("N/A");
+		alumno.setcAPaterno("N/A");
+		alumno.setcAMaterno("N/A");
+		
+		Alumno[] alumnoArray = {alumno};
+		
+		return alumnoArray;
+		
 	}
 	
 }

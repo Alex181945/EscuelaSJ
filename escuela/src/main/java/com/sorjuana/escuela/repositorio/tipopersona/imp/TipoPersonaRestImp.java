@@ -27,7 +27,7 @@ public class TipoPersonaRestImp implements TipoPersonaRest {
 	private Boolean resultadoLocal;
 	private String  mensajeLocal;
 
-	@SuppressWarnings("static-access")
+	@SuppressWarnings({ "static-access", "unused" })
 	@Override
 	public void insertaTipoPersona(String objCtPersona, String arrayCtPersona, String cToken) {
 		
@@ -85,6 +85,7 @@ public class TipoPersonaRestImp implements TipoPersonaRest {
 		
 	}
 
+	@SuppressWarnings("static-access")
 	public CtPersona[] consultaTipoPersona(Integer tipoPersona, String cToken) {
 		
 		RestTemplate restTemplate = new RestTemplate();		

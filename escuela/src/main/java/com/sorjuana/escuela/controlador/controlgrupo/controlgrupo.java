@@ -1,6 +1,12 @@
 package com.sorjuana.escuela.controlador.controlgrupo;
 
+import java.io.ByteArrayInputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sorjuana.escuela.configuracion.MensajeError;
 import com.sorjuana.escuela.configuracion.Vistas;
+import com.sorjuana.escuela.controlador.kardex.GeneraKardexPDF;
+import com.sorjuana.escuela.modelo.ct.Alumno;
 import com.sorjuana.escuela.modelo.ct.Carrera;
 import com.sorjuana.escuela.modelo.ct.Grupo;
 import com.sorjuana.escuela.modelo.ct.GrupoDetalle;
@@ -94,9 +102,34 @@ public class controlgrupo {
 		mav.addObject("carreras", carreraList);
 		mav.addObject("periodos", periodoList);
 		mav.addObject("listaGrupoDetalle", grupoList);
-		mav.addObject("habilitaboton", sesionPersona.getiIDTipoPersona() == 1 ? false:true	);
+		mav.addObject("consultaListaAlumnos", true	);
 		mav.addObject("menu", menuRest.cargaMenu(consulta, sesionPersona.getcToken()));
 		return mav;
 
 	}
+	
+	@GetMapping("/catalogo/grupo/genera-lista-pdf")
+	public ResponseEntity<InputStreamResource> reporteListaPDF(@ModelAttribute("Persona") Usuario sesionPersona,
+			@ModelAttribute("iGrupo") Integer iGrupo) {
+		
+		Grupo opGrupo = grupoRest.consultaUnGrupo(sesionPersona.getcToken(), 1, iGrupo);
+		
+		Alumno[] listaAlumnos = grupoRest.consultaAlumnosGrupo(sesionPersona.getcToken(), 1, opGrupo.getiGrupo());
+
+		if(!grupoRest.islResultado()) {
+			
+			ByteArrayInputStream bis = GeneraKardexPDF.reporteListaAlumnos(opGrupo, listaAlumnos);
+
+			HttpHeaders headers = new HttpHeaders();
+			headers.add("Content-Disposition", "inline; filename=lista-" + opGrupo.getcGrupo() + ".pdf");
+
+			return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF)
+					.body(new InputStreamResource(bis));
+			
+		} else {
+			return null;
+		}		
+
+	}
+	
 }

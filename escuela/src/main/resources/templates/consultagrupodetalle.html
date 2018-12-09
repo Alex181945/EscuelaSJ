@@ -60,11 +60,17 @@
 				
 			</form>
 
-		<a href="#" th:href="@{/catalogo/grupo-detalle/form}" >
-			<button type="button" class="btn btn-secondary btn-lg btn-block">
-				<i class="fas fa-plus-circle"></i>Nuevo
-			</button>
-		</a>
+		<div>
+			<a href="#" th:href="@{/catalogo/grupo-detalle/form}" >
+				<button type="button" class="btn btn-secondary btn-lg">
+					<i class="fas fa-plus-circle"></i>Nuevo
+				</button>
+			</a>
+			
+			<a href="#" th:target="_blank" th:href="@{/catalogo/grupo/genera-lista-pdf?(iGrupo=${opGrupo.iGrupo})}">
+				<button type="button" class="btn btn-info btn-lg"><i class="fas fa-list-ul"></i> Lista de Alumnos</button>
+			</a>
+		</div>		
 		
 		<br/>
 		
